@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('home','HomeController@index');
 
+Route::get('master', function(){
+            return View::make('master.layout');
+        });  
+Route::get('customers','Admin\\CustomerController@index');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
