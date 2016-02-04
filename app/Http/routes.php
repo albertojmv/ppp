@@ -20,6 +20,16 @@ Route::get('master', function(){
             return View::make('master.layout');
         });  
 Route::get('customers','Admin\\CustomerController@index');
+Route::get('users','Admin\\UserController@create');
+
+Route::group(array('prefix' => 'admin'), function()
+{
+    Route::resource("users","Admin\\UserController");
+    
+        
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
