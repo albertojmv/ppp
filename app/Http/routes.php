@@ -21,6 +21,7 @@ Route::get('master', function(){
         });  
 Route::get('customers','Admin\\CustomerController@index');
 Route::get('users','Admin\\UserController@create');
+Route::get('usersc','Admin\\UserController@index');
 
 Route::group(array('prefix' => 'admin'), function()
 {

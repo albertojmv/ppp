@@ -1,4 +1,4 @@
-@extends('..master.layout')
+@extends('master.layout')
 
 @section('contenido')
 
@@ -64,13 +64,13 @@
 
                                                 <div class="col-sm-9 controls">
                                                     <div class="row">
-                                                        <div class="col-xs-4"><select class="form-control">
-                                                            <option>Administrador</option>
-                                                            <option>Gestor</option>
-                                                            <option>Cobrador</option>
-                                                        </select></div>
+                                                        <div class="col-xs-4">
+                                                            {!! Form::select('role_id',$roles_list,null,array('class'=>'form-control'),['id'=>'roles_list']) !!}
+                                                           </div>
                                                     </div>
                                                 </div>
+                                                
+                                               
                                             </div>
                                             
                                             <hr/>
