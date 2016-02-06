@@ -29,5 +29,11 @@ class User extends Authenticatable {
     public function role() {
         return $this->belongsTo("App\Role");
     }
+    
+     public function setPasswordAttribute($valor){
+        if(!empty($valor)){
+            $this->attributes['password'] = \Hash::make($valor);
+        }
+     }
 
 }

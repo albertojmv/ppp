@@ -1,11 +1,12 @@
 @extends('master.layout')
 
 @section('contenido')
-
+@include('alerts.request')
 
 <div id="generalTabContent" class="tab-content">
                                     <div id="tab-edit" class="tab-pane fade in active">
-                                        <form action="{{URL::route('admin.users.store')}}" class="form-horizontal" method="post"><h3>Datos de usuario</h3>
+                                        {!!Form::open(['route'=>'admin.users.store', 'method'=>'POST'])!!}
+                                        <h3>Datos de usuario</h3>
 
                                             <div class="form-group"><label class="col-sm-3 control-label">Email</label>
 
@@ -66,7 +67,8 @@
                                                     <div class="row">
                                                         <div class="col-xs-4">
                                                             {!! Form::select('role_id',$roles_list,null,array('class'=>'form-control'),['id'=>'roles_list']) !!}
-                                                           </div>
+                                                           
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
@@ -75,13 +77,14 @@
                                             
                                             <hr/>
                                             
+                                            {!!Form::submit('Registrar',['class'=>'btn btn-green btn-block'])!!}
                                             
-                                            <button type="submit" class="btn btn-green btn-block">Enviar</button>
-                                        </form>
+                                        {!!Form::close()!!}
                                     </div>
                                     
                                 </div>
 
 
 
-@stop
+
+@endsection
