@@ -16,23 +16,37 @@ class UserController extends Controller {
 
     public function index() {
         $users = \App\User::orderBy('id', 'desc')->paginate(10);
-        return \View::make("admin.users.index")
+        return \view('admin.users.index')
                         ->with("users", $users);
     }
 
     public function create() {
         $roles_list = Role::lists("name", "id");
-        return \View::make("admin.users.create", compact('roles_list'));
+        return \view('admin.users.create', compact('roles_list'));
         
     }
 
     public function store(UserCreateRequest $request) {
+       
+        //User::create($request->all());
+        $name = $request['name'];
+        $lastname = $request['lastname'];
+        $username = $request['username'];
+        $email = $request['email'];
+        $password = $request['password'];
+        $role_id = $request['role_id'];
         
+        $user = new User();
+        $user->name = $name;
+        $user->lastname = $lastname;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = $password;
+        $user->role_id = $role_id;
         
+        $user->save();
         
-        User::create($request->all());
-
-        return \Redirect::route('users')->with('message','store');
+        return \Redirect::route('admin.users.index')->with('message','store');
     }
 
     public function show() {

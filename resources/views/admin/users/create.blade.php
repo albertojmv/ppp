@@ -36,7 +36,7 @@
 
                                                 <div class="col-sm-9 controls">
                                                     <div class="row">
-                                                        <div class="col-xs-4"><input type="password" placeholder="Contraseña" class="form-control"/></div>
+                                                        <div class="col-xs-4"><input type="password" name="password_confirmation" placeholder="Contraseña" class="form-control"/></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,6 +76,7 @@
                                             </div>
                                             
                                             <hr/>
+                                            
                                             
                                             {!!Form::submit('Registrar',['class'=>'btn btn-green btn-block'])!!}
                                             
