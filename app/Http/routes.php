@@ -12,6 +12,7 @@
  */
 
 Route::get('/', function () {
+    dd('saury');
     return view('welcome');
 });
 Route::get('home', 'HomeController@index');
@@ -24,16 +25,15 @@ Route::get('customers', 'Admin\\CustomerController@index');
 
 
 
-Route::group(['middleware' => ['web']], function () {
-    Route::resource("users", "Admin\\UserController");
-    Route::get('users', 'Admin\\UserController@create');
-    Route::get('usersc', 'Admin\\UserController@index');
-    Route::resource('userse', 'Admin\\UserController');
-    
-Route::group(array('prefix' => 'admin'), function() {
-    Route::resource("users", "Admin\\UserController");
-});    
-    
+Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::resource("users", "UserController");
+    Route::get('users', 'UserController@create');
+    Route::get('usersc', 'UserController@index');
+    Route::resource('userse', 'UserController');
+
+//    Route::group(array('prefix' => 'admin'), function() {
+//        Route::resource("users", "Admin\\UserController");
+//    });
 });
 
 
@@ -47,7 +47,3 @@ Route::group(array('prefix' => 'admin'), function() {
   | kernel and includes session state, CSRF protection, and more.
   |
  */
-
-Route::group(['middleware' => ['web']], function () {
-    //
-});
