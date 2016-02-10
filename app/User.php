@@ -29,6 +29,9 @@ class User extends Authenticatable {
     public function role() {
         return $this->belongsTo("App\Role");
     }
+    public function state() {
+        return $this->belongsTo("App\State");
+    }
     
      public function setPasswordAttribute($valor){
         if(!empty($valor)){

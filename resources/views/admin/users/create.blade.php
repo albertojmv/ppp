@@ -20,7 +20,7 @@
 
                                                 <div class="col-sm-9 controls">
                                                     <div class="row">
-                                                        <div class="col-xs-9"><input type="text" name="username" placeholder="Nombre de usuario" class="form-control"/></div>
+                                                        <div class="col-xs-9"><input type="text" name="username" placeholder="Nombre de usuario" class="form-control" pattern="[a-z0-9]+"/></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@
                                                 </div>
                                             </div>
                  
-                                            
+                                            <input type="hidden" name="_token" value="{{ Session::token() }}">
                                             <div class="form-group"><label class="col-sm-3 control-label">Rol de usuario</label>
 
                                                 <div class="col-sm-9 controls">

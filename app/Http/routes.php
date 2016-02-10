@@ -27,13 +27,8 @@ Route::get('customers', 'Admin\\CustomerController@index');
 
 Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource("users", "UserController");
-    Route::get('users', 'UserController@create');
-    Route::get('usersc', 'UserController@index');
-    Route::resource('userse', 'UserController');
+    
 
-//    Route::group(array('prefix' => 'admin'), function() {
-//        Route::resource("users", "Admin\\UserController");
-//    });
 });
 
 
@@ -47,3 +42,17 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admi
   | kernel and includes session state, CSRF protection, and more.
   |
  */
+
+Route::group(['middleware' => ['web']], function () {
+   
+});
+
+ Route::controller('login', 'LoginController');
+ 
+ Route::get('logout', function()
+        {
+               Auth::logout();
+               return view('login.index');
+         
+                              
+        });

@@ -23,11 +23,10 @@ class UserController extends Controller {
     public function create() {
         $roles_list = Role::lists("name", "id");
         return \view('admin.users.create', compact('roles_list'));
-        
     }
 
     public function store(UserCreateRequest $request) {
-       
+
         //User::create($request->all());
         $name = $request['name'];
         $lastname = $request['lastname'];
@@ -35,7 +34,8 @@ class UserController extends Controller {
         $email = $request['email'];
         $password = $request['password'];
         $role_id = $request['role_id'];
-        
+        $_token = $request['_token'];
+
         $user = new User();
         $user->name = $name;
         $user->lastname = $lastname;
@@ -43,10 +43,11 @@ class UserController extends Controller {
         $user->email = $email;
         $user->password = $password;
         $user->role_id = $role_id;
-        
+        $user->state_id = 1;
+        $user->remember_token = $_token;
         $user->save();
-        
-        return \Redirect::route('admin.users.index')->with('message','store');
+
+        return \Redirect::route('admin.users.index')->with('message', 'Usuario Guardado Correctamente');
     }
 
     public function show() {
@@ -54,18 +55,34 @@ class UserController extends Controller {
     }
 
     public function edit($id) {
+        $states_list = \App\State::lists("name", "id");
+        $roles_list = Role::lists("name", "id");
         $user = User::find($id);
-        return \View::make("admin.users.edit", ['user' => $user]); 
+        return \View::make("admin.users.edit", ['user' => $user], ['roles_list' => $roles_list])
+                        ->with("states_list", $states_list);
         //\view('admin.users.edit', ['user' => $user]);
     }
-    
-    public function update(UserUpdateRequest $request, $id)
-    {
+
+    public function update(UserUpdateRequest $request, $id) {
+        $name = $request['name'];
+        $lastname = $request['lastname'];
+        $username = $request['username'];
+        $email = $request['email'];
+        $password = $request['password'];
+        $role_id = $request['role_id'];
+        $state_id = $request['state_id'];
+
         $user = User::find($id);
-        $user->fill($request->all());
+        $user->name = $name;
+        $user->lastname = $lastname;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = $password;
+        $user->role_id = $role_id;
+        $user->state_id = $state_id;
         $user->save();
-        Session::flash('message','Usuario Actualizado Correctamente');
-        return Redirect::to('/usersc');
+        Session::flash('message', 'Usuario Actualizado Correctamente');
+        return Redirect::to('/admin/users');
     }
 
 }
