@@ -74,7 +74,7 @@
                     <li><a href="dashboard.html"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Dashboard</span></a></li>
-                    <li><a href="Layout.html"><i class="fa fa-desktop fa-fw">
+                    <li><a href="{{URL::to('admin/users/create')}}"><i class="fa fa-desktop fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Layouts</span></a>
                        
