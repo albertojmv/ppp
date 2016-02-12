@@ -26,6 +26,7 @@ class CreateCustomersTable extends Migration {
             $table->string('civilstatus');
             $table->string('profession');
             $table->string('gender');
+            $table->date('birthdate');
             $table->timestamps();
             $table->foreign('country_id')
                     ->references('id')
