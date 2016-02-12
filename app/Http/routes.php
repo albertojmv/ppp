@@ -12,22 +12,17 @@
  */
 
 Route::get('/', function () {
-    dd('saury');
-    return view('welcome');
+        return view('welcome');
 });
 Route::get('home', 'HomeController@index');
 
 Route::get('master', function() {
     return View::make('master.layout');
 });
-Route::get('customers', 'Admin\\CustomerController@index');
-
-
-
 
 Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource("users", "UserController");
-    
+    Route::resource("customers", "CustomerController");
 
 });
 
