@@ -177,6 +177,10 @@
     <script src="/script/charts-highchart-more.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="script/main.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/styles/jasny-bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/script/jasny-bootstrap.min.js"></script>
     <script>        (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
