@@ -23,17 +23,25 @@ class CreateCustomersTable extends Migration {
             $table->string('address');
             $table->integer('province_id')->unsigned();
             $table->string('email');
-            $table->string('civilstatus');
+            $table->integer('civilstatu_id')->unsigned();
             $table->string('profession');
-            $table->string('gender');
+            $table->integer('gender_id')->unsigned();
+            $table->text('notes');
             $table->date('birthdate');
             $table->timestamps();
+            
             $table->foreign('country_id')
                     ->references('id')
                     ->on('countries');
             $table->foreign('province_id')
                     ->references('id')
                     ->on('provinces');
+            $table->foreign('civilstatu_id')
+                    ->references('id')
+                    ->on('civilstatus');
+            $table->foreign('gender_id')
+                    ->references('id')
+                    ->on('genders');
         });
     }
 
