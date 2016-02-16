@@ -23,6 +23,7 @@ Route::get('master', function() {
 Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::resource("users", "UserController");
     Route::resource("customers", "CustomerController");
+    Route::resource("loans", "LoanController");
 
 });
 
