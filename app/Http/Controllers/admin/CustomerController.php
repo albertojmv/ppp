@@ -15,7 +15,8 @@ use App\Http\Controllers\Controller;
 class CustomerController extends Controller
 {
   public function index(){
-        return \View::make("admin.customers.index");   
+        $customers = Customer::orderBy('id', 'desc')->paginate(5);
+        return \View::make("admin.customers.index")->with("customers", $customers); 
         
     }
     public function create() {
