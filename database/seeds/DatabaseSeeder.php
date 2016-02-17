@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder {
         $this->call('CivilstatusTableSeeder');
         $this->call('GendersTableSeeder');
         $this->call('LoanstatusTableSeeder');
+        $this->call('WarrantiesTableSeeder');
+        $this->call('PaymentmethodsTableSeeder');
+        $this->call('CalculationtypesTableSeeder');
     }
 
 }
