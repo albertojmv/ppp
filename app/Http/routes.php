@@ -11,22 +11,9 @@
   |
  */
 
-Route::get('/', function () {
-        return view('welcome');
-});
-Route::get('home', 'HomeController@index');
-
-Route::get('master', function() {
-    return View::make('master.layout');
-});
-
-Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
-    Route::resource("users", "UserController");
-    Route::resource("customers", "CustomerController");
-    Route::resource("loans", "LoanController");
-
-});
-
+//Route::get('/', function () {
+//        return view('welcome');
+//});
 
 /*
   |--------------------------------------------------------------------------
@@ -38,17 +25,13 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admi
   | kernel and includes session state, CSRF protection, and more.
   |
  */
-
-Route::group(['middleware' => ['web']], function () {
-   
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/', 'Auth\AuthController@showLoginForm');
+    Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+        Route::get('/', 'DashboardController@index');
+        Route::resource("users", "UserController");
+        Route::resource("customers", "CustomerController");
+        Route::resource("loans", "LoanController");
+    });
 });
-
- Route::controller('login', 'LoginController');
- 
- Route::get('logout', function()
-        {
-               Auth::logout();
-               return view('login.index');
-         
-                              
-        });

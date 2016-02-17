@@ -25,7 +25,7 @@ class CustomerCreateRequest extends Request
     {
         return [
             'name' => 'required',
-            'birthdate' => 'date',
+            'birthdate' => 'date_format:d-m-Y',
         ];
     }
 }

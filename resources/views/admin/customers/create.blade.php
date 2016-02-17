@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <div class="input-icon right">
                                 <i class="fa fa-calendar"></i>
-                                <input id="inputBirthdate" type="text" name="birthdate" placeholder="Fecha de nacimiento" class="form-control" data-mask="9999/99/99" value="{{ old('birthdate') }}" /></div>
+                                <input id="inputBirthdate" type="text" name="birthdate" placeholder="Fecha de nacimiento" class="form-control" data-mask="99-99-9999" value="{{ old('birthdate') }}" /></div>
                         </div>
                     </div>
                 </div>

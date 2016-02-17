@@ -13,6 +13,7 @@ use App\Http\Requests\CustomerCreateRequest;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
+use Carbon\Carbon;
 
 class CustomerController extends Controller {
 
@@ -30,7 +31,11 @@ class CustomerController extends Controller {
     }
 
     public function store(CustomerCreateRequest $request) {
-
+        //$request->merge(['birthdate' => '14-03-1989']);
+        
+        //$customer = new Customer($request->all());
+        
+        //dd($customer);
         $name = $request['name'];
         $lastname = $request['lastname'];
         $phone = $request['phone'];
@@ -45,8 +50,9 @@ class CustomerController extends Controller {
         $profession = $request['profession'];
         $gender_id = $request['gender_id'];
         $notes = $request['notes'];
-        $birthdate = $request['birthdate'];
-        $date = new \DateTime($birthdate);
+        $birthdate = Carbon::parse($request->input('birthdate'))->format('Y-m-d 00:00:00');
+        //dd($birthdate);
+        //$date = new \DateTime($birthdate);
 
         $customer = new Customer();
         $customer->name = $name;
@@ -63,9 +69,8 @@ class CustomerController extends Controller {
         $customer->profession = $profession;
         $customer->gender_id = $gender_id;
         $customer->notes = $notes;
-        $customer->birthdate = $date;
+        $customer->birthdate = $birthdate;
         $customer->save();
-
         return \Redirect::route('admin.customers.index')->with('message', 'Cliente Guardado Correctamente');
     }
 
@@ -100,8 +105,8 @@ class CustomerController extends Controller {
         $profession = $request['profession'];
         $gender_id = $request['gender_id'];
         $notes = $request['notes'];
-        $birthdate = $request['birthdate'];
-        $date = new \DateTime($birthdate);
+        $birthdate = Carbon::parse($request->input('birthdate'))->format('Y-m-d 00:00:00');
+        //$date = new \DateTime($birthdate);
 
         $customer = Customer::find($id);
         $customer->name = $name;
@@ -118,7 +123,7 @@ class CustomerController extends Controller {
         $customer->profession = $profession;
         $customer->gender_id = $gender_id;
         $customer->notes = $notes;
-        $customer->birthdate = $date;
+        $customer->birthdate = $birthdate;
         $customer->save();
         Session::flash('message', 'Usuario Actualizado Correctamente');
         return Redirect::to('/admin/customers');
