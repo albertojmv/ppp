@@ -28,7 +28,7 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', 'Auth\AuthController@showLoginForm');
-    Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'auth','role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'DashboardController@index');
         Route::resource("users", "UserController");
         Route::resource("customers", "CustomerController");

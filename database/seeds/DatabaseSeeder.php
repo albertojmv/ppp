@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('WarrantiesTableSeeder');
         $this->call('PaymentmethodsTableSeeder');
         $this->call('CalculationtypesTableSeeder');
+        $this->call('QuotastatusTableSeeder');
     }
 
 }
