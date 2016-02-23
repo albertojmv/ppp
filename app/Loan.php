@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
 {
-    
+    protected $dates = ['delivery'];
+    protected $fillable = ['delivery'];
+
+    //protected $dateFormat = 'U';
     
     public function paymentmethod() {
         return $this->belongsTo("App\Paymentmethod");
@@ -19,5 +22,8 @@ class Loan extends Model
     }
     public function loanstatu() {
         return $this->belongsTo("App\Loanstatu");
+    }
+    public function customer() {
+        return $this->belongsTo("App\Customer");
     }
 }

@@ -10,7 +10,7 @@ class Customer extends Model {
     protected $date = ['birthdate'];
     protected $fillable = ['birthdate'];
 
-    protected $dateFormat = 'U';
+    //protected $dateFormat = 'U';
 
     public function country() {
         return $this->belongsTo("App\Country");
@@ -33,6 +33,9 @@ class Customer extends Model {
         $date = Carbon::parse($this->birthdate)->format('d-m-Y');
         
         return $date;
+    }
+    public function loan() {
+        return $this->hasMany("App\Loan");
     }
 
 }

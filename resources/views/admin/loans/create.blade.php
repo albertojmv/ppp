@@ -11,11 +11,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="inputCustomer_id" class="control-label">
+                            <label for="customer_id" class="control-label">
                                 Código de cliente</label>
                             <div class="input-icon right">
                                 <i class="fa fa-user"></i>
-                                <input id="inputCustomer_id" name="customer_id" type="text" placeholder="Código de cliente" class="form-control" /></div>
+                                <input id="customer_id" name="customer_id" type="text" placeholder="Código de cliente" class="form-control" /></div>
                         </div>
                     </div>
                     <div class="col-md-6">
