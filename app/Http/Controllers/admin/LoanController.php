@@ -56,9 +56,9 @@ class LoanController extends Controller {
         $quotas = $request['quotas'];
         $calculationtype_id = $request['calculationtype_id'];
         //$loanstatu_id = $request['loanstatu_id'];
-        $delivery = Carbon::parse($request->input('delivery'))->format('Y-m-d 00:00:00');
+        $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
-
+        
         //$total = $amount + ($amount * $interest/100);
         //$payments = $total / $quotas;
         //dd(intval($customer_id));
@@ -89,11 +89,22 @@ class LoanController extends Controller {
         $loan->delivery = $delivery;
         $loan->notes = $notes;
         $loan->save();
-        dd($loan->id);
+        //dd($loan->id);
+        
         
         for($i=0; $i<=$quotas-1; $i++){
             $quota = new Quota();
-            
+            $date = $this->calcfecha($paymentmethod_id,$delivery);
+            $dateex = $this->calcfechaex($payday,$delivery);
+            $quota->datepayment = $date;
+            $quota->dateexpiration = $dateex;
+            $quota->amount = $this->calcquota($amount,$interest,$quotas);
+            $quota->surcharge = 0;
+            $quota->interest = $interest;
+            $quota->capital = $amount - $this->calcquota($amount,$interest,$quotas);
+            $quota->loan_id = $loan->id;
+            $quota->quotastatu_id = 1;
+            $quota->save();
         }
         
         
@@ -146,9 +157,9 @@ class LoanController extends Controller {
         return $payments;
     }
     
-    public function calcfecha($paymentmethod_id,$delivery){
+    protected function calcfecha($paymentmethod_id,$delivery){
         if($paymentmethod_id==1){
-            return $delivery->addDays(30);
+            return $delivery->addMonth();
         }elseif($paymentmethod_id==2){
             return $delivery->addDays(15);
         }elseif($paymentmethod_id==3){
@@ -158,6 +169,10 @@ class LoanController extends Controller {
         }
     }
     
+    protected function calcfechaex($payday,$delivery){
+        
+       return $delivery->addDays($payday);
+    }
     
 
 }
