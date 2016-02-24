@@ -58,23 +58,8 @@ class LoanController extends Controller {
         //$loanstatu_id = $request['loanstatu_id'];
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
-        
-        //$total = $amount + ($amount * $interest/100);
-        //$payments = $total / $quotas;
-        //dd(intval($customer_id));
-//        $loan = Loan::create(array('customer_id' => intval($customer_id),
-//                    'warranty_id' => $warranty_id,
-//                    'paymentmethod_id' => $paymentmethod_id,
-//                    'payday' => $payday,
-//                    'interest' => $interest,
-//                    'surcharge' => $surcharge,
-//                    'amount' => $amount,
-//                    'quotas' => $quotas,
-//                    'calculationtype_id' => $calculationtype_id,
-//                    'loanstatu_id' => 2,
-//                    'delivery' => $delivery,
-//                    'notes' => $notes));
-//        $loan->save();
+        $deliveryexp = Carbon::parse($request['delivery']);
+       
         $loan = new Loan();
         $loan->customer_id = $customer_id;
         $loan->warranty_id = $warranty_id;
@@ -89,22 +74,32 @@ class LoanController extends Controller {
         $loan->delivery = $delivery;
         $loan->notes = $notes;
         $loan->save();
-        //dd($loan->id);
         
+        $intereses = $amount * ($interest/100);
+        $saldomes = $amount + $intereses;
+                
         
         for($i=0; $i<=$quotas-1; $i++){
+            $balance = $saldomes - $this->calcquota($amount,$interest,$quotas);
+            $saldomes = $saldomes - $this->calcquota($amount,$interest,$quotas);
+            
             $quota = new Quota();
             $date = $this->calcfecha($paymentmethod_id,$delivery);
-            $dateex = $this->calcfechaex($payday,$delivery);
+            $deliveryex = $this->calcfecha($paymentmethod_id,$deliveryexp);
+            $dateex = $this->calcfechaex($payday,$deliveryex);
             $quota->datepayment = $date;
+            
             $quota->dateexpiration = $dateex;
+            
             $quota->amount = $this->calcquota($amount,$interest,$quotas);
             $quota->surcharge = 0;
-            $quota->interest = $interest;
-            $quota->capital = $amount - $this->calcquota($amount,$interest,$quotas);
+            $quota->interest = $this->calcinte($amount,$interest,$quotas);
+            $quota->capital = $balance;
             $quota->loan_id = $loan->id;
             $quota->quotastatu_id = 1;
             $quota->save();
+            
+            
         }
         
         
@@ -154,6 +149,12 @@ class LoanController extends Controller {
     public function calcquota($amount,$interest,$quotas){
         $total = $amount + ($amount * $interest/100);
         $payments = $total / $quotas;
+        return $payments;
+    }
+    public function calcinte($amount,$interest,$quotas){
+        $total = $amount + ($amount * $interest/100);
+        $payments = $total / $quotas * $interest/100;
+        
         return $payments;
     }
     
