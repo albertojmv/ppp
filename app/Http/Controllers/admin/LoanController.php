@@ -22,7 +22,8 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return \view("admin.loans.index");
+        $loans = Loan::orderBy('id', 'desc')->paginate(5);
+        return \view("admin.loans.index")->with("loans", $loans);
     }
 
     /**
@@ -59,7 +60,7 @@ class LoanController extends Controller {
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
         $deliveryexp = Carbon::parse($request['delivery']);
-       
+
         $loan = new Loan();
         $loan->customer_id = $customer_id;
         $loan->warranty_id = $warranty_id;
@@ -74,35 +75,33 @@ class LoanController extends Controller {
         $loan->delivery = $delivery;
         $loan->notes = $notes;
         $loan->save();
-        
-        $intereses = $amount * ($interest/100);
-        $saldomes = $amount + $intereses;
-                
-        
-        for($i=0; $i<=$quotas-1; $i++){
-            $balance = $saldomes - $this->calcquota($amount,$interest,$quotas);
-            $saldomes = $saldomes - $this->calcquota($amount,$interest,$quotas);
-            
-            $quota = new Quota();
-            $date = $this->calcfecha($paymentmethod_id,$delivery);
-            $deliveryex = $this->calcfecha($paymentmethod_id,$deliveryexp);
-            $dateex = $this->calcfechaex($payday,$deliveryex);
-            $quota->datepayment = $date;
-            
-            $quota->dateexpiration = $dateex;
-            
-            $quota->amount = $this->calcquota($amount,$interest,$quotas);
-            $quota->surcharge = 0;
-            $quota->interest = $this->calcinte($amount,$interest,$quotas);
-            $quota->capital = $balance;
-            $quota->loan_id = $loan->id;
-            $quota->quotastatu_id = 1;
-            $quota->save();
-            
-            
-        }
-        
-        
+
+        $this->saveQuotas($calculationtype_id, $amount, $interest, $quotas, $paymentmethod_id, $delivery, $deliveryexp, $payday, $loan->id);
+
+//        $intereses = $amount * ($interest / 100);
+//        $saldomes = $amount + $intereses;
+//
+//
+//        for ($i = 0; $i <= $quotas - 1; $i++) {
+//            $balance = $saldomes - $this->calcquota($amount, $interest, $quotas);
+//            $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
+//
+//            $quota = new Quota();
+//            $date = $this->calcfecha($paymentmethod_id, $delivery);
+//            $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
+//            $dateex = $this->calcfechaex($payday, $deliveryex);
+//            $quota->datepayment = $date;
+//
+//            $quota->dateexpiration = $dateex;
+//
+//            $quota->amount = $this->calcquota($amount, $interest, $quotas);
+//            $quota->surcharge = 0;
+//            $quota->interest = $this->calcinte($amount, $interest, $quotas);
+//            $quota->capital = $balance;
+//            $quota->loan_id = $loan->id;
+//            $quota->quotastatu_id = 1;
+//            $quota->save();
+//        }
     }
 
     /**
@@ -145,35 +144,98 @@ class LoanController extends Controller {
     public function destroy($id) {
         //
     }
-    
-    public function calcquota($amount,$interest,$quotas){
-        $total = $amount + ($amount * $interest/100);
+
+    public function calcquota($amount, $interest, $quotas) {
+        $total = $amount + ($amount * $interest / 100);
         $payments = $total / $quotas;
         return $payments;
     }
-    public function calcinte($amount,$interest,$quotas){
-        $total = $amount + ($amount * $interest/100);
-        $payments = $total / $quotas * $interest/100;
-        
+
+    public function calcinte($amount, $interest, $quotas) {
+        $total = $amount + ($amount * $interest / 100);
+        $payments = $total / $quotas * $interest / 100;
+
         return $payments;
     }
-    
-    protected function calcfecha($paymentmethod_id,$delivery){
-        if($paymentmethod_id==1){
+
+    protected function calcfecha($paymentmethod_id, $delivery) {
+        if ($paymentmethod_id == 1) {
             return $delivery->addMonth();
-        }elseif($paymentmethod_id==2){
+        } elseif ($paymentmethod_id == 2) {
             return $delivery->addDays(15);
-        }elseif($paymentmethod_id==3){
+        } elseif ($paymentmethod_id == 3) {
             return $delivery->addDays(7);
-        }elseif($paymentmethod_id==4){
+        } elseif ($paymentmethod_id == 4) {
             return $delivery->addDay();
         }
     }
-    
-    protected function calcfechaex($payday,$delivery){
-        
-       return $delivery->addDays($payday);
+
+    protected function calcfechaex($payday, $delivery) {
+
+        return $delivery->addDays($payday);
     }
-    
+
+    protected function saveQuotas($calculationtype_id, $amount, $interest, $quotas, $paymentmethod_id, $delivery, $deliveryexp, $payday, $loan) {
+
+        if ($calculationtype_id == 1) {
+
+            $intereses = $amount * ($interest / 100);
+            $saldomes = $amount + $intereses;
+
+
+            for ($i = 0; $i <= $quotas - 1; $i++) {
+                $balance = $saldomes - $this->calcquota($amount, $interest, $quotas);
+                $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
+
+                $quota = new Quota();
+                $date = $this->calcfecha($paymentmethod_id, $delivery);
+                $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
+                $dateex = $this->calcfechaex($payday, $deliveryex);
+                $quota->datepayment = $date;
+
+                $quota->dateexpiration = $dateex;
+
+                $quota->amount = $this->calcquota($amount, $interest, $quotas);
+                $quota->surcharge = 0;
+                $quota->interest = $this->calcinte($amount, $interest, $quotas);
+                $quota->capital = $balance;
+                $quota->loan_id = $loan;
+                $quota->quotastatu_id = 1;
+                $quota->save();
+            }
+
+
+            return dd("Interes Simple");
+        } elseif ($calculationtype_id == 2) {
+
+            $intereses = $amount * ($interest / 100);
+            $saldomes = $amount;
+            $ac= $amount/$quotas;
+
+            for ($i = 0; $i <= $quotas - 1; $i++) {
+                $balance = $saldomes - $ac;
+                $saldomes = $saldomes - $ac;
+
+                $quota = new Quota();
+                $date = $this->calcfecha($paymentmethod_id, $delivery);
+                $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
+                $dateex = $this->calcfechaex($payday, $deliveryex);
+                $quota->datepayment = $date;
+
+                $quota->dateexpiration = $dateex;
+
+                
+                $quota->surcharge = 0;
+                $quota->interest = $balance * ($interest / 100);
+                $quota->amount = $ac+$quota->interest;
+                $quota->capital = $balance;
+                $quota->loan_id = $loan;
+                $quota->quotastatu_id = 1;
+                $quota->save();
+            }
+
+            return dd("Saldo Insoluto");
+        }
+    }
 
 }
