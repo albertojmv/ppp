@@ -59,8 +59,8 @@ class LoanController extends Controller {
         //$loanstatu_id = $request['loanstatu_id'];
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
-        $deliveryexp = Carbon::parse($request['delivery']);
-
+        $deliveryexp = Carbon::parse($request['delivery'])->addDays($payday);
+        //dd($deliveryexp);
         $loan = new Loan();
         $loan->customer_id = $customer_id;
         $loan->warranty_id = $warranty_id;
@@ -190,10 +190,10 @@ class LoanController extends Controller {
                 $quota = new Quota();
                 $date = $this->calcfecha($paymentmethod_id, $delivery);
                 $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
-                $dateex = $this->calcfechaex($payday, $deliveryex);
+                //$dateex = $this->calcfechaex($payday, $deliveryex);
                 $quota->datepayment = $date;
 
-                $quota->dateexpiration = $dateex;
+                $quota->dateexpiration = $deliveryex;
 
                 $quota->amount = $this->calcquota($amount, $interest, $quotas);
                 $quota->surcharge = 0;
@@ -219,10 +219,10 @@ class LoanController extends Controller {
                 $quota = new Quota();
                 $date = $this->calcfecha($paymentmethod_id, $delivery);
                 $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
-                $dateex = $this->calcfechaex($payday, $deliveryex);
+                //$dateex = $this->calcfechaex($payday, $deliveryex);
                 $quota->datepayment = $date;
 
-                $quota->dateexpiration = $dateex;
+                $quota->dateexpiration = $deliveryex;
 
                 
                 $quota->surcharge = 0;
