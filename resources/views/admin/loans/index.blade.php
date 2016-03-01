@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{$loan->id}}</td>
                     <td>{{$loan->customer->name}} {{$loan->customer->lastname}}</td>
-                    <td>{{$loan->amount}}</td>
+                    <td>${{number_format($loan->amount)}}</td>
                     <td>{{$loan->quotas}}</td>
                     <td>{{$loan->loanstatu->name}}</td>
                     <td>

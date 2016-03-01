@@ -60,7 +60,8 @@ class LoanController extends Controller {
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
         $deliveryexp = Carbon::parse($request['delivery'])->addDays($payday);
-        //dd($deliveryexp);
+        $this->GenerateSurchatge();        exit();
+        
         $loan = new Loan();
         $loan->customer_id = $customer_id;
         $loan->warranty_id = $warranty_id;
@@ -236,6 +237,36 @@ class LoanController extends Controller {
 
             return dd("Saldo Insoluto");
         }
+    }
+    
+    public function GenerateSurchatge(){
+        
+        
+    $recorrido = Quota::where("dateexpiration","<" ,Carbon::now())->where("quotastatu_id","=",1)->get();
+    if (count($recorrido) == 0){
+        return dd("No existen cuotas con mora");
+    }else{
+    foreach ($recorrido as $resultado){
+        
+        $prestamo = Loan::where('id','=',$resultado->loan_id)->first();
+        $mora = $resultado->amount * ($prestamo->surcharge / 100);
+        
+    
+        $resultado->surcharge = $mora;
+        $resultado->quotastatu_id = 2;
+        $resultado->update();
+        print($mora.'</br>');
+        
+        
+    }
+    }
+    
+    //return dd($mora);
+        
+    
+        
+        
+        
     }
 
 }
