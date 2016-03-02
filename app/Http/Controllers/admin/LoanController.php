@@ -112,7 +112,10 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        $prestamo = Loan::find($id);
+        $cuotas = Quota::where('loan_id','=',$id)->get();
+                
+         return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
     }
 
     /**
