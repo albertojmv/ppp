@@ -60,8 +60,9 @@ class LoanController extends Controller {
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
         $deliveryexp = Carbon::parse($request['delivery'])->addDays($payday);
-        $this->GenerateSurchatge();        exit();
-        
+        //$this->GenerateSurchatge();
+        //exit();
+
         $loan = new Loan();
         $loan->customer_id = $customer_id;
         $loan->warranty_id = $warranty_id;
@@ -72,7 +73,7 @@ class LoanController extends Controller {
         $loan->amount = $amount;
         $loan->quotas = $quotas;
         $loan->calculationtype_id = $calculationtype_id;
-        $loan->loanstatu_id = 2;
+        $loan->loanstatu_id = 1;
         $loan->delivery = $delivery;
         $loan->notes = $notes;
         $loan->save();
@@ -112,10 +113,17 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $prestamo = Loan::find($id);
-        $cuotas = Quota::where('loan_id','=',$id)->get();
-                
-         return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
+        $prestamo = Loan::findOrFail($id);
+        $cuotas = Quota::where('loan_id', '=', $id)->get();
+
+        return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
+    }
+
+    public function showLoan($id) {
+        $prestamo = Loan::findOrFail($id);
+        $cuotas = Quota::where('loan_id', '=', $id)->get();
+
+        return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
     }
 
     /**
@@ -156,8 +164,8 @@ class LoanController extends Controller {
     }
 
     public function calcinte($amount, $interest, $quotas) {
-        $total = $amount + ($amount * $interest / 100);
-        $payments = $total / $quotas * $interest / 100;
+        $total = $amount * ($interest / 100);
+        $payments = $total / $quotas;
 
         return $payments;
     }
@@ -214,7 +222,7 @@ class LoanController extends Controller {
 
             $intereses = $amount * ($interest / 100);
             $saldomes = $amount;
-            $ac= $amount/$quotas;
+            $ac = $amount / $quotas;
 
             for ($i = 0; $i <= $quotas - 1; $i++) {
                 $balance = $saldomes - $ac;
@@ -228,10 +236,10 @@ class LoanController extends Controller {
 
                 $quota->dateexpiration = $deliveryex;
 
-                
+
                 $quota->surcharge = 0;
                 $quota->interest = $balance * ($interest / 100);
-                $quota->amount = $ac+$quota->interest;
+                $quota->amount = $ac + $quota->interest;
                 $quota->capital = $balance;
                 $quota->loan_id = $loan;
                 $quota->quotastatu_id = 1;
@@ -241,35 +249,28 @@ class LoanController extends Controller {
             return dd("Saldo Insoluto");
         }
     }
-    
-    public function GenerateSurchatge(){
-        
-        
-    $recorrido = Quota::where("dateexpiration","<" ,Carbon::now())->where("quotastatu_id","=",1)->get();
-    if (count($recorrido) == 0){
-        return dd("No existen cuotas con mora");
-    }else{
-    foreach ($recorrido as $resultado){
-        
-        $prestamo = Loan::where('id','=',$resultado->loan_id)->first();
-        $mora = $resultado->amount * ($prestamo->surcharge / 100);
-        
-    
-        $resultado->surcharge = $mora;
-        $resultado->quotastatu_id = 2;
-        $resultado->update();
-        print($mora.'</br>');
-        
-        
-    }
-    }
-    
-    //return dd($mora);
-        
-    
-        
-        
-        
+
+    public function GenerateSurchatge() {
+
+
+        $recorrido = Quota::where("dateexpiration", "<", Carbon::now())->where("quotastatu_id", "=", 1)->get();
+        if (count($recorrido) == 0) {
+            return dd("No existen cuotas con mora");
+        } else {
+            foreach ($recorrido as $resultado) {
+
+                $prestamo = Loan::where('id', '=', $resultado->loan_id)->first();
+                $mora = $resultado->amount * ($prestamo->surcharge / 100);
+
+
+                $resultado->surcharge = $mora;
+                $resultado->quotastatu_id = 2;
+                $resultado->update();
+                print($mora . '</br>');
+            }
+        }
+
+        //return dd($mora);
     }
 
 }

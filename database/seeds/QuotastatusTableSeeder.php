@@ -15,6 +15,7 @@ class QuotastatusTableSeeder extends Seeder
        DB::table('quotastatus')->delete();
         
         Quotastatu::create(array('name'=>'Pendiente'));
+        Quotastatu::create(array('name'=>'Con Mora'));
         Quotastatu::create(array('name'=>'Saldada'));
         Quotastatu::create(array('name'=>'Cancelada'));
     }

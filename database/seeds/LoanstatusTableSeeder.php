@@ -14,8 +14,8 @@ class LoanstatusTableSeeder extends Seeder
     {
         DB::table('loanstatus')->delete();
         
-        Loanstatu::create(array('name'=>'No procesado'));
-        Loanstatu::create(array('name'=>'Procesado'));
+        Loanstatu::create(array('name'=>'Activo'));
         Loanstatu::create(array('name'=>'Finalizado'));
+        Loanstatu::create(array('name'=>'Cancelado'));
     }
 }

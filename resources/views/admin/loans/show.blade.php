@@ -23,17 +23,17 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Juan Perez</td>
-                    <td>Mensual</td>
-                    <td>23</td>
-                    <td>10000</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>Interes fijo</td>
-                    <td>01-02-2017</td>
-                    <td><span class="label label-sm label-success">Approved</span></td>
+                    <td>{{$prestamo->id}}</td>
+                    <td>{{$prestamo->customer->name}} {{$prestamo->customer->lastname}}</td>
+                    <td>{{$prestamo->paymentmethod->name}}</td>
+                    <td>{{$prestamo->payday}}</td>
+                    <td><p>${{number_format($prestamo->amount)}}</p></td>
+                    <td>{{$prestamo->interest}}</td>
+                    <td>{{$prestamo->surcharge}}</td>
+                    <td>{{$prestamo->quotas}}</td>
+                    <td>{{$prestamo->calculationtype->name}}</td>
+                    <td>{{$prestamo->delivery->format('d-m-Y')}}</td>
+                    <td><span class="label label-sm label-success">{{$prestamo->loanstatu->name}}</span></td>
                 </tr>
             </tbody>
         </table>
@@ -60,17 +60,19 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($cuotas as $cuota)
                 <tr>
-                    <td>1</td>
-                    <td>1000</td>
-                    <td>100</td>
-                    <td>1100</td>
-                    <td>1100</td>
-                    <td>02-03-2017</td>
-                    <td>1000</td>
-                    <td>100</td>
-                    <td><span class="label label-sm label-success">Approved</span></td>
+                    <td>{{$cuota->id}}</td>
+                    <td>${{number_format($cuota->amount)}}</td>
+                    <td>${{number_format($cuota->surcharge)}}</td>
+                    <td>${{number_format($cuota->amount + $cuota->surcharge)}}</td>
+                    <td>ToDo</td>
+                    <td>{{$cuota->getFecha()}}</td>
+                    <td>${{number_format($cuota->capital)}}</td>
+                    <td>${{number_format($cuota->interest)}}</td>
+                    <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -13,9 +13,8 @@ class CalculationtypesTableSeeder extends Seeder
     {
        DB::table('calculationtypes')->delete();
         
-        Calculationtype::create(array('name'=>'Interés Fijo'));
-        Calculationtype::create(array('name'=>'Saldos solutos'));
-        Calculationtype::create(array('name'=>'Saldo Insolutos'));
-        
+        Calculationtype::create(array('name'=>'Interés simple'));
+        Calculationtype::create(array('name'=>'Saldos insolutos'));
+                
     }
 }

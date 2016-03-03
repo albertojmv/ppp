@@ -33,5 +33,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource("users", "UserController");
         Route::resource("customers", "CustomerController");
         Route::resource("loans", "LoanController");
+        Route::get('loan/{id}', 'LoanController@showLoan');
     });
 });
