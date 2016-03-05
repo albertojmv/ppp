@@ -14,6 +14,7 @@ class CreateQuotasTable extends Migration
     {
         Schema::create('quotas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('number');
             $table->date('datepayment');
             $table->date('dateexpiration');
             $table->double('amount', 9,2);

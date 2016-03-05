@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('PaymentmethodsTableSeeder');
         $this->call('CalculationtypesTableSeeder');
         $this->call('QuotastatusTableSeeder');
+        $this->call('FormofpaymentsTableSeeder');
     }
 
 }

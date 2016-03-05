@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -16,7 +17,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+       $payments = Payment::orderBy('id', 'desc')->paginate(5);
+        return \view("admin.payments.index")->with("payments", $payments);
     }
 
     /**

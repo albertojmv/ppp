@@ -195,14 +195,16 @@ class LoanController extends Controller {
             $saldomes = $amount + $intereses;
 
 
-            for ($i = 0; $i <= $quotas - 1; $i++) {
+            for ($i = 1; $i <= $quotas; $i++) {
                 $balance = $saldomes - $this->calcquota($amount, $interest, $quotas);
                 $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
 
                 $quota = new Quota();
+                
                 $date = $this->calcfecha($paymentmethod_id, $delivery);
                 $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
                 //$dateex = $this->calcfechaex($payday, $deliveryex);
+                $quota->number = $i;
                 $quota->datepayment = $date;
 
                 $quota->dateexpiration = $deliveryex;
@@ -224,7 +226,7 @@ class LoanController extends Controller {
             $saldomes = $amount;
             $ac = $amount / $quotas;
 
-            for ($i = 0; $i <= $quotas - 1; $i++) {
+            for ($i = 1; $i <= $quotas; $i++) {
                 $balance = $saldomes - $ac;
                 $saldomes = $saldomes - $ac;
 
@@ -232,6 +234,7 @@ class LoanController extends Controller {
                 $date = $this->calcfecha($paymentmethod_id, $delivery);
                 $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
                 //$dateex = $this->calcfechaex($payday, $deliveryex);
+                $quota->number = $i;
                 $quota->datepayment = $date;
 
                 $quota->dateexpiration = $deliveryex;

@@ -62,7 +62,7 @@
             <tbody>
                 @foreach($cuotas as $cuota)
                 <tr>
-                    <td>{{$cuota->id}}</td>
+                    <td>{{$cuota->number}}</td>
                     <td>${{number_format($cuota->amount)}}</td>
                     <td>${{number_format($cuota->surcharge)}}</td>
                     <td>${{number_format($cuota->amount + $cuota->surcharge)}}</td>
