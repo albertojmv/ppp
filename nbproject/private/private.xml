@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/LoanController.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/payments/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/routes.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/database/migrations/2016_03_04_154847_create_payments_table.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Payment.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/PaymentController.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Loan.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Warranty.php</file>
         </group>
     </open-files>
 </project-private>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Loan;
+use App\Quota;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,7 +30,17 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.payments.create");
+    }
+    
+    public function showLoan(Request $request){
+        
+        $id = $request['loan'];
+        
+        $prestamo = Loan::findOrFail($id);
+        $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
+        
+        return view('admin.payments.show', ['prestamo' => $prestamo], ['cuota' => $cuota]);
     }
 
     /**
@@ -39,7 +51,12 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request['loan'];
+        
+        $prestamo = Loan::findOrFail($id);
+        $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
+        
+        return view('admin.payments.show', ['prestamo' => $prestamo], ['cuota' => $cuota]);
     }
 
     /**
