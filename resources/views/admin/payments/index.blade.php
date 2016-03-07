@@ -2,6 +2,8 @@
 
 @section('contenido')
 
+@include('alerts.request')
+
 @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -27,7 +29,7 @@
                 @foreach($payments as $payment)
                 <tr>
                     <td>{{$payment->id}}</td>
-                    <td>{{$payment->amount}}</td>
+                    <td>{{number_format($payment->amount)}}</td>
                     <td>{{$payment->notes}}</td>
                     <td>{{$payment->formofpayment->name}}</td>
                     <td>

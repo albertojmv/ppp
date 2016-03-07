@@ -1,14 +1,15 @@
 @extends('master.layout')
 
 @section('contenido')
-
+@include('alerts.request')
 
 <div class="panel panel-yellow">
     <div class="panel-heading">
         Pagos</div>
     <div class="panel-body pan">
        {!!Form::open(['route'=>'admin.payments.store', 'method'=>'POST'])!!}
-            <div class="form-body pal">
+           <input name="action" type="hidden" value="1" />
+       <div class="form-body pal">
                 <div class="form-group">
                     <label for="loan" class="col-md-3 control-label">
                         Número de préstamo:</label>
