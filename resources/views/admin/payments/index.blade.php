@@ -20,8 +20,10 @@
                 <tr>
                     <th>#</th>
                     <th>Monto.:</th>
-                    <th>Notas.:</th>
+
+                    <th>Prestamo.:</th>
                     <th>Forma de pago.:</th>
+                    <th>Notas.:</th>
                     <th>Editar.:</th>
                 </tr>
             </thead>
@@ -29,9 +31,11 @@
                 @foreach($payments as $payment)
                 <tr>
                     <td>{{$payment->id}}</td>
-                    <td>{{number_format($payment->amount)}}</td>
-                    <td>{{$payment->notes}}</td>
+                    <td>${{number_format($payment->amount)}}</td>
+
+                    <td>{{$payment->quota->loan_id}}</td>
                     <td>{{$payment->formofpayment->name}}</td>
+                    <td>{{$payment->notes}}</td>
                     <td>
                         <a href="{{URL::to("admin/payments/$payment->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>

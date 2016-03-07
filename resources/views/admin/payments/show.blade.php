@@ -38,10 +38,12 @@
             </div>
 
             <div class="col-sm-9 controls">
-                <div class="form-group">              
+                <div class="form-group">
+                    <label for="notes" class="control-label">
+                        Notas.:</label>
                     <div class="input-icon right">
                         <i class="fa fa-pencil"></i>
-                        <input id="notes" name="notes" type="text" placeholder="Notas" class="form-control" /></div>
+                        <input id="notes" name="notes" type="text" placeholder="Notas" class="form-control" value="Pagado por: {{$prestamo->customer->name}} {{$prestamo->customer->lastname}}" /></div>
                 </div>
             </div>
 
