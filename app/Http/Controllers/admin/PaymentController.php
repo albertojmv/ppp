@@ -62,13 +62,16 @@ class PaymentController extends Controller {
             $formofpayment_list = Formofpayment::lists("name", "id");
             $id = $request['loan'];
 
-            $prestamo = Loan::findOrFail($id);
+            $prestamo = Loan::find($id);
+            if (count($prestamo) == 0) {
+                return Redirect::back()->with('message', 'No existe este préstamo.');
+            }
             $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
-           
-            
+
+
             $pagos = DB::table('payments')
-                ->select(DB::raw('SUM(amount) as total_amount'))
-                ->where('quota_id', '=', $cuota->id)->first();
+                            ->select(DB::raw('SUM(amount) as total_amount'))
+                            ->where('quota_id', '=', $cuota->id)->first();
 
             return view('admin.payments.show', ['prestamo' => $prestamo], ['cuota' => $cuota])->with("formofpayment_list", $formofpayment_list)->with("pagos", $pagos);
         } else {
@@ -83,32 +86,30 @@ class PaymentController extends Controller {
             $quota_id = $request['quota_id'];
             $total = $request['total'];
 
-            if ($amount > $total){
+            if ($amount > $total) {
                 Session::flash('message', 'El pago es mayor al monto pendiente de la cuota.');
-                 
+
                 return Redirect::back();
-                
             }
-            
+
             $payment = new Payment();
             $payment->amount = $amount;
             $payment->notes = $notes;
             $payment->formofpayment_id = $formofpayment_id;
             $payment->quota_id = $quota_id;
             $payment->save();
-            
+
             $quota = Quota::findOrFail($quota_id);
-            
-            if($amount < $total){
+
+            if ($amount < $total) {
                 $quota->quotastatu_id = 1;
                 $quota->update();
                 return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
-            }else{
-            $quota->quotastatu_id = 3;
-            $quota->update();
-            return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
+            } else {
+                $quota->quotastatu_id = 3;
+                $quota->update();
+                return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
             }
-           
         }
     }
 
