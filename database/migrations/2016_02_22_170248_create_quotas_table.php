@@ -17,10 +17,10 @@ class CreateQuotasTable extends Migration
             $table->integer('number');
             $table->date('datepayment');
             $table->date('dateexpiration');
-            $table->double('amount', 9,2);
-            $table->double('surcharge', 9,2);
-            $table->double('interest', 9,2);
-            $table->double('capital', 9,2);
+            $table->double('amount', 11,2);
+            $table->double('surcharge', 11,2);
+            $table->double('interest', 11,2);
+            $table->double('capital', 11,2);
             $table->integer('loan_id')->unsigned();
             $table->integer('quotastatu_id')->unsigned();
             $table->timestamps();

@@ -30,7 +30,7 @@
             </div>
             <div class="form-actions text-right pal">
                 <button type="submit" class="btn btn-primary">
-                    Continue</button>
+                    Continuar</button>
             </div>
         {!!Form::close()!!}
     </div>

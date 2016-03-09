@@ -14,7 +14,7 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
         $table->increments('id');
-        $table->double('amount', 9,2);
+        $table->double('amount', 11,2);
         $table->text('notes');
         $table->integer('formofpayment_id')->unsigned();
         $table->integer('quota_id')->unsigned();

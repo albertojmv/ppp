@@ -19,7 +19,7 @@ class CreateLoansTable extends Migration {
             $table->integer('payday');
             $table->double('interest', 9,2);
             $table->double('surcharge', 9,2);
-            $table->double('amount', 9,2);
+            $table->double('amount', 11,2);
             $table->integer('quotas');
             $table->integer('calculationtype_id')->unsigned();
             $table->integer('loanstatu_id')->unsigned();
