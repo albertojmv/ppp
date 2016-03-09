@@ -24,6 +24,7 @@
                     <th>Prestamo.:</th>
                     <th>Forma de pago.:</th>
                     <th>Notas.:</th>
+                    <th>Imprimir .:</th>
                     <th>Editar.:</th>
                 </tr>
             </thead>
@@ -36,6 +37,9 @@
                     <td>{{$payment->quota->loan_id}}</td>
                     <td>{{$payment->formofpayment->name}}</td>
                     <td>{{$payment->notes}}</td>
+                    <td>
+                        <a href="{{URL::to("admin/payment/$payment->id")}}" class="btn btn-blue" target="_blank"><img src="/images/print.png"></a>
+                    </td>
                     <td>
                         <a href="{{URL::to("admin/payments/$payment->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>

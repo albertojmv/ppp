@@ -6,15 +6,15 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+                <h2>Recibo</h2><h3 class="pull-right">Préstamo # {{$prestamo->id}}</h3>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Billed To:</strong><br>
-                        John Smith<br>
-                        1234 Main<br>
+                        <strong>Cliente:</strong><br>
+                        {{$cliente->name}} {{$cliente->lastname}}<br>
+                        {{$cliente->cedula}}<br>
                         Apt. 4B<br>
                         Springfield, ST 54321
                     </address>

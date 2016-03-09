@@ -35,6 +35,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource("loans", "LoanController");
         Route::get('loan/{id}', 'LoanController@showLoan');
         Route::resource("payments", "PaymentController");
-        Route::get('payment', 'PaymentController@showLoan');
+        Route::get('payment/{id}', 'PaymentController@printPay');
+        
     });
 });

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Loan;
 use App\Quota;
-use App\Http\Requests;
+use App\Customer;
+use App\Http\Requests\PaymentRequest;
 use App\Http\Controllers\Controller;
 use App\Payment;
 use App\Formofpayment;
@@ -34,14 +35,14 @@ class PaymentController extends Controller {
         return view("admin.payments.create");
     }
 
-    public function showLoan(Request $request) {
+    public function printPay($id) {
+        $pago = Payment::find($id);
+        $cuota = Quota::find($pago->quota_id);
+        $prestamo = Loan::find($cuota->loan_id);
+        $cliente = Customer::find($prestamo->customer_id);
+        //dd($cliente->name);
 
-        $id = $request['loan'];
-
-        $prestamo = Loan::findOrFail($id);
-        $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
-
-        return view('admin.payments.show', ['prestamo' => $prestamo], ['cuota' => $cuota]);
+        return view('admin.payments.recibo', ['prestamo' => $prestamo], ['cuota' => $cuota])->with("pago", $pago)->with("cliente", $cliente);
     }
 
     /**
@@ -50,7 +51,7 @@ class PaymentController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(PaymentRequest $request) {
         $action = $request['action'];
 
         if ($action == 1) {
@@ -87,9 +88,9 @@ class PaymentController extends Controller {
             $total = $request['total'];
 
             if ($amount > $total) {
-                Session::flash('message', 'El pago es mayor al monto pendiente de la cuota.');
-
-                return Redirect::back();
+               
+                return Redirect::route('admin.payments.create')
+                                ->with('message', 'El pago es mayor al monto pendiente de la cuota.');
             }
 
             $payment = new Payment();
@@ -104,12 +105,12 @@ class PaymentController extends Controller {
             if ($amount < $total) {
                 $quota->quotastatu_id = 1;
                 $quota->update();
-                return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
             } else {
                 $quota->quotastatu_id = 3;
                 $quota->update();
-                return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
             }
+            //Redirect::to('/admin/payment/'.$payment->id);
+            return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
         }
     }
 
