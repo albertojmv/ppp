@@ -32,7 +32,7 @@
 
                     <div class="input-icon right">
                         <i class="fa fa-money"></i>
-                        <input id="pay" name="pay" type="text" placeholder="" class="form-control" value="{{($cuota->amount + $cuota->surcharge)-$pagos->total_amount}}" /></div>
+                        <input id="pay" name="pay" type="text" placeholder="" class="form-control" value="{{($cuota->amount + $cuota->surcharge)-$pagos->total_amount}}" required/></div>
                 </div>
             </div>
             <div class="col-md-6">

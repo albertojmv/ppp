@@ -14,6 +14,13 @@
 <div class="panel panel-yellow">
     <div class="panel-heading">Pagos</div>
     <div class="panel-body">
+        {!!Form::open(['route'=>'admin.payments.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+
+        <div class="form-group">
+            <input type="text" name="id" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+        {!!Form::close()!!}
         <a href="{{URL::to("admin/payments/create")}}" class="btn btn-green"><img src="/images/editar.png">Agregar Nuevo</a>
         <table class="table table-hover table-striped">
             <thead>

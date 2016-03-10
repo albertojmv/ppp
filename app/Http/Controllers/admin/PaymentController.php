@@ -21,8 +21,10 @@ class PaymentController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $payments = Payment::orderBy('id', 'desc')->paginate(5);
+    public function index(PaymentRequest $request) {
+        
+        //dd($request['id']);
+        $payments = Payment::id($request['id'])->orderBy('id', 'desc')->paginate(5);
         return \view("admin.payments.index")->with("payments", $payments);
     }
 
@@ -167,7 +169,7 @@ class PaymentController extends Controller {
                 'amount' => 'required|numeric'
                     ], $messages = [
                 'amount.numeric' => 'No es un valor numérico.',
-                'amount.required' => 'Debe digitar el monto a pagar para realizar el pago.',
+                'amount.required' => 'Debe digitar el monto a pagar para editar el pago.',
             ]);
         
         $amount = $request['amount'];
