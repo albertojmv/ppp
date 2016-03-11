@@ -13,6 +13,7 @@ use App\Calculationtype;
 use App\Loanstatu;
 use App\Loan;
 use App\Quota;
+use DB;
 
 class LoanController extends Controller {
 
@@ -21,8 +22,9 @@ class LoanController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $loans = Loan::orderBy('id', 'desc')->paginate(5);
+    public function index(Request $request) {
+        
+        $loans = Loan::search($request['search'])->orderBy('id', 'desc')->paginate(5);
         return \view("admin.loans.index")->with("loans", $loans);
     }
 
@@ -122,8 +124,9 @@ class LoanController extends Controller {
     public function showLoan($id) {
         $prestamo = Loan::findOrFail($id);
         $cuotas = Quota::where('loan_id', '=', $id)->get();
-
+        
         return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
+                            
     }
 
     /**

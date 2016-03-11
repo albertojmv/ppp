@@ -34,4 +34,11 @@ class Loan extends Model
         return $this->belongsTo("App\Payment");
     }
     
+    public function scopeSearch($query, $search) {
+
+      
+        return $query->where('customer_id', 'LIKE', "%$search%");
+               
+    }
+    
 }

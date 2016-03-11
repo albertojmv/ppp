@@ -52,7 +52,7 @@
                     <th>Monto</th>
                     <th>Mora</th>
                     <th>Total</th>
-                    <th>Cobrado</th>
+                    
                     <th>Vence el</th>
                     <th>Capital</th>
                     <th>Interés</th>
@@ -66,7 +66,7 @@
                     <td>${{number_format($cuota->amount)}}</td>
                     <td>${{number_format($cuota->surcharge)}}</td>
                     <td>${{number_format($cuota->amount + $cuota->surcharge)}}</td>
-                    <td>ToDo</td>
+                   
                     <td>{{$cuota->getFecha()}}</td>
                     <td>${{number_format($cuota->capital)}}</td>
                     <td>${{number_format($cuota->interest)}}</td>

@@ -17,8 +17,8 @@ use Carbon\Carbon;
 
 class CustomerController extends Controller {
 
-    public function index() {
-        $customers = Customer::orderBy('id', 'desc')->paginate(5);
+    public function index(Request $request) {
+        $customers = Customer::search($request['search'])->orderBy('id', 'desc')->paginate(5);
         return \View::make("admin.customers.index")->with("customers", $customers);
     }
 

@@ -23,7 +23,8 @@ class Payment extends Model {
     public function scopeId($query, $id) {
 
       
-        return $query->where('notes', "LIKE", "%$id%");
+        return $query->where('notes', 'LIKE', "%$id%")
+                ->orWhere('id','LIKE',"%$id%");
     }
 
 }

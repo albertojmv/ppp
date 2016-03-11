@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/payments/index.blade.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/routes.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Payment.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/PaymentController.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/payments/show.blade.php</file>
         </group>

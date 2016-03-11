@@ -12,6 +12,13 @@
 <div class="panel panel-violet">
     <div class="panel-heading">Clientes</div>
     <div class="panel-body">
+         {!!Form::open(['route'=>'admin.customers.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+        {!!Form::close()!!}
         <a href="{{URL::to("admin/customers/create")}}" class="btn btn-green"><img src="/images/editar.png">Agregar Nuevo</a>
         <table class="table table-hover table-striped">
             <thead>
