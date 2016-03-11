@@ -23,8 +23,9 @@ class Payment extends Model {
     public function scopeId($query, $id) {
 
       
-        return $query->where('notes', 'LIKE', "%$id%")
-                ->orWhere('id','LIKE',"%$id%");
+        return $query->join('quotas', 'quotas.id', '=', 'payments.quota_id')
+                ->where('quotas.loan_id', 'LIKE', "%$id%");
+                //->orWhere('payments.id','LIKE',"%$id%");
     }
 
 }

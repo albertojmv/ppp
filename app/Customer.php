@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use DB;
 
 class Customer extends Model {
     
@@ -41,8 +42,8 @@ class Customer extends Model {
      public function scopeSearch($query, $search) {
 
       
-        return $query->where('name', 'LIKE', "%$search%")
-                ->orWhere('lastname','LIKE',"%$search%")
+        return $query->where(DB::raw("CONCAT(name,' ',lastname)"), 'LIKE', "%$search%")
+                //->orWhere('lastname','LIKE',"%$search%")
                 ->orWhere('cedula','LIKE',"%$search%");
     }
 

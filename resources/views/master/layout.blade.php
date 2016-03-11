@@ -73,7 +73,7 @@
                      <div class="clearfix"></div>
                     <li><a href="{{URL::to('admin/dashboard')}}"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Dashboard</span></a></li>
+                    </i><span class="menu-title">Panel De Control</span></a></li>
                     <li><a href="{{URL::to('admin/payments')}}"><i class="fa fa-money">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Pagos</span></a>

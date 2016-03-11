@@ -24,7 +24,8 @@ class LoanController extends Controller {
      */
     public function index(Request $request) {
         
-        $loans = Loan::search($request['search'])->orderBy('id', 'desc')->paginate(5);
+        $loans = Loan::search($request['search'])->orderBy('loans.id', 'desc')->paginate(5);
+        $loans->appends(['search' => $request['search']]);
         return \view("admin.loans.index")->with("loans", $loans);
     }
 

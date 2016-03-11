@@ -23,7 +23,8 @@ class PaymentController extends Controller {
      */
     public function index(Request $request) {
         
-        $payments = Payment::id($request['id'])->orderBy('id', 'desc')->paginate(5);
+        $payments = Payment::id($request['id'])->orderBy('payments.id', 'desc')->paginate(5);
+        $payments->appends(['id' => $request['id']]);
         return \view("admin.payments.index")->with("payments", $payments);
     }
 
