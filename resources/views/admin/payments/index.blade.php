@@ -17,7 +17,7 @@
         {!!Form::open(['route'=>'admin.payments.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
 
         <div class="form-group">
-            <input type="text" name="id" class="form-control" placeholder="Buscar" >
+            <input type="text" name="search" class="form-control" placeholder="Buscar" >
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
         {!!Form::close()!!}

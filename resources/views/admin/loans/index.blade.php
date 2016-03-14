@@ -29,6 +29,7 @@
                     <th># Cuotas.:</th>
                     <th>Estado.:</th>
                     <th>Ver.:</th>
+                    <th>Garantía.:</th>
                     <th>Editar.:</th>
                 </tr>
             </thead>
@@ -42,6 +43,9 @@
                     <td>{{$loan->loanstatu->name}}</td>
                     <td>
                         <a href="{{URL::to("admin/loan/$loan->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
+                    </td>
+                    <td>
+                        <a href="{{URL::to("admin/warranty/$loan->id")}}" class="btn btn-orange"><img src="/images/cam.png"></a>
                     </td>
                     <td>
                         <a href="{{URL::to("admin/loans/$loan->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>

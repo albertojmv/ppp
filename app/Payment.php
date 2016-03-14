@@ -20,11 +20,11 @@ class Payment extends Model {
         return $this->hasMany("App\Loan");
     }
 
-    public function scopeId($query, $id) {
+    public function scopeSearch($query, $search) {
 
       
         return $query->join('quotas', 'quotas.id', '=', 'payments.quota_id')
-                ->where('quotas.loan_id', 'LIKE', "%$id%");
+                ->where('quotas.loan_id', 'LIKE', "%$search%");
                 //->orWhere('payments.id','LIKE',"%$id%");
     }
 

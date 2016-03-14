@@ -23,8 +23,8 @@ class PaymentController extends Controller {
      */
     public function index(Request $request) {
         
-        $payments = Payment::id($request['id'])->orderBy('payments.id', 'desc')->paginate(5);
-        $payments->appends(['id' => $request['id']]);
+        $payments = Payment::search($request['search'])->orderBy('payments.id', 'desc')->paginate(5);
+        $payments->appends(['search' => $request['search']]);
         return \view("admin.payments.index")->with("payments", $payments);
     }
 
@@ -69,11 +69,11 @@ class PaymentController extends Controller {
             $id = $request['loan'];
 
             $prestamo = Loan::find($id);
-//            if (count($prestamo) == 0) {
-//                return Redirect::back()->with('message', 'No existe este préstamo.');
-//            }
-            $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
 
+            $cuota = Quota::where('loan_id', '=', $id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
+            if (count($cuota) == 0) {
+                return Redirect::back()->with('message', 'Todas las cuotas de este préstamo están saldadas.');
+            }
 
             $pagos = DB::table('payments')
                             ->select(DB::raw('SUM(amount) as total_amount'))

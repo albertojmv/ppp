@@ -26,7 +26,7 @@ class LoanController extends Controller {
         
         $loans = Loan::search($request['search'])->orderBy('loans.id', 'desc')->paginate(5);
         $loans->appends(['search' => $request['search']]);
-        return \view("admin.loans.index")->with("loans", $loans);
+        return view("admin.loans.index")->with("loans", $loans);
     }
 
     /**
@@ -279,5 +279,11 @@ class LoanController extends Controller {
 
         //return dd($mora);
     }
+    public function warranty($id){
+        //dd($id);
+        
+          return view('admin.loans.warranty', ['id' => $id]);
+    }
+    
 
 }
