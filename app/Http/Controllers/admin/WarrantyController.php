@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Warranty_image;
+use Redirect;
 
 class WarrantyController extends Controller {
 
@@ -50,6 +51,7 @@ class WarrantyController extends Controller {
         $warranty_image->name = $name;
         $warranty_image->description = $request['description'];
         $warranty_image->save();
+        return Redirect::to('/admin/warranty/'.$request['loan_id'])->with('message', 'La imagen fue guardada correctamente.');
     }
 
     /**
@@ -90,7 +92,16 @@ class WarrantyController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        
+        Warranty_image::destroy($id);
+        //dd($id);
+        return Redirect::back()->with('message', 'La imagen fue borrada.');
+    }
+     public function warranty($id){
+        
+          $imagenes = Warranty_image::where('loan_id', '=', $id)->get();
+        
+          return view('admin.loans.warranty', ['id' => $id], ['imagenes' => $imagenes]);
     }
 
 }

@@ -279,11 +279,7 @@ class LoanController extends Controller {
 
         //return dd($mora);
     }
-    public function warranty($id){
-        //dd($id);
-        
-          return view('admin.loans.warranty', ['id' => $id]);
-    }
+   
     
 
 }
