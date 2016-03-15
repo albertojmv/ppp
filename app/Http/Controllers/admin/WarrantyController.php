@@ -47,11 +47,11 @@ class WarrantyController extends Controller {
         //    \Storage::disk('local')->put($name, $request->file('image'));
         //dd($name);
         $warranty_image = new Warranty_image();
-        $warranty_image->loan_id = $request['loan_id'];
+        $warranty_image->warranty_detail_id = $request['warranty_detail_id'];
         $warranty_image->name = $name;
         $warranty_image->description = $request['description'];
         $warranty_image->save();
-        return Redirect::to('/admin/warranty/'.$request['loan_id'])->with('message', 'La imagen fue guardada correctamente.');
+        return Redirect::to('/admin/warranty/'.$request['warranty_detail_id'])->with('message', 'La imagen fue guardada correctamente.');
     }
 
     /**
@@ -99,7 +99,7 @@ class WarrantyController extends Controller {
     }
      public function warranty($id){
         
-          $imagenes = Warranty_image::where('loan_id', '=', $id)->get();
+          $imagenes = Warranty_image::where('warranty_detail_id', '=', $id)->get();
         
           return view('admin.loans.warranty', ['id' => $id], ['imagenes' => $imagenes]);
     }

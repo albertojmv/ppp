@@ -35,7 +35,7 @@
             <input type="file" name="image" />
 
         </div>
-        <input name="loan_id" type="hidden" value="{{$_GET['id']}}">
+        <input name="warranty_detail_id" type="hidden" value="{{$_GET['id']}}">
 
 <button type='submit' class='btn btn-primary'>Guardar imagen</button>
         {!!Form::close()!!}

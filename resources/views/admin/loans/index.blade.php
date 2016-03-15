@@ -12,7 +12,7 @@
 <div class="panel panel-green">
     <div class="panel-heading">Préstamos</div>
     <div class="panel-body">
-         {!!Form::open(['route'=>'admin.loans.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+        {!!Form::open(['route'=>'admin.loans.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
 
         <div class="form-group">
             <input type="text" name="search" class="form-control" placeholder="Buscar">
@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nombre.:</th>
+                    <th>Cliente.:</th>
                     <th>Monto.:</th>
                     <th># Cuotas.:</th>
                     <th>Estado.:</th>
@@ -45,7 +45,11 @@
                         <a href="{{URL::to("admin/loan/$loan->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
                     </td>
                     <td>
-                        <a href="{{URL::to("admin/warranty/$loan->id")}}" class="btn btn-orange"><img src="/images/cam.png"></a>
+                        {!!Form::open(['route'=>'admin.warrantydetail.index', 'method'=>'GET'])!!}
+                        <input name="search" type="hidden" value="{{$loan->id}}">
+                        <input type="image" name="imageField" src="/images/warranty.png" class="btn btn-orange" />
+                        {!!Form::close()!!}
+                        
                     </td>
                     <td>
                         <a href="{{URL::to("admin/loans/$loan->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>

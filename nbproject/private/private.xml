@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/WarrantyController.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/loans/warranty.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/LoanController.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/routes.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/warranty/create.blade.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/PaymentController.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/loans/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/UserController.php</file>
         </group>
     </open-files>
 </project-private>
