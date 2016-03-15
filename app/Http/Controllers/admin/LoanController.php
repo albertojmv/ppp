@@ -14,6 +14,7 @@ use App\Loanstatu;
 use App\Loan;
 use App\Quota;
 use DB;
+use Redirect;
 
 class LoanController extends Controller {
 
@@ -51,7 +52,7 @@ class LoanController extends Controller {
      */
     public function store(LoanRequest $request) {
         $customer_id = $request['customer_id'];
-        $warranty_id = $request['warranty_id'];
+        
         $paymentmethod_id = $request['paymentmethod_id'];
         $payday = $request['payday'];
         $interest = $request['interest'];
@@ -59,16 +60,15 @@ class LoanController extends Controller {
         $amount = $request['amount'];
         $quotas = $request['quotas'];
         $calculationtype_id = $request['calculationtype_id'];
-        //$loanstatu_id = $request['loanstatu_id'];
+        
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
         $deliveryexp = Carbon::parse($request['delivery'])->addDays($payday);
-        //$this->GenerateSurchatge();
-        //exit();
+        
 
         $loan = new Loan();
         $loan->customer_id = $customer_id;
-        $loan->warranty_id = $warranty_id;
+        $loan->user_id = \Auth::user()->id;
         $loan->paymentmethod_id = $paymentmethod_id;
         $loan->payday = $payday;
         $loan->interest = $interest;
@@ -107,6 +107,7 @@ class LoanController extends Controller {
 //            $quota->quotastatu_id = 1;
 //            $quota->save();
 //        }
+        return Redirect::route('admin.loans.index')->with('message', 'Préstamo Creado Correctamente.');
     }
 
     /**
@@ -223,7 +224,7 @@ class LoanController extends Controller {
             }
 
 
-            return dd("Interes Simple");
+            //return dd("Interes Simple");
         } elseif ($calculationtype_id == 2) {
 
             $intereses = $amount * ($interest / 100);
@@ -253,7 +254,7 @@ class LoanController extends Controller {
                 $quota->save();
             }
 
-            return dd("Saldo Insoluto");
+            //return dd("Saldo Insoluto");
         }
     }
 

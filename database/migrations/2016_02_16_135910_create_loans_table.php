@@ -14,7 +14,7 @@ class CreateLoansTable extends Migration {
         Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
-            $table->integer('warranty_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('paymentmethod_id')->unsigned();
             $table->integer('payday');
             $table->double('interest', 9,2);
@@ -30,9 +30,9 @@ class CreateLoansTable extends Migration {
             $table->foreign('customer_id')
                     ->references('id')
                     ->on('customers');
-            $table->foreign('warranty_id')
+            $table->foreign('user_id')
                     ->references('id')
-                    ->on('warranties');
+                    ->on('users');
             $table->foreign('paymentmethod_id')
                     ->references('id')
                     ->on('paymentmethods');

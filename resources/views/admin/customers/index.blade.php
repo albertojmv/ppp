@@ -28,6 +28,7 @@
                     <th>Cédula.:</th>
                     <th>Nacionalidad.:</th>
                     <th>Editar.:</th>
+                    <th>Crear Préstamo.:</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +40,9 @@
                     <td>{{$customer->country->name_es}}</td>
                     <td>
                         <a href="{{URL::to("admin/customers/$customer->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
+                    </td>
+                    <td>
+                        <a href="{{URL::to("admin/loans/create?id=$customer->id")}}" class="btn btn-blue"><img src="/images/add.png"></a>
                     </td>
                 </tr>
                 @endforeach
