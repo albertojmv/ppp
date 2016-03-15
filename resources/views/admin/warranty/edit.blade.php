@@ -4,9 +4,9 @@
 @include('alerts.request')
 <div class="panel panel-green">
     <div class="panel-heading">
-        Garantía</div>
+       Editar Garantía</div>
     <div class="panel-body pan">
-        {!!Form::open(['route'=>'admin.warrantydetail.store', 'method'=>'POST'])!!}
+         {!!Form::model($warranty_detail,['route'=>['admin.warrantydetail.update',$warranty_detail],'method'=>'PUT'])!!}
             <div class="form-body pal">
                 <div class="row">
                     <div class="col-md-6">
@@ -15,7 +15,7 @@
                                 Artículo</label>
                             <div class="input-icon right">
                                 <i class="fa fa-user"></i>
-                                <input id="name" name="name" type="text" placeholder="Artículo" class="form-control" value="{{ old('name') }}" /></div>
+                                <input id="name" name="name" type="text" placeholder="Artículo" class="form-control" value="{{$warranty_detail->name}}" /></div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -35,7 +35,7 @@
                                 Precio</label>
                             <div class="input-icon right">
                                 <i class="fa fa-money"></i>
-                                <input id="price" name="price" type="text" placeholder="Precio" class="form-control" value="{{ old('price') }}" />
+                                <input id="price" name="price" type="text" placeholder="Precio" class="form-control" value="{{$warranty_detail->price}}" />
                             </div>
                         </div>
                     </div>
@@ -43,13 +43,13 @@
                 </div>
                   
                 <div class="form-group mbn">
-                    <textarea name="notes" rows="5" placeholder="Descripción" class="form-control">{{ old('notes') }}</textarea>
+                    <textarea name="notes" rows="5" placeholder="Descripción" class="form-control">{{$warranty_detail->notes}}</textarea>
                 </div>
-                <input name="loan_id" type="hidden" value="{{$_GET['id']}}">
+               
             </div>
             <div class="form-actions text-right pal">
                 <button type="submit" class="btn btn-primary">
-                    Crear Garantía</button>
+                    Editar Garantía</button>
             </div>
         {!!Form::close()!!}
     </div>

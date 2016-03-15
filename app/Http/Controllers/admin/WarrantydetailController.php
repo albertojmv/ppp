@@ -43,6 +43,13 @@ class WarrantydetailController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+                'name' => 'required',
+                'price' => 'required|numeric',
+                    ], $messages = ['name.required' => 'Digite el nombre del artículo.',
+                'price.required' => 'Digite el precio del artículo.',
+                'price.numeric' => 'El precio no tiene un formato correcto.',
+            ]);
         $warranty_detail = new Warranty_detail();
         $warranty_detail->name = $request['name'];
         $warranty_detail->warranty_id = $request['warranty_id'];
@@ -51,7 +58,7 @@ class WarrantydetailController extends Controller
         $warranty_detail->notes = $request['notes'];
         $warranty_detail->save();
         
-        return Redirect::to('/admin/warrantydetail?search='.$request['loan_id']);
+        return Redirect::to('/admin/warrantydetail?search='.$request['loan_id'])->with('message', 'Garantía creada correctamente.');
        
     }
 
@@ -74,7 +81,9 @@ class WarrantydetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $warranty_list = Warranty::lists("name", "id");
+        $warranty_detail = Warranty_detail::find($id);
+        return view('admin.warranty.edit', ['warranty_list' => $warranty_list], ['warranty_detail' => $warranty_detail]);
     }
 
     /**
@@ -86,7 +95,21 @@ class WarrantydetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+                'name' => 'required',
+                'price' => 'required|numeric',
+                    ], $messages = ['name.required' => 'Digite el nombre del artículo.',
+                'price.required' => 'Digite el precio del artículo.',
+                'price.numeric' => 'El precio no tiene un formato correcto.',
+            ]);
+        $warranty_detail = Warranty_detail::find($id);
+        $warranty_detail->name = $request['name'];
+        $warranty_detail->warranty_id = $request['warranty_id'];
+        
+        $warranty_detail->price = $request['price'];
+        $warranty_detail->notes = $request['notes'];
+        $warranty_detail->save();
+        return Redirect::to('/admin/warrantydetail?search='.$warranty_detail->loan_id)->with('message', 'Garantia Actualizada Correctamente');
     }
 
     /**
@@ -97,6 +120,8 @@ class WarrantydetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Warranty_detail::destroy($id);
+        
+        return Redirect::back()->with('message', 'La garantía fue borrada.');
     }
 }
