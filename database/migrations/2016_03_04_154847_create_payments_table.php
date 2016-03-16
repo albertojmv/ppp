@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
         $table->text('notes');
         $table->integer('formofpayment_id')->unsigned();
         $table->integer('quota_id')->unsigned();
+        $table->integer('user_id')->unsigned();
         $table->timestamps();
             
         $table->foreign('formofpayment_id')
@@ -25,7 +26,10 @@ class CreatePaymentsTable extends Migration
                     ->on('formofpayments'); 
         $table->foreign('quota_id')
                     ->references('id')
-                    ->on('quotas'); 
+                    ->on('quotas');
+        $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
             
         });
     }

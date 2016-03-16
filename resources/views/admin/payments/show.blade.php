@@ -23,7 +23,7 @@
 
     <div class="panel-body pan">
 
-        {!!Form::open(['route'=>'admin.payments.store', 'method'=>'POST'])!!}
+        {!!Form::open(['route'=>'admin.savepayment.store', 'method'=>'POST'])!!}
         <div class="form-body pal">
             <div class="col-md-6">
                 <div class="form-group">

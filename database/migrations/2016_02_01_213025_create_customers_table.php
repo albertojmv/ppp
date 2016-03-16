@@ -28,6 +28,7 @@ class CreateCustomersTable extends Migration {
             $table->integer('gender_id')->unsigned();
             $table->text('notes');
             $table->date('birthdate');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
             
             $table->foreign('country_id')
@@ -42,6 +43,9 @@ class CreateCustomersTable extends Migration {
             $table->foreign('gender_id')
                     ->references('id')
                     ->on('genders');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
         });
     }
 

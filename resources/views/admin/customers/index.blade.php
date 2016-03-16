@@ -27,6 +27,7 @@
                     <th>Nombre.:</th>
                     <th>Cédula.:</th>
                     <th>Nacionalidad.:</th>
+                    <th>Creado por.:</th>
                     <th>Editar.:</th>
                     <th>Crear Préstamo.:</th>
                 </tr>
@@ -38,6 +39,7 @@
                     <td>{{$customer->name}} {{$customer->lastname}}</td>
                     <td>{{$customer->cedula}}</td>
                     <td>{{$customer->country->name_es}}</td>
+                    <td>{{$customer->user->name}}</td>
                     <td>
                         <a href="{{URL::to("admin/customers/$customer->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>

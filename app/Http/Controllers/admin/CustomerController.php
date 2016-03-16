@@ -70,6 +70,7 @@ class CustomerController extends Controller {
         $customer->gender_id = $gender_id;
         $customer->notes = $notes;
         $customer->birthdate = $birthdate;
+        $customer->user_id = \Auth::user()->id;
         $customer->save();
         return \Redirect::route('admin.customers.index')->with('message', 'Cliente Guardado Correctamente');
     }
@@ -124,6 +125,7 @@ class CustomerController extends Controller {
         $customer->gender_id = $gender_id;
         $customer->notes = $notes;
         $customer->birthdate = $birthdate;
+        $customer->user_id = \Auth::user()->id;
         $customer->save();
         Session::flash('message', 'Usuario Actualizado Correctamente');
         return Redirect::to('/admin/customers');

@@ -30,6 +30,9 @@ class Loan extends Model
     public function quota() {
         return $this->hasMany("App\Quota");
     }
+    public function user() {
+        return $this->belongsTo("App\User");
+    }
    
     public function payment() {
         return $this->belongsTo("App\Payment");

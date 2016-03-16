@@ -54,9 +54,9 @@ class PaymentController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(PaymentRequest $request) {
-        $action = $request['action'];
+        //$action = $request['action'];
 
-        if ($action == 1) {
+       // if ($action == 1) {
 
             $this->validate($request, [
                 'loan' => 'required|exists:loans,id|numeric'
@@ -80,35 +80,35 @@ class PaymentController extends Controller {
                             ->where('quota_id', '=', $cuota->id)->first();
 
             return view('admin.payments.show', ['prestamo' => $prestamo], ['cuota' => $cuota])->with("formofpayment_list", $formofpayment_list)->with("pagos", $pagos);
-        } else {
+      //  } else {
 
-            $this->validate($request, [
-                'pay' => 'required|numeric'
-                    ], $messages = [
-                'pay.numeric' => 'No es un valor numérico.',
-                'pay.required' => 'Debe digitar el monto a pagar para realizar el pago.',
-            ]);
-
-            $amount = $request['pay'];
-            $notes = $request['notes'];
-            $formofpayment_id = $request['formofpayment_id'];
-            $quota_id = $request['quota_id'];
-            $total = $request['total'];
-
-            if ($amount > $total) {
-
-                return Redirect::route('admin.payments.create')
-                                ->with('message', 'El pago es mayor al monto pendiente de la cuota.');
-            } 
-
-            $payment = new Payment();
-            $payment->amount = $amount;
-            $payment->notes = $notes;
-            $payment->formofpayment_id = $formofpayment_id;
-            $payment->quota_id = $quota_id;
-            $payment->save();
-
-            $this->editStatus($amount, $total, $quota_id);
+//            $this->validate($request, [
+//                'pay' => 'required|numeric'
+//                    ], $messages = [
+//                'pay.numeric' => 'No es un valor numérico.',
+//                'pay.required' => 'Debe digitar el monto a pagar para realizar el pago.',
+//            ]);
+//
+//            $amount = $request['pay'];
+//            $notes = $request['notes'];
+//            $formofpayment_id = $request['formofpayment_id'];
+//            $quota_id = $request['quota_id'];
+//            $total = $request['total'];
+//
+//            if ($amount > $total) {
+//
+//                return Redirect::route('admin.payments.create')
+//                                ->with('message', 'El pago es mayor al monto pendiente de la cuota.');
+//            } 
+//
+//            $payment = new Payment();
+//            $payment->amount = $amount;
+//            $payment->notes = $notes;
+//            $payment->formofpayment_id = $formofpayment_id;
+//            $payment->quota_id = $quota_id;
+//            $payment->save();
+//
+//            $this->editStatus($amount, $total, $quota_id);
 //            $quota = Quota::findOrFail($quota_id);
 //
 //            if ($amount < $total) {
@@ -119,9 +119,9 @@ class PaymentController extends Controller {
 //                $quota->update();
 //            }
             //Redirect::to('/admin/payment/'.$payment->id);
-            return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
+            //return Redirect::route('admin.payments.index')->with('message', 'Pago Guardado Correctamente');
         
-        }
+      //  }
     }
 
     /**
@@ -173,8 +173,8 @@ class PaymentController extends Controller {
             ]);
         
         $amount = $request['amount'];
-        $notes = $request['notes'];
-        $formofpayment_id = $request['formofpayment_id'];
+        //$notes = $request['notes'];
+        //$formofpayment_id = $request['formofpayment_id'];
         //$quota_id = $request['quota_id'];
         $total = $request['total'];
 
@@ -185,8 +185,9 @@ class PaymentController extends Controller {
         } 
         $pago = Payment::find($id);
         $pago->amount = $amount;
-        $pago->notes = $notes;
-        $pago->formofpayment_id = $formofpayment_id;
+        $pago->notes = $request['notes'];
+        $pago->formofpayment_id = $request['formofpayment_id'];
+        $pago->user_id = \Auth::user()->id;
         $pago->save();
         
        
@@ -216,17 +217,26 @@ class PaymentController extends Controller {
         //
     }
     
-    public function editStatus($monto,$total,$cuota_id){
-        
+    public function editStatus($monto, $total, $cuota_id) {
+
         $quota = Quota::findOrFail($cuota_id);
 
-            if ($monto >= $total) {
-                $quota->quotastatu_id = 3;
-                $quota->update();
-            } elseif($monto < $total) {
-                $quota->quotastatu_id = 1;
-                $quota->update();
-            }
+        if ($monto >= $total) {
+            $quota->quotastatu_id = 3;
+            $quota->update();
+        } elseif ($monto < $total) {
+            $quota->quotastatu_id = 1;
+            $quota->update();
+        }
+        $cuota = Quota::where('loan_id', '=', $quota->loan_id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
+        $loan = Loan::find($quota->loan_id);
+        if (count($cuota) == 0) {
+            $loan->loanstatu_id = 2;
+            $loan->update();
+        } else {
+            $loan->loanstatu_id = 1;
+            $loan->update();
+        }
     }
 
 }

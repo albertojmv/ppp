@@ -15,6 +15,9 @@ class Payment extends Model {
     public function quota() {
         return $this->belongsTo("App\Quota");
     }
+    public function user() {
+        return $this->belongsTo("App\User");
+    }
 
     public function loan() {
         return $this->hasMany("App\Loan");

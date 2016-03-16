@@ -27,6 +27,7 @@
                     <th>Cliente.:</th>
                     <th>Monto.:</th>
                     <th># Cuotas.:</th>
+                    <th>Creado por.:</th>
                     <th>Estado.:</th>
                     <th>Ver.:</th>
                     <th>Garantía.:</th>
@@ -40,6 +41,7 @@
                     <td>{{$loan->customer->name}} {{$loan->customer->lastname}}</td>
                     <td>${{number_format($loan->amount)}}</td>
                     <td>{{$loan->quotas}}</td>
+                    <td>{{$loan->user->name}}</td>
                     <td>{{$loan->loanstatu->name}}</td>
                     <td>
                         <a href="{{URL::to("admin/loan/$loan->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>

@@ -32,6 +32,15 @@ class User extends Authenticatable {
     public function state() {
         return $this->belongsTo("App\State");
     }
+    public function payment() {
+        return $this->hasMany("App\Payment");
+    }
+    public function loan() {
+        return $this->hasMany("App\Loan");
+    }
+    public function customer() {
+        return $this->hasMany("App\Customer");
+    }
     
      public function setPasswordAttribute($valor){
         if(!empty($valor)){

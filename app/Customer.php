@@ -38,6 +38,9 @@ class Customer extends Model {
     public function loan() {
         return $this->hasMany("App\Loan");
     }
+    public function user() {
+        return $this->belongsTo("App\User");
+    }
     
      public function scopeSearch($query, $search) {
 

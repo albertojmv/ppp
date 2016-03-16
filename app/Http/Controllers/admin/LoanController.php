@@ -177,7 +177,7 @@ class LoanController extends Controller {
         $loan->amount = $request['amount'];
         $loan->quotas = $request['quotas'];
         $loan->calculationtype_id = $request['calculationtype_id'];
-        $loan->loanstatu_id = 1;
+        //$loan->loanstatu_id = 1;
         $loan->delivery = $delivery;
         $loan->notes = $request['notes'];
         $loan->save();
