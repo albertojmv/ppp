@@ -13,6 +13,7 @@ use App\Calculationtype;
 use App\Loanstatu;
 use App\Loan;
 use App\Quota;
+use App\Payment;
 use DB;
 use Redirect;
 
@@ -24,7 +25,7 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        
+
         $loans = Loan::search($request['search'])->orderBy('loans.id', 'desc')->paginate(5);
         $loans->appends(['search' => $request['search']]);
         return view("admin.loans.index")->with("loans", $loans);
@@ -36,12 +37,12 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $warranty_list = Warranty::lists("name", "id");
+        //$warranty_list = Warranty::lists("name", "id");
         $paymentmethod_list = Paymentmethod::lists("name", "id");
         $calculationtype_list = Calculationtype::lists("name", "id");
         $loanstatu_list = Loanstatu::lists("name", "id");
 
-        return \view('admin.loans.create', compact('paymentmethod_list', 'warranty_list', 'calculationtype_list', 'loanstatu_list'));
+        return \view('admin.loans.create', compact('paymentmethod_list', 'calculationtype_list', 'loanstatu_list'));
     }
 
     /**
@@ -52,7 +53,7 @@ class LoanController extends Controller {
      */
     public function store(LoanRequest $request) {
         $customer_id = $request['customer_id'];
-        
+
         $paymentmethod_id = $request['paymentmethod_id'];
         $payday = $request['payday'];
         $interest = $request['interest'];
@@ -60,11 +61,11 @@ class LoanController extends Controller {
         $amount = $request['amount'];
         $quotas = $request['quotas'];
         $calculationtype_id = $request['calculationtype_id'];
-        
+
         $delivery = Carbon::parse($request['delivery']);
         $notes = $request['notes'];
         $deliveryexp = Carbon::parse($request['delivery'])->addDays($payday);
-        
+
 
         $loan = new Loan();
         $loan->customer_id = $customer_id;
@@ -126,9 +127,8 @@ class LoanController extends Controller {
     public function showLoan($id) {
         $prestamo = Loan::findOrFail($id);
         $cuotas = Quota::where('loan_id', '=', $id)->get();
-        
+
         return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
-                            
     }
 
     /**
@@ -138,7 +138,14 @@ class LoanController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $loan = Loan::find($id);
+        $paymentmethod_list = Paymentmethod::lists("name", "id");
+        $calculationtype_list = Calculationtype::lists("name", "id");
+        $loanstatu_list = Loanstatu::lists("name", "id");
+
+        return view('admin.loans.edit', ['loan' => $loan], ['paymentmethod_list' => $paymentmethod_list])
+                        ->with('calculationtype_list', $calculationtype_list)
+                        ->with('loanstatu_list', $loanstatu_list);
     }
 
     /**
@@ -148,8 +155,35 @@ class LoanController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
-        //
+    public function update(LoanRequest $request, $id) {
+        $cuotas = Quota::where('loan_id', '=', $id)->get();
+        foreach ($cuotas as $cuota) {
+            $pagos = Payment::where('quota_id', '=', $cuota->id)->first();
+            if (count($pagos) != 0) {
+                return Redirect::route('admin.loans.index')->with('message', 'No se puede editar este préstamo (Error 333).');
+            }
+            $delete = Quota::find($cuota->id);
+            $delete->delete();
+        }
+        $delivery = Carbon::parse($request['delivery']);
+        $deliveryexp = Carbon::parse($request['delivery'])->addDays($request['payday']);
+        $loan = Loan::find($id);
+        $loan->customer_id = $request['customer_id'];
+        $loan->user_id = \Auth::user()->id;
+        $loan->paymentmethod_id = $request['paymentmethod_id'];
+        $loan->payday = $request['payday'];
+        $loan->interest = $request['interest'];
+        $loan->surcharge = $request['surcharge'];
+        $loan->amount = $request['amount'];
+        $loan->quotas = $request['quotas'];
+        $loan->calculationtype_id = $request['calculationtype_id'];
+        $loan->loanstatu_id = 1;
+        $loan->delivery = $delivery;
+        $loan->notes = $request['notes'];
+        $loan->save();
+
+        $this->saveQuotas($request['calculationtype_id'], $request['amount'], $request['interest'], $request['quotas'], $request['paymentmethod_id'], $delivery, $deliveryexp, $request['payday'], $loan->id);
+        return Redirect::route('admin.loans.index')->with('message', 'Préstamo actualizado correctamente.');
     }
 
     /**
@@ -205,7 +239,7 @@ class LoanController extends Controller {
                 $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
 
                 $quota = new Quota();
-                
+
                 $date = $this->calcfecha($paymentmethod_id, $delivery);
                 $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
                 //$dateex = $this->calcfechaex($payday, $deliveryex);
@@ -280,7 +314,5 @@ class LoanController extends Controller {
 
         //return dd($mora);
     }
-   
-    
 
 }

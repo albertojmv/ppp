@@ -28,7 +28,7 @@ class LoanRequest extends Request {
             'surcharge' => 'required|numeric',
             'amount' => 'required|numeric',
             'quotas' => 'required|numeric',
-            'delivery' => 'required',
+            'delivery' => 'required|date_format:d-m-Y',
            
         ];
     }
@@ -43,6 +43,12 @@ class LoanRequest extends Request {
             'interest.numeric' => 'El % de interés debe ser numérico.',
             'surcharge.required' => 'Debe digitar el % de mora.',
             'surcharge.numeric' => 'El % de mora debe ser numérico.',
+            'amount.required' => 'Debe digitar el monto prestado.',
+            'amount.numeric' => 'El monto prestado debe ser numérico.',
+            'quotas.required' => 'Debe digitar número de cuotas.',
+            'quotas.numeric' => 'El número de cuotas debe ser numérico.',
+            'delivery.required' => 'Debe digitar la fecha de entrega del préstamo.',
+            'delivery.date_format' => 'El formato de la fecha de entrega del préstamo debe ser (Día – Mes – Año).',
         ];
     }
 

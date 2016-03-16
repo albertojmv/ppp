@@ -21,7 +21,8 @@ class CreateWarrantyImagesTable extends Migration
             
             $table->foreign('warranty_detail_id')
                     ->references('id')
-                    ->on('warranty_details');
+                    ->on('warranty_details')
+                    ->onDelete('cascade');
         });
     }
 

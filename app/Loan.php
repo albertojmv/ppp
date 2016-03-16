@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Loan extends Model
 {
@@ -32,6 +33,12 @@ class Loan extends Model
    
     public function payment() {
         return $this->belongsTo("App\Payment");
+    }
+    public function getFecha()
+    {
+        $date = Carbon::parse($this->delivery)->format('d-m-Y');
+        
+        return $date;
     }
     
     public function scopeSearch($query, $search) {

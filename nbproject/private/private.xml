@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/WarrantyController.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/loans/warranty.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Requests/UserCreateRequest.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/loans/create.blade.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/LoanController.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/routes.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/warranty/create.blade.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/PaymentController.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Requests/LoanRequest.php</file>
         </group>
     </open-files>
 </project-private>
