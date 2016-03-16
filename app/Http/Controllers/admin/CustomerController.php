@@ -10,6 +10,7 @@ use App\Gender;
 use App\Customer;
 use App\Http\Requests;
 use App\Http\Requests\CustomerCreateRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -91,7 +92,7 @@ class CustomerController extends Controller {
                         ->with("provinces_list", $provinces_list);
     }
 
-    public function update(CustomerCreateRequest $request, $id) {
+    public function update(CustomerUpdateRequest $request, $id) {
         $name = $request['name'];
         $lastname = $request['lastname'];
         $phone = $request['phone'];

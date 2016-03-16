@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="form-actions text-right pal">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" onclick="return confirm('¿Seguro quieres crear este cliente?')">
                     Guardar</button>
             </div>
         {!!Form::close()!!}
