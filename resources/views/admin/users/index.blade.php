@@ -9,11 +9,26 @@
 </div>
 @endif
 
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <h1>Usuarios</h1>
-            <a href="{{URL::to("admin/users/create")}}" class="btn btn-danger"><img src="/images/editar.png">Agregar Nuevo</a>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Usuarios</div>
+    <div class="panel-body pan">
+        {!!Form::open(['route'=>'admin.users.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Buscar" >
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+        {!!Form::close()!!}
+        
+        <div class="form-body pal">
+
+
+
+
+
+
+            <a href="{{URL::to("admin/users/create")}}" class="btn btn-green"><img src="/images/editar.png">Agregar Nuevo</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -90,9 +105,12 @@
 
             </table>
             {{$users->links()}}
+
+
+
+
         </div>
     </div>
 </div>
-
 
 @stop

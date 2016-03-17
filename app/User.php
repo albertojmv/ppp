@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
+
 
 class User extends Authenticatable {
     
@@ -47,5 +49,11 @@ class User extends Authenticatable {
             $this->attributes['password'] = \Hash::make($valor);
         }
      }
+     public function scopeSearch($query, $search) {
+
+        return $query->where(DB::raw("CONCAT(name,' ',lastname)"), 'LIKE', "%$search%")
+                ->orWhere('email','LIKE',"%$search%")
+                ->orWhere('username','LIKE',"%$search%");
+    }
 
 }

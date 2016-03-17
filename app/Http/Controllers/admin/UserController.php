@@ -14,8 +14,9 @@ use Redirect;
 
 class UserController extends Controller {
 
-    public function index() {
-        $users = \App\User::orderBy('id', 'desc')->paginate(10);
+    public function index(Request $request) {
+        $users = \App\User::search($request['search'])->orderBy('users.id', 'desc')->paginate(10);
+        $users->appends(['search' => $request['search']]);
         return \view('admin.users.index')
                         ->with("users", $users);
     }

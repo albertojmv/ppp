@@ -40,5 +40,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('warranty/{id}', 'WarrantyController@warranty');
         Route::resource("warranties", "WarrantyController");
         Route::resource("warrantydetail", "WarrantydetailController");
+        Route::resource('settings','SettingsController');
     });
 });
