@@ -217,7 +217,7 @@ class PaymentController extends Controller {
         //
     }
     
-    public function editStatus($monto, $total, $cuota_id) {
+     public function editStatus($monto, $total, $cuota_id) {
 
         $quota = Quota::findOrFail($cuota_id);
 
@@ -225,8 +225,13 @@ class PaymentController extends Controller {
             $quota->quotastatu_id = 3;
             $quota->update();
         } elseif ($monto < $total) {
+            if ($quota->quotastatu_id == 2) {
+                $quota->quotastatu_id = 2;
+                $quota->update();
+            }else{
             $quota->quotastatu_id = 1;
             $quota->update();
+            }
         }
         $cuota = Quota::where('loan_id', '=', $quota->loan_id)->where('quotastatu_id', '<>', 3)->where('quotastatu_id', '<>', 4)->first();
         $loan = Loan::find($quota->loan_id);

@@ -46,8 +46,8 @@ class Loan extends Model
     
     public function scopeSearch($query, $search) {
 
-        return $query//->join('customers', 'customers.id', '=', 'loans.customer_id')
-                     ->where('id', 'LIKE', "%$search%");
+        return $query->join('customers', 'customers.id', '=', 'loans.customer_id')
+                     ->where('customers.name', 'LIKE', "%$search%");
                
     }
     
