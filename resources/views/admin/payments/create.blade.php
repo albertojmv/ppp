@@ -22,7 +22,7 @@
                     <div class="col-md-9">
                         <div class="input-icon right">
                             <i class="fa fa-file"></i>
-                            <input id="loan" name="loan" type="text" placeholder="" class="form-control" /></div>
+                            <input id="loan" name="loan" type="text" placeholder="" class="form-control" value="{{$_GET['id']}}"/></div>
                     </div>
                 </div>
 

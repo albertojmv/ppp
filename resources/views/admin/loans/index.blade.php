@@ -29,6 +29,7 @@
                     <th># Cuotas.:</th>
                     <th>Creado por.:</th>
                     <th>Estado.:</th>
+                    <th>Pagar.:</th>
                     <th>Ver.:</th>
                     <th>Garantía.:</th>
                     <th>Editar.:</th>
@@ -44,12 +45,19 @@
                     <td>{{$loan->user->name}}</td>
                     <td>{{$loan->loanstatu->name}}</td>
                     <td>
+                        {!!Form::open(['route'=>'admin.payments.create', 'method'=>'GET'])!!}
+                        <input name="id" type="hidden" value="{{$loan->id}}">
+                        <input type="image" name="imageField" src="/images/pay.png" class="btn btn-yellow" />
+                        {!!Form::close()!!}
+                        
+                    </td>
+                    <td>
                         <a href="{{URL::to("admin/loan/$loan->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
                     </td>
                     <td>
                         {!!Form::open(['route'=>'admin.warrantydetail.index', 'method'=>'GET'])!!}
                         <input name="search" type="hidden" value="{{$loan->id}}">
-                        <input type="image" name="imageField" src="/images/warranty.png" class="btn btn-orange" />
+                        <input type="image" name="imageField" src="/images/warranty.png" class="btn btn-green" />
                         {!!Form::close()!!}
                         
                     </td>
