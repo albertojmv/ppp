@@ -110,7 +110,7 @@
 
         </div>
         <div class="form-actions text-right pal">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" onclick="return confirm('¿Seguro quieres editar este préstamo?')">
                 Editar Préstamo</button>
         </div>
         {!!Form::close()!!}

@@ -2,6 +2,12 @@
 
 @section('contenido')
 
+@if(\Session::has('message'))
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{\Session::get('message')}}
+</div>
+@endif
 
 <div class="panel panel-grey">
     <div class="panel-heading">
@@ -12,13 +18,14 @@
 
             <div class="btn-group" >
                 
-                <a href="#" class="btn btn-primary" role="button">Países</a>
-                <button type="button" class="btn btn-primary" style="background">Ciudades</button>
-                <button type="button" class="btn btn-warning" style="background">Formas de Pago</button>
-                <button type="button" class="btn btn-success" style="background">Tipos de garantía</button>
+                <a href="{{URL::to("admin/countries")}}" class="btn btn-primary" role="button">Países</a>
+                <a href="#" class="btn btn-primary" role="button">Ciudades</a>
+                <a href="#" class="btn btn-warning" role="button">Formas de Pago</a>
+                <a href="#" class="btn btn-success" role="button">Tipos de garantía</a>
+                <a href="{{URL::to("corrermora")}}" class="btn btn-blue" role="button" onclick="return confirm('¿Seguro quieres ejecutar el proceso de calcular mora?')">Generar Mora</a>
             </div>
           
-            <a href="#" class="btn btn-success" role="button">Generar Mora</a>
+            
 
         </div>
     </div>

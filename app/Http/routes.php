@@ -28,7 +28,7 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', 'Auth\AuthController@showLoginForm');
-    Route::group(['middleware' => 'auth','role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'DashboardController@index');
         Route::resource("users", "UserController");
         Route::resource("customers", "CustomerController");
@@ -40,6 +40,16 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('warranty/{id}', 'WarrantyController@warranty');
         Route::resource("warranties", "WarrantyController");
         Route::resource("warrantydetail", "WarrantydetailController");
-        Route::resource('settings','SettingsController');
+        Route::resource('settings', 'SettingsController');
+        Route::resource('countries', 'CountryController');
     });
+    
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('corrermora', function () {
+        Artisan::call('calc:mora');
+        return Redirect::back()->with('message', 'Se corrió el proceso de generar moras.');
+    });
+    
 });
