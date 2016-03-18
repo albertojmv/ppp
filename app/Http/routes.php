@@ -42,6 +42,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource("warrantydetail", "WarrantydetailController");
         Route::resource('settings', 'SettingsController');
         Route::resource('countries', 'CountryController');
+        Route::resource('provinces', 'ProvinceController');
+        Route::resource('formofpayments', 'FormofpaymentController');
+        Route::resource('typeswarranties', 'TypeswarrantyController');
     });
     
 });

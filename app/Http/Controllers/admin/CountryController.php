@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Country;
+use Redirect;
 
 class CountryController extends Controller {
 
@@ -27,7 +28,7 @@ class CountryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        return view('admin.countries.create');
     }
 
     /**
@@ -37,7 +38,17 @@ class CountryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+                ], $messages = [
+            'name.required' => 'Debe digitar el nombre del país.',
+        ]);
+        $name = $request['name'];
+        $country = new Country();
+        $country->name_es = $name;
+        $country->name_en = $name;
+        $country->save();
+        return Redirect::route('admin.countries.index')->with('message', 'País creado correctamente.');
     }
 
     /**
@@ -57,7 +68,8 @@ class CountryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $country = Country::find($id);
+        return view('admin.countries.edit', ['country' => $country]);
     }
 
     /**
@@ -68,7 +80,17 @@ class CountryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+                ], $messages = [
+            'name.required' => 'Debe digitar el nombre del país.',
+        ]);
+        $name = $request['name'];
+        $country = Country::find($id);
+        $country->name_es = $name;
+        $country->name_en = $name;
+        $country->save();
+        return Redirect::route('admin.countries.index')->with('message', 'País actualizado correctamente.');
     }
 
     /**
@@ -78,7 +100,8 @@ class CountryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        Country::destroy($id);
+        return Redirect::back()->with('message', 'El país fue borrado.');
     }
 
 }

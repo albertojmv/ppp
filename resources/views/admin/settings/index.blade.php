@@ -19,9 +19,9 @@
             <div class="btn-group" >
                 
                 <a href="{{URL::to("admin/countries")}}" class="btn btn-primary" role="button">Países</a>
-                <a href="#" class="btn btn-primary" role="button">Ciudades</a>
-                <a href="#" class="btn btn-warning" role="button">Formas de Pago</a>
-                <a href="#" class="btn btn-success" role="button">Tipos de garantía</a>
+                <a href="{{URL::to("admin/provinces")}}" class="btn btn-primary" role="button">Ciudades</a>
+                <a href="{{URL::to("admin/formofpayments")}}" class="btn btn-warning" role="button">Formas de Pago</a>
+                <a href="{{URL::to("admin/typeswarranties")}}" class="btn btn-success" role="button">Tipos de garantía</a>
                 <a href="{{URL::to("corrermora")}}" class="btn btn-blue" role="button" onclick="return confirm('¿Seguro quieres ejecutar el proceso de calcular mora?')">Generar Mora</a>
             </div>
           

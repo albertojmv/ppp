@@ -13,4 +13,8 @@ class Warranty extends Model
     public function warranty_detail() {
         return $this->hasMany("App\Warranty_detail");
     }
+    public function scopeSearch($query, $search) {
+
+        return $query->where('name','LIKE',"%$search%");   
+    }
 }
