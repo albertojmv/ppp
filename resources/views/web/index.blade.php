@@ -39,7 +39,7 @@
                             <li class="active"><a href="#main-slider"><em class="icon-home"></em></a></li>
                             <li><a href="#services">Servicios</a></li>
                             <li><a href="#portfolio">Quienes somos</a></li>
-                            <li><a href="#pricing">Solicitar de préstamo</a></li>
+                            <li><a href="#pricing">Solicitar préstamo</a></li>
 
                             <li><a href="#contact">Contáctenos</a></li>
                         </ul>
@@ -122,7 +122,7 @@
                             <div class="form-body pal">
                     
                     <div class="center gap">
-                        <h2>Solicitar de préstamo</h2>
+                        <h2>Solicitar préstamo</h2>
                     </div>
 
                     
