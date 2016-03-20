@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/icons/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/images/icons/favicon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset("images/icons/favicon-72x72.png")}}">
     <link rel="apple-touch-icon" sizes="114x114" href="images/icons/favicon-114x114.png">
@@ -172,7 +172,7 @@
     <script src="/script/charts-highchart-pie.js"></script>
     <script src="/script/charts-highchart-more.js"></script>
     <!--CORE JAVASCRIPT-->
-    <script src="script/main.js"></script>
+    <script src="/script/main.js"></script>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="/styles/jasny-bootstrap.min.css">
 <!-- Latest compiled and minified JavaScript -->

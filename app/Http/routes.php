@@ -54,5 +54,5 @@ Route::group(['middleware' => 'web'], function () {
         Artisan::call('calc:mora');
         return Redirect::back()->with('message', 'Se corrió el proceso de generar moras.');
     });
-    
+    Route::resource('/', 'WebController');
 });
