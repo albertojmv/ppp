@@ -55,4 +55,7 @@ Route::group(['middleware' => 'web'], function () {
         return Redirect::back()->with('message', 'Se corrió el proceso de generar moras.');
     });
     Route::resource('/', 'WebController');
+    Route::resource('applications', 'LoanapplicationController');
+    Route::resource('contacts', 'ContactController');
+    Route::get('messages', 'WebController@message');
 });

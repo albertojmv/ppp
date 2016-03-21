@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Redirect;
 
 class ContactController extends Controller
 {
@@ -37,7 +38,8 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         return view('web.message')
+                ->with('message', 'Se envió su solicitud de préstamo en menos de 24 horas te estará contactando uno de nuestros agentes.');
     }
 
     /**

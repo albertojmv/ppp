@@ -21,7 +21,7 @@ class CreateLoanapplicationsTable extends Migration
             $table->string('phone');
             $table->string('cellphone');
             $table->double('amount', 11,2);
-            $table->string('cuotas');
+            $table->string('quotas');
             $table->string('workplace');
             $table->string('timeworked');
             $table->double('salary', 11,2);

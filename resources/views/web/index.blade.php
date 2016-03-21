@@ -120,181 +120,183 @@
 
                         <div class="panel-body pan">
                             <div class="form-body pal">
-                    
-                    <div class="center gap">
-                        <h2>Solicitar préstamo</h2>
-                    </div>
 
-                    
+                                <div class="center gap">
+                                    <h2>Solicitar préstamo</h2>
+                                </div>
 
 
 
 
-                                <form action="#" method="post" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8" id="rcForm">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="nombre">Nombre: (*)</label> <input name="nombre" id="nombre" type="text" class="form-control" required/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="apellido">Apellidos: (*)</label> 
-                                                <input class="form-control" name="apellido" id="apellido" type="text" required/>
-                                            </div>
+
+
+                                {!!Form::open(['route'=>'applications.store', 'method'=>'POST'])!!}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Nombre: (*)</label> <input name="name" id="name" type="text" class="form-control" required/>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="cedula">Cédula: (*)</label> 
-                                                <input class="form-control" name="cedula" id="cedula" type="text" required/>
-                                            </div></div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="email">Correo Electrónico: (*)</label> 
-                                                <input class="form-control" name="email" id="email" type="text" required/>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastname">Apellidos: (*)</label> 
+                                            <input class="form-control" name="lastname" id="lastname" type="text" required/>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="telefono">Teléfono: (*)</label> 
-                                                <input class="form-control" name="telefono" id="telefono" type="text" required/>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cedula">Cédula: (*)</label> 
+                                            <input class="form-control" name="cedula" id="cedula" type="text" data-mask="999-9999999-9" required/>
+                                        </div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Correo Electrónico: (*)</label> 
+                                            <input class="form-control" name="email" id="email" type="text" required/>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="celular">Celular: </label> 
-                                                <input class="form-control" name="celular" id="celular" type="text" />
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">Teléfono: (*)</label> 
+                                            <input class="form-control" name="phone" id="phone" type="text" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cellphone">Celular: </label> 
+                                            <input class="form-control" name="cellphone" id="cellphone" type="text" />
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="amount">Monto que Solicita: (*)</label> 
+                                    <input class="form-control" name="amount" id="amount" type="text" required/>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+
+                                        <h4>Plazo:</h4>
+
+                                        <div class="col-md-2">
+                                            <p><label> <input name="quotas" value="6 Meses" id="plazos_0" type="radio" /> 6 Meses</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label> <input name="quotas" value="12 Meses" id="plazos_1" type="radio" /> 12 Meses</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label> <input name="quotas" value="18 Meses" id="plazos_2" type="radio" /> 18 Meses</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label> <input name="quotas" value="24 Meses" id="plazos_3" type="radio" /> 24 Meses</label></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="workplace">Lugar de Trabajo: (*)</label> 
+                                            <input class="form-control" name="workplace" id="workplace" type="text" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="timeworked">Tiempo Laborando: (*)</label> 
+                                            <input class="form-control" name="timeworked" id="timeworked" type="text" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="salary">Ingresos: (*)</label> 
+                                            <input class="form-control" name="salary" id="salary" type="text" required/>
                                         </div> 
                                     </div>
-                                    <div class="form-group">
-                                        <label for="monto_solicita">Monto que Solicita: (*)</label> 
-                                        <input class="form-control" name="monto_solicita" id="monto_solicita" type="text" required/>
-                                    </div>
-
-                                    <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-
-                                            <h4>Plazo:</h4>
-
-                                            <div class="col-md-2">
-                                                <p><label> <input name="plazos" value="6 Meses" id="plazos_0" type="radio" /> 6 Meses</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label> <input name="plazos" value="12 Meses" id="plazos_1" type="radio" /> 12 Meses</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label> <input name="plazos" value="18 Meses" id="plazos_2" type="radio" /> 18 Meses</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label> <input name="plazos" value="24 Meses" id="plazos_3" type="radio" /> 24 Meses</label></p>
-                                            </div>
-                                        </div>
+                                            <label for="additional_income">Ingresos Adicionales: </label> 
+                                            <input name="additional_income" id="additional_income" type="text" class="form-control"/>
+                                        </div> 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="lugar_trabajo">Lugar de Trabajo: (*)</label> 
-                                                <input class="form-control" name="lugar_trabajo" id="lugar_trabajo" type="text" required/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="tiempo_laborando">Tiempo Laborando: (*)</label> 
-                                                <input class="form-control" name="tiempo_laborando" id="tiempo_laborando" type="text" required/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="Ingresos">Ingresos: (*)</label> 
-                                                <input class="form-control" name="Ingresos" id="Ingresos" type="text" required/>
-                                            </div> 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="Ingresos_adicionales">Ingresos Adicionales: </label> 
-                                                <input name="Ingresos_adicionales" id="Ingresos_adicionales" type="text" class="form-control"/>
-                                            </div> 
-                                        </div>
-                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="concept_income">Concepto Ingresos Adicionales: </label> 
+                                    <input name="concept_income" id="concept_income" type="text" class="form-control"/>
+                                </div>
+                                <div class="row">
                                     <div class="form-group">
-                                        <label for="Concepto_Ingresos_adicionales">Concepto Ingresos Adicionales: </label> 
-                                        <input name="Concepto_Ingresos_adicionales" id="Concepto_Ingresos_adicionales" type="text" class="form-control"/>
+                                        <h4>Posee Vehículo:</h4>
+                                        <div class="col-md-2">
+                                            <p><label for="vehiculo_0"> <input name="vehicle" value="1" id="vehiculo_0" type="radio" /> Si</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label for="vehiculo_1"> <input name="vehicle" value="0" id="vehiculo_1" type="radio" /> No</label></p>
+                                        </div>
                                     </div>
-                                    <div class="row">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <h4>Posee Vehículo:</h4>
-                                            <div class="col-md-2">
-                                                <p><label for="vehiculo_0"> <input name="vehiculo" value="Si" id="vehiculo_0" type="radio" /> Si</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label for="vehiculo_1"> <input name="vehiculo" value="No" id="vehiculo_1" type="radio" /> No</label></p>
-                                            </div>
+                                            <label for="brand">Marca:</label> <input name="brand" id="brand" type="text" class="form-control"/>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="Marca">Marca:</label> <input name="Marca" id="Marca" type="text" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="Modelo">Modelo:</label> <input name="Modelo" id="Modelo" type="text" class="form-control"/>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="model">Modelo:</label> <input name="model" id="model" type="text" class="form-control"/>
                                         </div>
                                     </div>
+                                </div>
 
 
+                                <div class="form-group">
+                                    <label for="year">Año:</label> <input name="year" id="year" type="text" class="form-control"/>
+                                </div>
+
+                                <div class="row">
                                     <div class="form-group">
-                                        <label for="ano">Año:</label> <input name="ano" id="ano" type="text" class="form-control"/>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <h4>Vivienda:</h4>
-                                            <div class="col-md-2">
-                                                <p><label for="vivienda_0"> <input name="vivienda" value="Propia" id="vivienda_0" type="radio" /> Propia</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label for="vivienda_1"> <input name="vivienda" value="Alquilada" id="vivienda_1" type="radio" /> Alquilada</label></p>
-                                            </div>
+                                        <h4>Vivienda:</h4>
+                                        <div class="col-md-2">
+                                            <p><label for="vivienda_0"> <input name="home" value="1" id="vivienda_0" type="radio" /> Propia</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label for="vivienda_1"> <input name="home" value="0" id="vivienda_1" type="radio" /> Alquilada</label></p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time_living">Tiempo viviendo residencia:</label> 
+                                    <input name="time_living" id="time_living" type="text" class="form-control"/>
+                                </div>
+                                <div class="row">
                                     <div class="form-group">
-                                        <label for="tiempo_vivienda">Tiempo viviendo residencia:</label> 
-                                        <input name="tiempo_vivienda" id="tiempo_vivienda" type="text" class="form-control"/>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <h4>Estado Civil:</h4>
-                                            <div class="col-md-2">
-                                                <p><label for="estado_civil_1"> <input name="estado" value="Casado" id="estado_civil_1" type="radio" /> Casado(a)</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label for="estado_civil_2"> <input name="estado" value="Soltero" id="estado_civil_2" type="radio" /> Soltero(a)</label></p>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p><label for="estado_civil_3"> <input name="estado" value="Unión Libre" id="estado_civil_3" type="radio" /> Unión Libre</label></p>
-                                            </div>
+                                        <h4>Estado Civil:</h4>
+                                        <div class="col-md-2">
+                                            <p><label for="estado_civil_1"> <input name="civilstatu_id" value="2" id="estado_civil_1" type="radio" /> Casado(a)</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label for="estado_civil_2"> <input name="civilstatu_id" value="1" id="estado_civil_2" type="radio" /> Soltero(a)</label></p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p><label for="estado_civil_3"> <input name="civilstatu_id" value="3" id="estado_civil_3" type="radio" /> Unión Libre</label></p>
                                         </div>
                                     </div>
-                                    <p><strong>IMPORTANTE: </strong><a>Los campos marcados con un (*) son obligatorios.</a></p>
-                                    <div class="form submit">
-                                        <input style="display: none;" name="invisible" type="text" /> 
-                                        <button type="submit" name="submit" class="btn btn-danger btn-lg"><i class="fa fa-paper-plane"></i> Enviar Solicitud</button></div>
-                                </form> 
+                                </div>
+                                <p><strong>IMPORTANTE: </strong><a>Los campos marcados con un (*) son obligatorios.</a></p>
+                                <div class="form submit">
+                                    <input style="display: none;" name="invisible" type="text" /> 
+                                    <button type="submit" name="submit" class="btn btn-danger btn-lg"><i class="fa fa-paper-plane"></i> Enviar Solicitud</button></div>
+                                {!!Form::close()!!}
 
 
 
-                            </div> </div> </div> 
+                            </div> 
+                        </div>
+                    </div> 
 
 
                 </div> 
@@ -311,30 +313,30 @@
                             <h1>Formulario de contacto</h1>
                             <p>Nuestros asesores están disponibles de lunes a sábado para atender todas tus preguntas y ayudarte.</p>
                             <div class="status alert alert-success" style="display: none"></div>
-                            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php" role="form">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" required="required" placeholder="Nombre">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" required="required" placeholder="Correo electrónico">
-                                        </div>
+                            {!!Form::open(['route'=>'contacts.store', 'method'=>'POST'])!!}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" required="required" placeholder="Nombre">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <textarea name="message" id="message" required class="form-control" rows="8" placeholder="Mensaje"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-danger btn-lg">Enviar mensaje</button>
-                                        </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="email" class="form-control" required="required" placeholder="Correo electrónico">
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <textarea name="message" id="message" required class="form-control" rows="8" placeholder="Mensaje"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-danger btn-lg">Enviar mensaje</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {!!Form::close()!!}
                         </div><!--/.col-sm-6-->
                         <div class="col-sm-6">
                             <h1>Nuestra dirección</h1>
@@ -376,7 +378,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                        &copy; {{Carbon\Carbon::now()->year}} <a target="_blank" href="http://jodamapi.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">Jodamapi</a>. Todos los derechos reservados.
                     </div>
                     <div class="col-sm-6">
                         <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">
@@ -390,5 +392,9 @@
         <script src="/js/jquery.isotope.min.js"></script>
         <script src="/js/jquery.prettyPhoto.js"></script>
         <script src="/js/main.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="/styles/jasny-bootstrap.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="/script/jasny-bootstrap.min.js"></script>
     </body>
 </html>
