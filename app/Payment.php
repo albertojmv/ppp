@@ -15,6 +15,7 @@ class Payment extends Model {
     public function quota() {
         return $this->belongsTo("App\Quota");
     }
+
     public function user() {
         return $this->belongsTo("App\User");
     }
@@ -25,10 +26,10 @@ class Payment extends Model {
 
     public function scopeSearch($query, $search) {
 
-      
-        return $query//->join('quotas', 'quotas.id', '=', 'payments.quota_id')
-                ->where('id', 'LIKE', "%$search%");
-                //->orWhere('payments.id','LIKE',"%$id%");
+        return $query->join('quotas', 'quotas.id', '=', 'payments.quota_id')
+                        ->select('payments.*', 'quotas.loan_id')
+                        ->where('quotas.loan_id', 'LIKE', "%$search%")
+                        ->orWhere('payments.id', 'LIKE', "%$search%");
     }
 
 }
