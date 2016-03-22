@@ -90,6 +90,17 @@
                     </i><span class="menu-title">Usuarios</span></a>
                           
                     </li>
+                    
+                    <li><a href="{{URL::to('admin/applications')}}"><i class="fa fa-file-text fa-fw">
+                        <div class="icon-bg bg-red"></div>
+                    </i><span class="menu-title">Solicitudes</span></a>
+                      
+                    </li>
+                    <li><a href="{{URL::to('admin/contacts')}}"><i class="fa fa-envelope-o fa-fw">
+                        <div class="icon-bg bg-red"></div>
+                    </i><span class="menu-title">Contactos</span></a>
+                      
+                    </li>
                     <li><a href="{{URL::to('admin/settings')}}"><i class="fa fa-wrench fa-fw">
                         <div class="icon-bg bg-red"></div>
                     </i><span class="menu-title">Configuración</span></a>

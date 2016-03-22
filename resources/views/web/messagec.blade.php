@@ -56,7 +56,7 @@
 
                         <div class="alert alert-success alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            Se envió su solicitud de préstamo en menos de 24 horas te estará contactando uno de nuestros agentes.
+                            Se envió su solicitud en menos de 24 horas te estará contactando uno de nuestros agentes.
                         </div>
                         
 
