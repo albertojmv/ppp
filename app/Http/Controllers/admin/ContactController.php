@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -15,8 +15,9 @@ class ContactController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        //
+    public function index(Request $request) {
+       $contacts = Contact::search($request['search'])->orderBy('id', 'desc')->paginate(5);
+       return view("admin.contacts.index")->with("contacts", $contacts);
     }
 
     /**
@@ -85,6 +86,9 @@ class ContactController extends Controller {
      */
     public function destroy($id) {
         //
+    }
+    public function showContact($id){
+        
     }
 
 }

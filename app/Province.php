@@ -10,6 +10,10 @@ class Province extends Model
     {
         return $this->hasMany("App\Customer");
     }
+    public function reference()
+    {
+        return $this->hasMany("App\Reference");
+    }
     public function scopeSearch($query, $search) {
 
         return $query->where('name','LIKE',"%$search%");   

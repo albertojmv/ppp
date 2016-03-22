@@ -27,9 +27,10 @@
  */
 
 
-//Route::get('/', 'Auth\AuthController@showLoginForm');
+
 Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
-    Route::get('/', 'DashboardController@index');
+    
+    //Route::get('/', 'DashboardController@index');
     Route::resource("users", "UserController");
     Route::resource("customers", "CustomerController");
     Route::resource("loans", "LoanController");
@@ -48,11 +49,14 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::resource('applications', 'LoanapplicationController');
     Route::get('application/{id}', 'LoanapplicationController@viewapp');
     Route::resource('contacts', 'ContactController');
+    Route::get('contact/{id}', 'ContactController@showContact');
+    Route::resource('references', 'ReferenceController');
 });
 
 
 
 Route::group(['middleware' => 'web'], function () {
+    //Route::get('/', 'Auth\AuthController@showLoginForm');
     Route::auth();
     Route::get('corrermora', function () {
         Artisan::call('calc:mora');
