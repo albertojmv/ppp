@@ -44,7 +44,7 @@ class PaymentController extends Controller {
         $cliente = Customer::find($prestamo->customer_id);
         //dd($cliente->name);
 
-        return view('admin.payments.recibo', ['prestamo' => $prestamo], ['cuota' => $cuota])->with("pago", $pago)->with("cliente", $cliente);
+        return view('admin.payments.recibo2', ['prestamo' => $prestamo], ['cuota' => $cuota])->with("pago", $pago)->with("cliente", $cliente);
     }
 
     /**

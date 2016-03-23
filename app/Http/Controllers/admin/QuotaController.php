@@ -28,12 +28,13 @@ class QuotaController extends Controller {
     }
 
     public function edit($id) {
-        $pagos = Payment::where('quota_id', '=', $id)->first();
-        if (count($pagos) != 0) {
-                return Redirect::back()->with('message', 'No se puede editar esta cuota porque tiene pagos realizados.');
+        //$pagos = Payment::where('quota_id', '=', $id)->first();
+        $quota = Quota::find($id);
+        if ($quota->quotastatu_id == 3) {
+                return Redirect::back()->with('message', 'No se puede editar esta cuota esta saldada.');
             }
         
-        $quota = Quota::find($id);
+        
         return view('admin.quotas.edit', ['quota' => $quota]);
     }
 

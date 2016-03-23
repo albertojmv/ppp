@@ -378,7 +378,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        &copy; {{Carbon\Carbon::now()->year}} <a target="_blank" href="http://jodamapi.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">Jodamapi</a>. Todos los derechos reservados.
+                        &copy; {{Carbon\Carbon::now()->year}} <a target="_blank" href="http://jodamapi.com/" title="jodamapi inversiones s.r.l">Jodamapi</a>. Todos los derechos reservados.
                     </div>
                     <div class="col-sm-6">
                         <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">

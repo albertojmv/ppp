@@ -29,7 +29,8 @@ class Payment extends Model {
         return $query->join('quotas', 'quotas.id', '=', 'payments.quota_id')
                         ->select('payments.*', 'quotas.loan_id')
                         ->where('quotas.loan_id', 'LIKE', "%$search%")
-                        ->orWhere('payments.id', 'LIKE', "%$search%");
+                        ->orWhere('payments.id', 'LIKE', "%$search%")
+                        ->orWhere('payments.notes', 'LIKE', "%$search%");
     }
 
 }

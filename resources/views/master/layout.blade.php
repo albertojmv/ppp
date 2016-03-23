@@ -70,9 +70,9 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li><a href="{{URL::to('admin/dashboard')}}"><i class="fa fa-tachometer fa-fw">
+                    <li><a href="{{URL::to('admin')}}"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
-                    </i><span class="menu-title">Panel De Control</span></a></li>
+                    </i><span class="menu-title">Panel de control</span></a></li>
                     <li><a href="{{URL::to('admin/payments')}}"><i class="fa fa-money">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Pagos</span></a>
@@ -88,11 +88,6 @@
                     </i><span class="menu-title">Clientes</span></a>
                       
                     </li>
-                    <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user fa-fw">
-                        <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">Usuarios</span></a>
-                          
-                    </li>
                     
                     <li><a href="{{URL::to('admin/applications')}}"><i class="fa fa-file-text fa-fw">
                         <div class="icon-bg bg-red"></div>
@@ -103,6 +98,11 @@
                         <div class="icon-bg bg-red"></div>
                     </i><span class="menu-title">Contactos</span></a>
                       
+                    </li>
+                    <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user fa-fw">
+                        <div class="icon-bg bg-blue"></div>
+                    </i><span class="menu-title">Usuarios</span></a>
+                          
                     </li>
                     <li><a href="{{URL::to('admin/settings')}}"><i class="fa fa-wrench fa-fw">
                         <div class="icon-bg bg-red"></div>
@@ -123,11 +123,7 @@
                         <div class="page-title">
                             Sistema de Prestamos y Cobros‎</div>
                     </div>
-                    <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="hidden"><a href="#">Pages</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li class="active">Pages</li>
-                    </ol>
+                    
                     <div class="clearfix">
                     </div>
                 </div>
@@ -143,7 +139,7 @@
                 <!--BEGIN FOOTER-->
                 <div id="footer">
                     <div class="copyright">
-                        <a href="http://themifycloud.com">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+                        &copy; {{Carbon\Carbon::now()->year}} <a target="_blank" href="http://jodamapi.com/" title="jodamapi inversiones s.r.l">Jodamapi</a>. Todos los derechos reservados.</div>
                 </div>
                 <!--END FOOTER-->
             </div>

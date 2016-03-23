@@ -30,7 +30,7 @@ use AuthenticatesAndRegistersUsers,
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
     protected $username = 'username';
 
     /**
