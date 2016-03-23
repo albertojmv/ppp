@@ -107,7 +107,7 @@ class ReferenceController extends Controller {
         $reference->work = $request['work'];
         $reference->workphone = $request['workphone'];
         $reference->save();
-        return Redirect::route('admin.references.index')
+        return Redirect::to('/admin/references/?search=' . $reference->customer_id)
                         ->with('message', 'Referencia Editada Correctamente.');
     }
 
@@ -118,7 +118,9 @@ class ReferenceController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+      Reference::destroy($id);
+       
+        return Redirect::back()->with('message', 'La Referencia fue borrada.');
     }
 
 }

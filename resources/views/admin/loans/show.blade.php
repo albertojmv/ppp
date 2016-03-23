@@ -1,7 +1,12 @@
 @extends('master.layout')
 
 @section('contenido')
-
+@if(Session::has('message'))
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{Session::get('message')}}
+</div>
+@endif
 <div class="panel panel-green">
     <div class="panel-heading">Detalles del préstamo.</div>
     <div class="panel-body">
@@ -57,6 +62,7 @@
                     <th>Capital</th>
                     <th>Interés</th>
                     <th>Estado</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,6 +77,9 @@
                     <td>${{number_format($cuota->capital)}}</td>
                     <td>${{number_format($cuota->interest)}}</td>
                     <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
+                    <td>
+                        <a href="{{URL::to("admin/quotas/$cuota->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

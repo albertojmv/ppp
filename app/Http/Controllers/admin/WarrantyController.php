@@ -94,7 +94,7 @@ class WarrantyController extends Controller {
     public function destroy($id) {
         
         Warranty_image::destroy($id);
-        //dd($id);
+       
         return Redirect::back()->with('message', 'La imagen fue borrada.');
     }
      public function warranty($id){

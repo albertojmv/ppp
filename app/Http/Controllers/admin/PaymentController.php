@@ -226,8 +226,8 @@ class PaymentController extends Controller {
             $quota->update();
         } elseif ($monto < $total) {
             if ($quota->quotastatu_id == 2) {
-                $quota->quotastatu_id = 2;
-                $quota->update();
+//                $quota->quotastatu_id = 2;
+//                $quota->update();
             }else{
             $quota->quotastatu_id = 1;
             $quota->update();

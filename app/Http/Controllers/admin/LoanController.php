@@ -303,12 +303,10 @@ class LoanController extends Controller {
 
                 $prestamo = Loan::where('id', '=', $resultado->loan_id)->first();
                 $mora = $resultado->amount * ($prestamo->surcharge / 100);
-
-
                 $resultado->surcharge = $mora;
                 $resultado->quotastatu_id = 2;
                 $resultado->update();
-                print($mora . '</br>');
+                
             }
         }
 

@@ -39,7 +39,7 @@
 
                    
                     <td>
-                        <a href="{{URL::to("admin/references/$reference->id")}}" class="btn btn-orange"><img src="/images/view.png"></a>
+                        <a href="{{URL::to("admin/references/$reference->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
                     </td>
                     <td>
                         <a href="{{URL::to("admin/references/$reference->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
