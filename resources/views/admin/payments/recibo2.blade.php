@@ -84,7 +84,7 @@
 <p><strong>Le atendió:</strong> {{$pago->user->name}} {{$pago->user->lastname}} ________________________________</p>
 <div class="row">
     <div class="col-xs-12 receipt-text_legal-text">
-        Mantenga este recibo como comprobante de su pago. Los datos en nuestro sistema prevalecen en todo momento; en especial en el evento que se originen disputas por pagos fuera de nuestras sucursales a cobradores no-autorizados.
+        Mantenga este recibo como comprobante de su pago. Los datos en nuestro sistema prevalecen en todo momento; en especial en el evento que se originen disputas por pagos fuera de nuestras sucursales a cobradores no-autorizados. Solicita préstamos a través de www.jodamapi.com
     </div>
 </div>
 <br>

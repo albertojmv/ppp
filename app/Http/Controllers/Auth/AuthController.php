@@ -9,6 +9,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Loan;
+use App\Quota;
+use App\Surcharge;
+use Carbon\Carbon;
 
 class AuthController extends Controller {
     /*
@@ -72,6 +76,7 @@ use AuthenticatesAndRegistersUsers,
 
     public function login(Request $request) {
         $this->validateLogin($request);
+        $this->correrMora();
         if (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 1, 'state_id' => 1))) {
             return redirect('admin');
         }
@@ -79,6 +84,29 @@ use AuthenticatesAndRegistersUsers,
             return redirect('manager');
         }
         return redirect('login')->withErrors('error');
+    }
+    
+    public function correrMora(){
+        \Log::info('Se ejecutó el comando para calcular la mora.');
+        
+        $recorrido = Quota::where("dateexpiration", "<", Carbon::now())->where("quotastatu_id", "<>", 3)->where('quotastatu_id', '<>', 4)->get();
+        if (count($recorrido) == 0) {
+            return \Log::info('No existen cuotas con atraso.');
+        } else {
+            foreach ($recorrido as $resultado) {
+
+                $prestamo = Loan::where('id', '=', $resultado->loan_id)->first();
+                $mora = $resultado->amount * ($prestamo->surcharge / 100);
+                $resultado->surcharge = $resultado->surcharge + $mora;
+                $resultado->quotastatu_id = 2;
+                $resultado->dateexpiration = Carbon::parse($resultado->dateexpiration)->addDays($this->calcDias($prestamo->paymentmethod_id)+$prestamo->payday);
+                $resultado->update();
+                $surcharge = new Surcharge();
+                $surcharge->quota_id = $resultado->id;
+                $surcharge->amount = $mora;
+                $surcharge->save();
+            }
+        }
     }
 
 }

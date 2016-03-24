@@ -1,6 +1,4 @@
-@if(Auth::check()==false)
-{{dd('Debe iniciar sesión para acceder a este recurso.')}}
-@endif
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
