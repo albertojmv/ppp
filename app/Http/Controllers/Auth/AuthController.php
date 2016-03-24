@@ -79,16 +79,15 @@ use AuthenticatesAndRegistersUsers,
         $this->correrMora();
         if (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 1, 'state_id' => 1))) {
             return redirect('admin');
-        }
-        elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 2, 'state_id' => 1))) {
+        } elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 2, 'state_id' => 1))) {
             return redirect('manager');
         }
         return redirect('login')->withErrors('error');
     }
-    
-    public function correrMora(){
+
+    public function correrMora() {
         \Log::info('Se ejecutó el comando para calcular la mora.');
-        
+
         $recorrido = Quota::where("dateexpiration", "<", Carbon::now())->where("quotastatu_id", "<>", 3)->where('quotastatu_id', '<>', 4)->get();
         if (count($recorrido) == 0) {
             return \Log::info('No existen cuotas con atraso.');
@@ -99,13 +98,25 @@ use AuthenticatesAndRegistersUsers,
                 $mora = $resultado->amount * ($prestamo->surcharge / 100);
                 $resultado->surcharge = $resultado->surcharge + $mora;
                 $resultado->quotastatu_id = 2;
-                $resultado->dateexpiration = Carbon::parse($resultado->dateexpiration)->addDays($this->calcDias($prestamo->paymentmethod_id)+$prestamo->payday);
+                $resultado->dateexpiration = Carbon::parse($resultado->dateexpiration)->addDays($this->calcDias($prestamo->paymentmethod_id) + $prestamo->payday);
                 $resultado->update();
                 $surcharge = new Surcharge();
                 $surcharge->quota_id = $resultado->id;
                 $surcharge->amount = $mora;
                 $surcharge->save();
             }
+        }
+    }
+
+    public function calcDias($paymentmethod_id) {
+        if ($paymentmethod_id == 1) {
+            return 30;
+        } elseif ($paymentmethod_id == 2) {
+            return 15;
+        } elseif ($paymentmethod_id == 3) {
+            return 7;
+        } elseif ($paymentmethod_id == 4) {
+            return 1;
         }
     }
 
