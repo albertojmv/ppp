@@ -48,11 +48,24 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::resource('typeswarranties', 'TypeswarrantyController');
     Route::resource('applications', 'LoanapplicationController');
     Route::get('application/{id}', 'LoanapplicationController@viewapp');
+    
+});
+
+Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+
     Route::resource('contacts', 'ContactController');
     Route::get('contact/{id}', 'ContactController@showContact');
     Route::resource('references', 'ReferenceController');
     Route::resource('quotas', 'QuotaController');
+    
+    
 });
+
+
+
+
+
+
 
 
 

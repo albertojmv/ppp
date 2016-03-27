@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Loan;
 use App\Quota;
 use App\Surcharge;
+use App\Notification;
 use Carbon\Carbon;
 
 class AuthController extends Controller {
@@ -86,11 +87,11 @@ use AuthenticatesAndRegistersUsers,
     }
 
     public function correrMora() {
-        \Log::info('Se ejecutó el comando para calcular la mora.');
-
+        //\Log::info('Se ejecutó el comando para calcular la mora.');
+        $this->notification("Se ejecutó el proceso para calcular cuotas con mora.");
         $recorrido = Quota::where("dateexpiration", "<", Carbon::now())->where("quotastatu_id", "<>", 3)->where('quotastatu_id', '<>', 4)->get();
         if (count($recorrido) == 0) {
-            return \Log::info('No existen cuotas con atraso.');
+            return $this->notification("No existen cuotas con atraso.");
         } else {
             foreach ($recorrido as $resultado) {
 
@@ -118,6 +119,11 @@ use AuthenticatesAndRegistersUsers,
         } elseif ($paymentmethod_id == 4) {
             return 1;
         }
+    }
+    public function notification($msg){
+        $notification = new Notification();
+        $notification->message = $msg;
+        $notification->save();
     }
 
 }

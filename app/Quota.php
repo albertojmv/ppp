@@ -16,6 +16,9 @@ class Quota extends Model
     public function payment() {
         return $this->hasMany("App\Payment");
     }
+    public function surcharge() {
+        return $this->hasMany("App\Surcharge");
+    }
     
     public function getFecha()
     {
