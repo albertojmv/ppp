@@ -8,7 +8,7 @@ class Reference extends Model
 {
    public function scopeSearch($query, $search) {
 
-        return $query->where('customer_id', 'LIKE', "%$search%");
+        return $query->where('customer_id', $search);
     }
     public function province() {
         return $this->belongsTo("App\Province");

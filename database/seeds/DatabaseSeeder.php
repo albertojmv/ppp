@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('QuotastatusTableSeeder');
         $this->call('FormofpaymentsTableSeeder');
         $this->call('References_typesTableSeeder');
+        $this->call('TypeofcompaniesTableSeeder');
     }
 
 }

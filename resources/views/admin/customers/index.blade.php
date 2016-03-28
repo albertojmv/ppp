@@ -31,6 +31,7 @@
                     
                     <th>Crear Préstamo.:</th>
                     <th>Referencias.:</th>
+                    <th>Ingresos.:</th>
                     <th>Editar.:</th>
                 </tr>
             </thead>
@@ -50,6 +51,13 @@
                         {!!Form::open(['route'=>'admin.references.index', 'method'=>'GET'])!!}
                         <input name="search" type="hidden" value="{{$customer->id}}">
                         <input type="image" name="imageField" src="/images/refer.png" class="btn btn-green" />
+                        {!!Form::close()!!}
+                        
+                    </td>
+                    <td>
+                        {!!Form::open(['route'=>'admin.incomes.index', 'method'=>'GET'])!!}
+                        <input name="search" type="hidden" value="{{$customer->id}}">
+                        <input type="image" name="imageField" src="/images/income.png" class="btn btn-grey" />
                         {!!Form::close()!!}
                         
                     </td>

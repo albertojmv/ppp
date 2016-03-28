@@ -57,7 +57,7 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::get('contact/{id}', 'ContactController@showContact');
     Route::resource('references', 'ReferenceController');
     Route::resource('quotas', 'QuotaController');
-    
+    Route::resource('incomes', 'IncomeController');
     
 });
 

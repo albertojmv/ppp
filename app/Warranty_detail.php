@@ -13,7 +13,7 @@ class Warranty_detail extends Model
     
     public function scopeSearch($query, $search) {
 
-        return $query->where('loan_id', 'LIKE', "%$search%");
+        return $query->where('loan_id',$search);
                
     }
 }
