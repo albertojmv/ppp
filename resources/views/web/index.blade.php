@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="Fundada en el año 2016, JODAMAPI opera en Santiago, Republica dominicana. Somos una empresa dedicada a identificar y apoyar financieramente a personas, sin importar el sector en que trabajen o su historial crediticio Ofrecemos el siguiente tipo de préstamo Préstamo con garantía de vehículo Préstamos con garantía de inmueble.">
+        <meta name="keywords" content="préstamo,prestamo,préstamos,préstamo,Republica dominicana,santiago,vehículo,vehiculo,inmueble" />
+        <meta name="author" content="Jodamapi">
         <title>JODAMAPI INVERSIONES S.R.L</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -380,9 +381,7 @@
                     <div class="col-sm-6">
                         &copy; {{Carbon\Carbon::now()->year}} <a target="_blank" href="http://jodamapi.com/" title="jodamapi inversiones s.r.l">Jodamapi</a>. Todos los derechos reservados.
                     </div>
-                    <div class="col-sm-6">
-                        <img class="pull-right" src="images/shapebootstrap.png" alt="ShapeBootstrap" title="ShapeBootstrap">
-                    </div>
+                    
                 </div>
             </div>
         </footer><!--/#footer-->

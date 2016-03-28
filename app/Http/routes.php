@@ -58,25 +58,19 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::resource('references', 'ReferenceController');
     Route::resource('quotas', 'QuotaController');
     Route::resource('incomes', 'IncomeController');
-    
-});
-
-
-
-
-
-
-
-
-
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/', 'Auth\AuthController@showLoginForm');
-    Route::auth();
     Route::get('corrermora', function () {
         Artisan::call('calc:mora');
         return Redirect::back()->with('message', 'Se corrió el proceso de generar moras.');
     });
-    //Route::resource('/', 'WebController');
+    
+});
+
+
+Route::group(['middleware' => 'web'], function () {
+    //Route::get('/', 'Auth\AuthController@showLoginForm');
+    Route::auth();
+    
+    Route::resource('/', 'WebController');
     Route::resource('applications', 'LoanapplicationController');
     Route::resource('contacts', 'ContactController');
     Route::get('messages', 'WebController@message');
