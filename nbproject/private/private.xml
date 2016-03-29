@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/prestamos/database/migrations/2016_03_27_153010_create_notifications_table.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/LoanController.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/Auth/AuthController.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/users/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/dashboard/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/prestamos/app/Http/Controllers/admin/DashboardController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

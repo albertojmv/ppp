@@ -86,6 +86,11 @@
                     </i><span class="menu-title">Clientes</span></a>
                       
                     </li>
+                    <li><a href="{{URL::to('admin/reports')}}"><i class="fa fa-files-o fa-fw">
+                        <div class="icon-bg bg-violet"></div>
+                    </i><span class="menu-title">Reportes</span></a>
+                      
+                    </li>
                     
                     <li><a href="{{URL::to('admin/applications')}}"><i class="fa fa-file-text fa-fw">
                         <div class="icon-bg bg-red"></div>

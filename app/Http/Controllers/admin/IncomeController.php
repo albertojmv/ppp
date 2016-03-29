@@ -11,32 +11,19 @@ use Redirect;
 
 class IncomeController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index(Request $request) {
         $incomes = Income::search($request['search'])->orderBy('id', 'desc')->paginate(5);
         return view("admin.incomes.index")->with("incomes", $incomes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create() {
         $typeofcompany_list = Typeofcompany::lists("name", "id");
         return view('admin.incomes.create', ['typeofcompany_list' => $typeofcompany_list]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request) {
         $this->validate($request, [
             'name' => 'required',
@@ -56,35 +43,19 @@ class IncomeController extends Controller {
                 ->with('message', 'Ingreso Guardado Correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id) {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id) {
         $income = Income::find($id);
         $typeofcompany_list = Typeofcompany::lists("name", "id");
         return view('admin.incomes.edit', ['income' => $income], ['typeofcompany_list' => $typeofcompany_list]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id) {
         $this->validate($request, [
             'name' => 'required',
@@ -103,14 +74,10 @@ class IncomeController extends Controller {
                 ->with('message', 'Ingreso editado correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id) {
-        //
+        Income::destroy($id);
+        return Redirect::back()->with('message', 'El ingreso fue borrado.');
     }
 
 }

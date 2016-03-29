@@ -26,4 +26,10 @@ class Quota extends Model
         
         return $date;
     }
+    public function getFecha2()
+    {
+        $date = Carbon::parse($this->datepayment)->format('d-m-Y');
+        
+        return $date;
+    }
 }

@@ -62,7 +62,9 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
         Artisan::call('calc:mora');
         return Redirect::back()->with('message', 'Se corrió el proceso de generar moras.');
     });
-    
+    Route::resource('reports', 'ReportController');
+    Route::get('quotesoverdue', 'ReportController@quotesoverdue');
+    Route::post('reportquotesoverdue', 'ReportController@reportQuotesOverdue');
 });
 
 
