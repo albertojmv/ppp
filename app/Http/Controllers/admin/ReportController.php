@@ -56,6 +56,12 @@ class ReportController extends Controller {
     public function quotesoverdue() {
         return view('admin.reports.quotesoverdue');
     }
+    public function quotespaid() {
+        return view('admin.reports.quotespaid');
+    }
+    public function loanssold() {
+        return view('admin.reports.loanssold');
+    }
 
     public function reportQuotesOverdue(Request $request) {
         $from = Carbon::parse($request['from']);

@@ -19,8 +19,8 @@
             <div class="btn-group" >
                 
                 <a href="{{URL::to("admin/quotesoverdue")}}" class="btn btn-green" role="button">Cuotas Vencidas</a>
-                <a href="{{URL::to("admin/provinces")}}" class="btn btn-green" role="button">Cuotas Cobradas</a>
-                <a href="{{URL::to("admin/formofpayments")}}" class="btn btn-green" role="button">Préstamos Saldados</a>
+                <a href="{{URL::to("admin/quotespaid")}}" class="btn btn-green" role="button">Cuotas Cobradas</a>
+                <a href="{{URL::to("admin/loanssold")}}" class="btn btn-green" role="button">Préstamos Saldados</a>
                 
             </div>
           

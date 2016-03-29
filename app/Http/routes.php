@@ -64,7 +64,10 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     });
     Route::resource('reports', 'ReportController');
     Route::get('quotesoverdue', 'ReportController@quotesoverdue');
-    Route::post('reportquotesoverdue', 'ReportController@reportQuotesOverdue');
+    
+    Route::get('quotespaid', 'ReportController@quotespaid');
+    
+    Route::get('loanssold', 'ReportController@loanssold');
 });
 
 
