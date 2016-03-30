@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'info@albtechrd.com', 'name' => 'admin'],
+    'from' => ['address' => 'info@jodamapi.com', 'name' => 'admin'],
 
     /*
     |--------------------------------------------------------------------------
