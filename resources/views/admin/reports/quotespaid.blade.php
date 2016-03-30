@@ -8,7 +8,7 @@
         <div class="form-body pal">
 
 
-            {!!Form::open(['route'=>'admin.reports.store', 'method'=>'POST'])!!}
+            {!!Form::open(['route'=>'admin.reportsquotespaid.store', 'method'=>'POST'])!!}
             <div class="form-body pal">
                 <div class="row">
                     <div class="col-md-6">
