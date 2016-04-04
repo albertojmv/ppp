@@ -46,7 +46,7 @@ class User extends Authenticatable {
     
      public function setPasswordAttribute($valor){
         if(!empty($valor)){
-            $this->attributes['password'] = \Hash::make($valor);
+            $this->attributes['password'] = bcrypt($valor);
         }
      }
      public function scopeSearch($query, $search) {
