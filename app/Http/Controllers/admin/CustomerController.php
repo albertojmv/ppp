@@ -8,6 +8,8 @@ use App\Province;
 use App\Civilstatu;
 use App\Gender;
 use App\Customer;
+use App\Income;
+use App\Reference;
 use App\Http\Requests;
 use App\Http\Requests\CustomerCreateRequest;
 use App\Http\Requests\CustomerUpdateRequest;
@@ -32,44 +34,24 @@ class CustomerController extends Controller {
     }
 
     public function store(CustomerCreateRequest $request) {
-        //$request->merge(['birthdate' => '14-03-1989']);
         
-        //$customer = new Customer($request->all());
-        
-        //dd($customer);
-        $name = $request['name'];
-        $lastname = $request['lastname'];
-        $phone = $request['phone'];
-        $cellphone = $request['cellphone'];
-        $cedula = $request['cedula'];
-        $passport = $request['passport'];
-        $country_id = $request['country_id'];
-        $address = $request['address'];
-        $province_id = $request['province_id'];
-        $email = $request['email'];
-        $civilstatu_id = $request['civilstatu_id'];
-        $profession = $request['profession'];
-        $gender_id = $request['gender_id'];
-        $notes = $request['notes'];
         $birthdate = Carbon::parse($request->input('birthdate'))->format('Y-m-d 00:00:00');
-        //dd($birthdate);
-        //$date = new \DateTime($birthdate);
-
+        
         $customer = new Customer();
-        $customer->name = $name;
-        $customer->lastname = $lastname;
-        $customer->phone = $phone;
-        $customer->cellphone = $cellphone;
-        $customer->cedula = $cedula;
-        $customer->passport = $passport;
-        $customer->country_id = $country_id;
-        $customer->address = $address;
-        $customer->province_id = $province_id;
-        $customer->email = $email;
-        $customer->civilstatu_id = $civilstatu_id;
-        $customer->profession = $profession;
-        $customer->gender_id = $gender_id;
-        $customer->notes = $notes;
+        $customer->name = $request['name'];
+        $customer->lastname = $request['lastname'];
+        $customer->phone = $request['phone'];
+        $customer->cellphone = $request['cellphone'];
+        $customer->cedula = $request['cedula'];
+        $customer->passport = $request['passport'];
+        $customer->country_id = $request['country_id'];
+        $customer->address = $request['address'];
+        $customer->province_id = $request['province_id'];
+        $customer->email = $request['email'];
+        $customer->civilstatu_id = $request['civilstatu_id'];
+        $customer->profession = $request['profession'];
+        $customer->gender_id = $request['gender_id'];
+        $customer->notes = $request['notes'];
         $customer->birthdate = $birthdate;
         $customer->user_id = \Auth::user()->id;
         $customer->save();
@@ -93,43 +75,35 @@ class CustomerController extends Controller {
     }
 
     public function update(CustomerUpdateRequest $request, $id) {
-        $name = $request['name'];
-        $lastname = $request['lastname'];
-        $phone = $request['phone'];
-        $cellphone = $request['cellphone'];
-        $cedula = $request['cedula'];
-        $passport = $request['passport'];
-        $country_id = $request['country_id'];
-        $address = $request['address'];
-        $province_id = $request['province_id'];
-        $email = $request['email'];
-        $civilstatu_id = $request['civilstatu_id'];
-        $profession = $request['profession'];
-        $gender_id = $request['gender_id'];
-        $notes = $request['notes'];
         $birthdate = Carbon::parse($request->input('birthdate'))->format('Y-m-d 00:00:00');
-        //$date = new \DateTime($birthdate);
-
+      
         $customer = Customer::find($id);
-        $customer->name = $name;
-        $customer->lastname = $lastname;
-        $customer->phone = $phone;
-        $customer->cellphone = $cellphone;
-        $customer->cedula = $cedula;
-        $customer->passport = $passport;
-        $customer->country_id = $country_id;
-        $customer->address = $address;
-        $customer->province_id = $province_id;
-        $customer->email = $email;
-        $customer->civilstatu_id = $civilstatu_id;
-        $customer->profession = $profession;
-        $customer->gender_id = $gender_id;
-        $customer->notes = $notes;
+        $customer->name = $request['name'];
+        $customer->lastname = $request['lastname'];
+        $customer->phone = $request['phone'];
+        $customer->cellphone = $request['cellphone'];
+        $customer->cedula = $request['cedula'];
+        $customer->passport = $request['passport'];
+        $customer->country_id = $request['country_id'];
+        $customer->address = $request['address'];
+        $customer->province_id = $request['province_id'];
+        $customer->email = $request['email'];
+        $customer->civilstatu_id = $request['civilstatu_id'];
+        $customer->profession = $request['profession'];
+        $customer->gender_id = $request['gender_id'];
+        $customer->notes = $request['notes'];
         $customer->birthdate = $birthdate;
         $customer->user_id = \Auth::user()->id;
         $customer->save();
-        Session::flash('message', 'Usuario Actualizado Correctamente');
-        return Redirect::to('/admin/customers');
+        //Session::flash('message', 'Usuario Actualizado Correctamente');
+        return Redirect::to('/admin/customers')->with('message', 'Usuario Actualizado Correctamente');
+    }
+
+    public function showCustomer($id) {
+        $customer = Customer::find($id);
+        $reference = Reference::where('customer_id','=',$id)->get();
+        $income = Income::where('customer_id','=',$id)->get();
+        return view('admin.customers.show', compact('reference','customer','income'));
     }
 
 }
