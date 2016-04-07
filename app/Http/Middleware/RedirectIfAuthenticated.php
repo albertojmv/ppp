@@ -27,17 +27,17 @@ class RedirectIfAuthenticated
         if ($this->auth->check()) {
             switch ($this->auth->user()->role_id)
             {
-                case '1':
+                case 1:
                     #Administrador
                     return redirect()->to('admin');
                     break;
 
-                case '2':
+                case 2:
                     #Gestor
                     return redirect()->to('manager');
                     break;
 
-                case '3':
+                case 3:
                     #Cobrador
                     return redirect()->to('collector');
                     break;
@@ -46,7 +46,7 @@ class RedirectIfAuthenticated
                     return redirect()->to('login');
 
             }
-            return redirect('/admin');
+            return redirect('/login');
         }
 
         return $next($request);
