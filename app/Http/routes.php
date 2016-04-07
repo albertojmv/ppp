@@ -1,8 +1,7 @@
 <?php
 
-
 Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
-    
+
     Route::get('/', 'DashboardController@index');
     Route::resource("users", "UserController");
     Route::resource("customers", "CustomerController");
@@ -22,7 +21,6 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::resource('typeswarranties', 'TypeswarrantyController');
     Route::resource('applications', 'LoanapplicationController');
     Route::get('application/{id}', 'LoanapplicationController@viewapp');
-    
 });
 
 Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -48,9 +46,13 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
 Route::group(['middleware' => 'web'], function () {
     //Route::get('/', 'Auth\AuthController@showLoginForm');
     Route::auth();
-    
+
     Route::resource('/', 'WebController');
     Route::resource('applications', 'LoanapplicationController');
     Route::resource('contacts', 'ContactController');
     Route::get('messages', 'WebController@message');
+});
+
+Route::group(['middleware' => 'web', 'auth', 'namespace' => 'Manager', 'prefix' => 'manager'], function () {
+    Route::get('/', 'DashboardController@index');
 });
