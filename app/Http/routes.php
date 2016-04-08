@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['web', 'auth', 'role'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::get('/', 'DashboardController@index');
     Route::resource("users", "UserController");
@@ -23,7 +23,7 @@ Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'pr
     Route::get('application/{id}', 'LoanapplicationController@viewapp');
 });
 
-Route::group(['middleware' => 'web', 'auth', 'role', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['web', 'auth', 'role'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::resource('contacts', 'ContactController');
     Route::get('contact/{id}', 'ContactController@showContact');
@@ -53,6 +53,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('messages', 'WebController@message');
 });
 
-Route::group(['middleware' => 'web', 'auth', 'namespace' => 'Manager', 'prefix' => 'manager'], function () {
+Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manager', 'prefix' => 'manager'], function () {
     Route::get('/', 'DashboardController@index');
 });
