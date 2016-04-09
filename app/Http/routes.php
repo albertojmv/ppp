@@ -55,4 +55,11 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manager', 'prefix' => 'manager'], function () {
     Route::get('/', 'DashboardController@index');
+    Route::resource("loans", "LoanController");
+    Route::get('loan/{id}', 'LoanController@showLoan');
+    Route::resource("payments", "PaymentController");
+    Route::get('payment/{id}', 'PaymentController@printPay');
+    Route::get('warranty/{id}', 'WarrantyController@warranty');
+    Route::resource("warranties", "WarrantyController");
+    Route::resource("warrantydetail", "WarrantydetailController");
 });
