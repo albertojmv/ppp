@@ -7,7 +7,7 @@
        Editar Préstamo</div>
     <div class="panel-body pan">
         
-         {!!Form::model($loan,['route'=>['admin.loans.update',$loan],'method'=>'PUT'])!!}
+         {!!Form::model($loan,['route'=>['manager.loans.update',$loan],'method'=>'PUT'])!!}
         
         <div class="form-body pal">
             <div class="row">
