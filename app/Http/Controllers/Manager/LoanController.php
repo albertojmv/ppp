@@ -116,6 +116,11 @@ class LoanController extends Controller {
         $payments = $interes + $abono;
         return $payments;
     }
+    public function calcquota2($amount, $interest, $quotas) {
+        $total = $amount + ($amount * $interest / 100);
+        $payments = $total / $quotas;
+        return $payments;
+    }
 
     public function calcinte($amount, $interest, $quotas) {
         $total = $amount * ($interest / 100) * $quotas;
@@ -211,17 +216,17 @@ class LoanController extends Controller {
         $intereses = $amount * ($interest / 100);
         $saldomes = $amount + $intereses;
         for ($i = 1; $i <= $quotas; $i++) {
-            $balance = $saldomes - $this->calcquota($amount, $interest, $quotas);
-            $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
+            $balance = $saldomes - $this->calcquota2($amount, $interest, $quotas);
+            $saldomes = $saldomes - $this->calcquota2($amount, $interest, $quotas);
             $quota = new Quota();
             $date = $this->calcfecha($paymentmethod_id, $delivery);
             $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
             $quota->number = $i;
             $quota->datepayment = $date;
             $quota->dateexpiration = $deliveryex;
-            $quota->amount = $this->calcquota($amount, $interest, $quotas);
+            $quota->amount = $this->calcquota2($amount, $interest, $quotas);
             $quota->surcharge = 0;
-            $quota->interest = $this->calcinte($amount, $interest, $quotas);
+            $quota->interest = $this->calcinte($amount, $interest, $quotas)/$quotas;
             $quota->capital = $balance;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;

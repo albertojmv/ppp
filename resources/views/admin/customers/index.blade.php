@@ -23,6 +23,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($customers) == 0)
+                    <th><strong>No existen resultados</strong></th>
+                    @else
                     <th>#</th>
                     <th>Nombre.:</th>
                     <th>Cédula.:</th>
@@ -30,6 +33,7 @@
                     <th>Creado por.:</th>
                     
                     <th>Crear Préstamo.:</th>
+                    <th>Ver.:</th>
                     <th>Referencias.:</th>
                     <th>Ingresos.:</th>
                     <th>Editar.:</th>
@@ -46,6 +50,9 @@
                     
                     <td>
                         <a href="{{URL::to("admin/loans/create?id=$customer->id")}}" class="btn btn-blue"><img src="/images/add.png"></a>
+                    </td>
+                    <td>
+                        <a href="{{URL::to("admin/customer/".$customer->id)}}" class="btn btn-dark"><img src="/images/view.png"></a>
                     </td>
                     <td>
                         {!!Form::open(['route'=>'admin.references.index', 'method'=>'GET'])!!}
@@ -68,6 +75,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
         {{$customers->links()}}
     </div>
 </div>

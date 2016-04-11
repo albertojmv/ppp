@@ -11,7 +11,7 @@
 <div class="panel panel-green">
     <div class="panel-heading">Fotos de la garantía.</div>
     <div class="panel-body">
-        <a href="{{URL::to("admin/warranties/create?id=$id")}}" class="btn btn-orange"><img src="/images/editar.png">Agregar</a>
+        <a href="{{URL::to("manager/warranties/create?id=$id")}}" class="btn btn-orange"><img src="/images/editar.png">Agregar</a>
 
 
 
@@ -24,7 +24,7 @@
                 </a>
                 <p>{{$imagen->description}}</p>
                
-                {!!Form::open(['route'=>['admin.warranties.destroy',$imagen->id ], 'method'=>'DELETE'])!!}
+                {!!Form::open(['route'=>['manager.warranties.destroy',$imagen->id ], 'method'=>'DELETE'])!!}
                 <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro quieres eliminar esta imagen?')">Eliminar</button>
                 {!!Form::close()!!}
             </div>

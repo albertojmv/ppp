@@ -101,9 +101,9 @@ class CustomerController extends Controller {
 
     public function showCustomer($id) {
         $customer = Customer::find($id);
-        $reference = Reference::where('customer_id','=',$id)->get();
-        $income = Income::where('customer_id','=',$id)->get();
-        return view('admin.customers.show', compact('reference','customer','income'));
+        $references = Reference::where('customer_id','=',$id)->get();
+        $incomes = Income::where('customer_id','=',$id)->get();
+        return view('admin.customers.show', compact('references','customer','incomes'));
     }
 
 }

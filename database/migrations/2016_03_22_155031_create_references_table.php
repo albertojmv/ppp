@@ -14,7 +14,7 @@ class CreateReferencesTable extends Migration
     {
         Schema::create('references', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('references_types_id')->unsigned();
+            $table->integer('references_type_id')->unsigned();
             $table->string('name');
             $table->string('address');
             $table->integer('province_id')->unsigned();
@@ -30,7 +30,7 @@ class CreateReferencesTable extends Migration
             $table->foreign('province_id')
                     ->references('id')
                     ->on('provinces');
-            $table->foreign('references_types_id')
+            $table->foreign('references_type_id')
                     ->references('id')
                     ->on('references_types');
         });

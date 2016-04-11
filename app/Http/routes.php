@@ -62,4 +62,7 @@ Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manage
     Route::get('warranty/{id}', 'WarrantyController@warranty');
     Route::resource("warranties", "WarrantyController");
     Route::resource("warrantydetail", "WarrantydetailController");
+    Route::get('warranty/{id}', 'WarrantyController@warranty');
+    Route::resource("warranties", "WarrantyController");
+    Route::resource("warrantydetail", "WarrantydetailController");
 });

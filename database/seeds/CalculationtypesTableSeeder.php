@@ -15,6 +15,6 @@ class CalculationtypesTableSeeder extends Seeder
         
         Calculationtype::create(array('name'=>'Interés simple'));
         Calculationtype::create(array('name'=>'Saldos insolutos'));
-                
+        Calculationtype::create(array('name'=>'Interés sobre capital'));        
     }
 }
