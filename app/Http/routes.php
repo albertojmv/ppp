@@ -59,10 +59,15 @@ Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manage
     Route::get('loan/{id}', 'LoanController@showLoan');
     Route::resource("payments", "PaymentController");
     Route::get('payment/{id}', 'PaymentController@printPay');
+    Route::resource("savepayment", "SavepaymentController");
     Route::get('warranty/{id}', 'WarrantyController@warranty');
     Route::resource("warranties", "WarrantyController");
     Route::resource("warrantydetail", "WarrantydetailController");
     Route::get('warranty/{id}', 'WarrantyController@warranty');
     Route::resource("warranties", "WarrantyController");
     Route::resource("warrantydetail", "WarrantydetailController");
+    Route::resource("customers", "CustomerController");
+    Route::get('customer/{id}', 'CustomerController@showCustomer');
+    Route::resource('references', 'ReferenceController');
+    Route::resource('incomes', 'IncomeController');
 });
