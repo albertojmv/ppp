@@ -12,6 +12,16 @@
                     </i><span class="menu-title">Pagos</span></a>
 
             </li>
+            <li><a href="{{URL::to('collector/loans')}}"><i class="fa fa-credit-card fa-fw">
+                        <div class="icon-bg bg-green"></div>
+                    </i><span class="menu-title">Préstamos</span></a>
+
+            </li>
+            <li><a href="{{URL::to('collector/customers')}}"><i class="fa fa-users fa-fw">
+                        <div class="icon-bg bg-violet"></div>
+                    </i><span class="menu-title">Clientes</span></a>
+
+            </li>
         </ul>
     </div>
 </nav>

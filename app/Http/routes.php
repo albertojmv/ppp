@@ -88,4 +88,8 @@ Route::group(['middleware' => ['web', 'auth', 'collector'], 'namespace' => 'Coll
     Route::resource("payments", "PaymentController");
     Route::get('payment/{id}', 'PaymentController@printPay');
     Route::resource("savepayment", "SavepaymentController");
+    Route::resource("loans", "LoanController");
+    Route::get('loan/{id}', 'LoanController@showLoan');
+    Route::resource("customers", "CustomerController");
+    Route::get('customer/{id}', 'CustomerController@showCustomer');
 });

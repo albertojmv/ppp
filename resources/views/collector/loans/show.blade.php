@@ -69,13 +69,13 @@
                 @foreach($cuotas as $cuota)
                 <tr>
                     <td>{{$cuota->number}}</td>
-                    <td>${{number_format($cuota->amount)}}</td>
-                    <td>${{number_format($cuota->surcharge)}}</td>
-                    <td>${{number_format($cuota->amount + $cuota->surcharge)}}</td>
+                    <td>${{number_format($cuota->amount, 2, '.', ',')}}</td>
+                    <td>${{number_format($cuota->surcharge, 2, '.', ',')}}</td>
+                    <td>${{number_format($cuota->amount + $cuota->surcharge, 2, '.', ',')}}</td>
                    
                     <td>{{$cuota->getFecha()}}</td>
-                    <td>${{number_format($cuota->capital)}}</td>
-                    <td>${{number_format($cuota->interest)}}</td>
+                    <td>${{number_format($cuota->capital, 2, '.', ',')}}</td>
+                    <td>${{number_format($cuota->interest, 2, '.', ',')}}</td>
                     <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
                     <td>
                         <a href="{{URL::to("admin/quotas/$cuota->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>

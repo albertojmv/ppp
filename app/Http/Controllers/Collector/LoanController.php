@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Collector;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoanRequest;
@@ -21,7 +21,7 @@ class LoanController extends Controller {
 
         $loans = Loan::search($request['search'])->orderBy('loans.id', 'desc')->paginate(5);
         $loans->appends(['search' => $request['search']]);
-        return view("admin.loans.index")->with("loans", $loans);
+        return view("collector.loans.index")->with("loans", $loans);
     }
 
     public function create() {
@@ -29,7 +29,7 @@ class LoanController extends Controller {
         $calculationtype_list = Calculationtype::lists("name", "id");
         $loanstatu_list = Loanstatu::lists("name", "id");
 
-        return view('admin.loans.create', compact('paymentmethod_list', 'calculationtype_list', 'loanstatu_list'));
+        return view('manager.loans.create', compact('paymentmethod_list', 'calculationtype_list', 'loanstatu_list'));
     }
 
     public function store(LoanRequest $request) {
@@ -54,21 +54,21 @@ class LoanController extends Controller {
         //$this->saveQuotas($calculationtype_id, $amount, $interest, $quotas, $paymentmethod_id, $delivery, $deliveryexp, $payday, $loan->id);
         $this->saveQuotas($request['calculationtype_id'], $request['amount'], $request['interest'], $request['quotas'], $request['paymentmethod_id'], $delivery, $deliveryexp, $loan->id);
 
-        return Redirect::route('admin.loans.index')->with('message', 'Préstamo Creado Correctamente.');
+        return Redirect::route('manager.loans.index')->with('message', 'Préstamo Creado Correctamente.');
     }
 
     public function show($id) {
         $prestamo = Loan::findOrFail($id);
         $cuotas = Quota::where('loan_id', '=', $id)->get();
 
-        return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
+        return view('collector.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
     }
 
     public function showLoan($id) {
         $prestamo = Loan::findOrFail($id);
         $cuotas = Quota::where('loan_id', '=', $id)->get();
 
-        return view('admin.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
+        return view('collector.loans.show', ['prestamo' => $prestamo], ['cuotas' => $cuotas]);
     }
 
     public function edit($id) {
@@ -77,7 +77,7 @@ class LoanController extends Controller {
         $calculationtype_list = Calculationtype::lists("name", "id");
         $loanstatu_list = Loanstatu::lists("name", "id");
 
-        return view('admin.loans.edit', ['loan' => $loan], ['paymentmethod_list' => $paymentmethod_list])
+        return view('manager.loans.edit', ['loan' => $loan], ['paymentmethod_list' => $paymentmethod_list])
                         ->with('calculationtype_list', $calculationtype_list)
                         ->with('loanstatu_list', $loanstatu_list);
     }
@@ -102,7 +102,7 @@ class LoanController extends Controller {
         $loan->save();
 
         $this->saveQuotas($request['calculationtype_id'], $request['amount'], $request['interest'], $request['quotas'], $request['paymentmethod_id'], $delivery, $deliveryexp, $loan->id);
-        return Redirect::route('admin.loans.index')->with('message', 'Préstamo actualizado correctamente.');
+        return Redirect::route('manager.loans.index')->with('message', 'Préstamo actualizado correctamente.');
     }
 
     public function destroy($id) {
@@ -162,7 +162,7 @@ class LoanController extends Controller {
         foreach ($cuotas as $cuota) {
             $pagos = Payment::where('quota_id', '=', $cuota->id)->first();
             if (count($pagos) != 0) {
-                return Redirect::route('admin.loans.index')->with('message', 'No se puede editar este préstamo (Error 333).');
+                return Redirect::route('manager.loans.index')->with('message', 'No se puede editar este préstamo (Error 333).');
             }
             $delete = Quota::find($cuota->id);
             $delete->delete();
