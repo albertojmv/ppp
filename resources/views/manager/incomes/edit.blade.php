@@ -5,7 +5,7 @@
     <div class="panel-heading">
         Información laboral o de ingresos</div>
     <div class="panel-body pan">
-         {!!Form::model($income,['route'=>['admin.incomes.update',$income],'method'=>'PUT'])!!}
+         {!!Form::model($income,['route'=>['manager.incomes.update',$income],'method'=>'PUT'])!!}
             <div class="form-body pal">
                 <div class="row">
                     <div class="col-md-6">

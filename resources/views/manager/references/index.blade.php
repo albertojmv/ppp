@@ -13,7 +13,7 @@
     <div class="panel-heading">Referencias</div>
     <div class="panel-body">
 
-        <a href="{{URL::to("admin/references/create?id=".$_GET['search'])}}" class="btn btn-green"><img src="/images/editar.png">Agregar</a>
+        <a href="{{URL::to("manager/references/create?id=".$_GET['search'])}}" class="btn btn-green"><img src="/images/editar.png">Agregar</a>
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
@@ -23,7 +23,7 @@
                     <th>Dirección.:</th>
                     <th>Provincia.:</th>
                   
-                  
+                   
                     <th>Editar.:</th>
                     <th>Eliminar .:</th>
                 </tr>
@@ -38,12 +38,12 @@
                     <td>{{$reference->province->name}}</td>
 
                    
-                    
+                  
                     <td>
-                        <a href="{{URL::to("admin/references/$reference->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
+                        <a href="{{URL::to("manager/references/$reference->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>
                     <td>
-                        {!!Form::open(['route'=>['admin.references.destroy',$reference->id ], 'method'=>'DELETE'])!!}
+                        {!!Form::open(['route'=>['manager.references.destroy',$reference->id ], 'method'=>'DELETE'])!!}
                        
                         <input type="image" name="imageField" src="/images/borrar.png" class="btn btn-danger" onclick="return confirm('¿Seguro quieres eliminar esta referencia?')" />
                         {!!Form::close()!!}

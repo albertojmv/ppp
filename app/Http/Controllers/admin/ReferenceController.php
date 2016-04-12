@@ -47,7 +47,7 @@ class ReferenceController extends Controller {
             'phone.required' => 'Digite el teléfono.',
         ]);
         $reference = new Reference();
-        $reference->references_types_id = $request['references_types_id'];
+        $reference->references_type_id = $request['references_types_id'];
         $reference->name = $request['name'];
         $reference->address = $request['address'];
         $reference->province_id = $request['province_id'];
@@ -99,7 +99,7 @@ class ReferenceController extends Controller {
             'phone.required' => 'Digite el teléfono.',
         ]);
         $reference = Reference::find($id);
-        $reference->references_types_id = $request['references_types_id'];
+        $reference->references_type_id = $request['references_types_id'];
         $reference->name = $request['name'];
         $reference->address = $request['address'];
         $reference->province_id = $request['province_id'];

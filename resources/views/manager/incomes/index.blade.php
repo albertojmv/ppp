@@ -11,7 +11,7 @@
     <div class="panel-heading">Información laboral o de ingresos</div>
     <div class="panel-body">
 
-        <a href="{{URL::to("admin/incomes/create?id=".$_GET['search'])}}" class="btn btn-green"><img src="/images/editar.png">Agregar</a>
+        <a href="{{URL::to("manager/incomes/create?id=".$_GET['search'])}}" class="btn btn-green"><img src="/images/editar.png">Agregar</a>
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
@@ -38,10 +38,10 @@
                    
                     
                     <td>
-                        <a href="{{URL::to("admin/incomes/$income->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
+                        <a href="{{URL::to("manager/incomes/$income->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>
                     <td>
-                        {!!Form::open(['route'=>['admin.incomes.destroy',$income->id ], 'method'=>'DELETE'])!!}
+                        {!!Form::open(['route'=>['manager.incomes.destroy',$income->id ], 'method'=>'DELETE'])!!}
                        
                         <input type="image" name="imageField" src="/images/borrar.png" class="btn btn-danger" onclick="return confirm('¿Seguro quieres eliminar este ingreso?')" />
                         {!!Form::close()!!}

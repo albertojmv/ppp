@@ -71,3 +71,21 @@ Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manage
     Route::resource('references', 'ReferenceController');
     Route::resource('incomes', 'IncomeController');
 });
+Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manager', 'prefix' => 'manager'], function () {
+    Route::resource('reports', 'ReportController');
+    Route::get('quotesoverdue', 'ReportController@quotesoverdue');
+    Route::resource('reportsquotespaid', 'QuotespaidController');
+    Route::get('quotespaid', 'ReportController@quotespaid');
+    Route::resource('reportsloanssold', 'LoanssoldController');
+    Route::get('loanssold', 'ReportController@loanssold');
+    Route::resource('contacts', 'ContactController');
+    Route::get('contact/{id}', 'ContactController@showContact');
+    Route::resource('applications', 'LoanapplicationController');
+    Route::get('application/{id}', 'LoanapplicationController@viewapp');
+});
+Route::group(['middleware' => ['web', 'auth', 'collector'], 'namespace' => 'Collector', 'prefix' => 'collector'], function () {
+    Route::get('/', 'DashboardController@index');
+    Route::resource("payments", "PaymentController");
+    Route::get('payment/{id}', 'PaymentController@printPay');
+    Route::resource("savepayment", "SavepaymentController");
+});

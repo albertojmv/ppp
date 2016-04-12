@@ -4,10 +4,10 @@
         <ul id="side-menu" class="nav">
 
             <div class="clearfix"></div>
-            <li><a href="{{URL::to('admin')}}"><i class="fa fa-tachometer fa-fw">
+            <li><a href="{{URL::to('collector')}}"><i class="fa fa-tachometer fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Panel de control</span></a></li>
-            <li><a href="{{URL::to('admin/payments')}}"><i class="fa fa-money">
+            <li><a href="{{URL::to('collector/payments')}}"><i class="fa fa-money">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Pagos</span></a>
 

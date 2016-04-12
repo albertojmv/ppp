@@ -62,7 +62,7 @@
                                     Cuota #{{$surcharge->number}}   Fecha: {{$surcharge->created_at->format('d-m-Y')}}
                                 </div>
                                 <div class="todo-actions pull-right clearfix">
-                                    <a href="{{URL::to("admin/loan/$surcharge->loan_id")}}" class="todo-complete"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{URL::to("manager/loan/$surcharge->loan_id")}}" class="todo-complete"><i class="fa fa-info-circle"></i></a>
                                 </div>
                             </li>
 

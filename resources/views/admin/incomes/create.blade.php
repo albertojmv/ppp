@@ -11,10 +11,10 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="control-label">
-                                Nombre</label>
+                                Nombre de empresa</label>
                             <div class="input-icon right">
                                 <i class="fa fa-building"></i>
-                                <input id="name" name="name" type="text" placeholder="Nombre" class="form-control" value="{{ old('name') }}" /></div>
+                                <input id="name" name="name" type="text" placeholder="Nombre de empresa" class="form-control" value="{{ old('name') }}" /></div>
                         </div>
                     </div>
                      <div class="col-md-6">

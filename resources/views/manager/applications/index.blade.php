@@ -11,7 +11,7 @@
     <div class="panel-heading">
         Solicitudes de prestamos</div>
     <div class="panel-body pan">
-        {!!Form::open(['route'=>'admin.applications.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+        {!!Form::open(['route'=>'manager.applications.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
         <div class="form-group">
         <input type="text" name="search" class="form-control" placeholder="Buscar">
         </div>
@@ -41,7 +41,7 @@
                    <td>{{$application->phone}}</td>
                    <td>{{$application->cellphone}}</td>
                     <td>
-                        <a href="{{URL::to("admin/application/$application->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
+                        <a href="{{URL::to("manager/application/$application->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
                     </td>
                     
                 </tr>

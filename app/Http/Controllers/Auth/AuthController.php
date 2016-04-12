@@ -82,6 +82,8 @@ use AuthenticatesAndRegistersUsers,
             return redirect('admin');
         } elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 2, 'state_id' => 1))) {
             return redirect('manager');
+        }elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 3, 'state_id' => 1))) {
+            return redirect('collector');
         }
         return redirect('login')->withErrors('error');
     }

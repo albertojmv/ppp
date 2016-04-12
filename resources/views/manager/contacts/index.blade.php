@@ -7,48 +7,43 @@
     {{Session::get('message')}}
 </div>
 @endif
-<div class="panel panel-info">
+<div class="panel panel-danger">
     <div class="panel-heading">
-        Solicitudes de prestamos</div>
+        Mensajes de clientes</div>
     <div class="panel-body pan">
-        {!!Form::open(['route'=>'admin.applications.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
+        {!!Form::open(['route'=>'manager.contacts.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
         <div class="form-group">
         <input type="text" name="search" class="form-control" placeholder="Buscar">
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
         {!!Form::close()!!}
         <div class="form-body pal">
-           
- <a href="{{URL::to("/#pricing")}}" class="btn btn-green"><img src="/images/editar.png">Agregar</a>
+          
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nombre.:</th>
-                     <th>Cedula.:</th>
-                     <th>Telefono.:</th>
-                     <th>Celular.:</th>
-                    <th>Ver.:</th>
+                    <th>Correo.:</th>
+                    <th>Mensajes.:</th>
+                    <th>Fecha.:</th>
                     
                 </tr>
             </thead>
             <tbody>
-                @foreach($applications as $application)
+                @foreach($contacts as $contact)
                 <tr>
-                    <td>{{$application->id}}</td>
-                    <td>{{$application->name}} {{$application->lastname}}</td>
-                    <td>{{$application->cedula}}</td>
-                   <td>{{$application->phone}}</td>
-                   <td>{{$application->cellphone}}</td>
-                    <td>
-                        <a href="{{URL::to("admin/application/$application->id")}}" class="btn btn-dark"><img src="/images/view.png"></a>
-                    </td>
+                    <td>{{$contact->id}}</td>
+                    <td>{{$contact->name}}</td>
+                    <td>{{$contact->email}}</td>
+                    <td>{{$contact->message}}</td>
+                    <td>{{$contact->created_at->format('d-m-Y h:i:s A')}}</td>
                     
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{$applications->links()}}
+        {{$contacts->links()}}
             
           
             
