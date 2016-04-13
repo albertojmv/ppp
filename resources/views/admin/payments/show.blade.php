@@ -91,7 +91,11 @@
                     <td>{{$cuota->getFecha()}}</td>
                     <td>${{number_format($cuota->capital)}}</td>
                     <td>${{number_format($cuota->interest)}}</td>
+                    @if($cuota->quotastatu->id == 1)
                     <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
+                    @else
+                    <td><span class="label label-sm label-red">{{$cuota->quotastatu->name}}</span></td>
+                    @endif
                 </tr>
             </tbody>
         </table>
@@ -129,7 +133,7 @@
                     <td>{{$prestamo->quotas}}</td>
                     <td>{{$prestamo->calculationtype->name}}</td>
                     <td>{{$prestamo->delivery->format('d-m-Y')}}</td>
-                    <td><span class="label label-sm label-success">{{$prestamo->loanstatu->name}}</span></td>
+                    <td><span class="label label-sm label-blue">{{$prestamo->loanstatu->name}}</span></td>
                 </tr>
             </tbody>
         </table>

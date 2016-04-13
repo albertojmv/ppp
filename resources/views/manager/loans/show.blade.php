@@ -38,7 +38,11 @@
                     <td>{{$prestamo->quotas}}</td>
                     <td>{{$prestamo->calculationtype->name}}</td>
                     <td>{{$prestamo->delivery->format('d-m-Y')}}</td>
+                    @if($prestamo->loanstatu->id == 1)
+                    <td><span class="label label-sm label-blue">{{$prestamo->loanstatu->name}}</span></td>
+                    @else
                     <td><span class="label label-sm label-success">{{$prestamo->loanstatu->name}}</span></td>
+                    @endif
                 </tr>
             </tbody>
         </table>
@@ -62,7 +66,7 @@
                     <th>Saldo</th>
                     <th>Interés</th>
                     <th>Estado</th>
-                    <th>Editar</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +80,14 @@
                     <td>{{$cuota->getFecha()}}</td>
                     <td>${{number_format($cuota->capital, 2, '.', ',')}}</td>
                     <td>${{number_format($cuota->interest, 2, '.', ',')}}</td>
+                    @if($cuota->quotastatu->id == 1)
                     <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
-                    <td>
-                        <a href="{{URL::to("admin/quotas/$cuota->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
-                    </td>
+                    @elseif($cuota->quotastatu->id == 2)
+                    <td><span class="label label-sm label-red">{{$cuota->quotastatu->name}}</span></td>
+                    @else
+                    <td><span class="label label-sm label-success">{{$cuota->quotastatu->name}}</span></td>
+                    @endif
+                    
                 </tr>
                 @endforeach
             </tbody>

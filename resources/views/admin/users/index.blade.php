@@ -20,7 +20,7 @@
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
         {!!Form::close()!!}
-        
+
         <div class="form-body pal">
 
 
@@ -83,11 +83,12 @@
                             {{$user->role->name}}
 
                         </td>
-                        <td>
-
-                            <span class="label label-sm label-success">{{$user->state->name}}</span>
-
-                        </td>
+                       
+                        @if($user->state->id == 1)
+                        <td><span class="label label-sm label-success">{{$user->state->name}}</span></td>
+                        @else
+                        <td><span class="label label-sm label-red">{{$user->state->name}}</span></td>
+                        @endif
 
                         <td>
                             {{$user->created_at->format('d-m-Y h:i:s A')}} 

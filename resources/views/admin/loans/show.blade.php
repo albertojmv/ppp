@@ -38,16 +38,21 @@
                     <td>{{$prestamo->quotas}}</td>
                     <td>{{$prestamo->calculationtype->name}}</td>
                     <td>{{$prestamo->delivery->format('d-m-Y')}}</td>
+                    @if($prestamo->loanstatu->id == 1)
+                    <td><span class="label label-sm label-blue">{{$prestamo->loanstatu->name}}</span></td>
+                    @else
                     <td><span class="label label-sm label-success">{{$prestamo->loanstatu->name}}</span></td>
+                    @endif
+
                 </tr>
             </tbody>
         </table>
     </div>
-    
-    
-    
-    
-    
+
+
+
+
+
     <div class="panel-body">
         <h3>Detalles de cuotas.</h3>
         <table class="table table-hover table-bordered">
@@ -57,7 +62,7 @@
                     <th>Monto</th>
                     <th>Mora</th>
                     <th>Total</th>
-                    
+
                     <th>Vence el</th>
                     <th>Saldo</th>
                     <th>Interés</th>
@@ -72,11 +77,18 @@
                     <td>${{number_format($cuota->amount)}}</td>
                     <td>${{number_format($cuota->surcharge)}}</td>
                     <td>${{number_format($cuota->amount + $cuota->surcharge)}}</td>
-                   
+
                     <td>{{$cuota->getFecha()}}</td>
                     <td>${{number_format($cuota->capital)}}</td>
                     <td>${{number_format($cuota->interest)}}</td>
+                    @if($cuota->quotastatu->id == 1)
                     <td><span class="label label-sm label-blue">{{$cuota->quotastatu->name}}</span></td>
+                    @elseif($cuota->quotastatu->id == 2)
+                    <td><span class="label label-sm label-red">{{$cuota->quotastatu->name}}</span></td>
+                    @else
+                    <td><span class="label label-sm label-success">{{$cuota->quotastatu->name}}</span></td>
+                    @endif
+                    
                     <td>
                         <a href="{{URL::to("admin/quotas/$cuota->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>
@@ -85,11 +97,11 @@
             </tbody>
         </table>
     </div>
-    
-    
-    
-    
-    
+
+
+
+
+
 </div>
 
 

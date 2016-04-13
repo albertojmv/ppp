@@ -47,7 +47,11 @@
                     <td>${{number_format($loan->amount)}}</td>
                     <td>{{$loan->quotas}}</td>
                     <td>{{$loan->user->name}}</td>
-                    <td>{{$loan->loanstatu->name}}</td>
+                    @if($loan->loanstatu->id == 1)
+                    <td><span class="label label-sm label-blue">{{$loan->loanstatu->name}}</span></td>
+                    @else
+                    <td><span class="label label-sm label-success">{{$loan->loanstatu->name}}</span></td>
+                    @endif
                     <td>
                         {!!Form::open(['route'=>'manager.payments.create', 'method'=>'GET'])!!}
                         <input name="id" type="hidden" value="{{$loan->id}}">
