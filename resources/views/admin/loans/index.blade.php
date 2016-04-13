@@ -20,6 +20,7 @@
         <button type="submit" class="btn btn-default">Buscar</button>
         {!!Form::close()!!}
         <a href="{{URL::to("admin/loans/create?id=")}}" class="btn btn-green"><img src="/images/editar.png">Agregar Nuevo</a>
+        <a href="{{URL::to("admin/calc")}}" class="btn btn-blue"><img src="/images/calc.png">Calculadora de Préstamos</a>
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
