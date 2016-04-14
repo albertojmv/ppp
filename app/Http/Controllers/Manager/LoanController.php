@@ -171,10 +171,8 @@ class LoanController extends Controller {
 
     protected function interesSimple($amount, $interest, $quotas, $paymentmethod_id, $delivery, $deliveryexp, $loan) {
         $intereses = $amount * ($interest / 100) * $quotas;
-        $saldomes = $amount + $intereses;
+        $balance = $amount + $intereses;
         for ($i = 1; $i <= $quotas; $i++) {
-            $balance = $saldomes - $this->calcquota($amount, $interest, $quotas);
-            $saldomes = $saldomes - $this->calcquota($amount, $interest, $quotas);
             $quota = new Quota();
             $date = $this->calcfecha($paymentmethod_id, $delivery);
             $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
@@ -187,6 +185,7 @@ class LoanController extends Controller {
             $quota->capital = $balance;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;
+            $balance -= $this->calcquota($amount, $interest, $quotas);
             $quota->save();
         }
     }
@@ -204,20 +203,18 @@ class LoanController extends Controller {
             $quota->surcharge = 0;
             $quota->interest = $saldo * ($interest / 100);
             $quota->amount = $saldo * ($interest / 100) + $cuota;
-            $saldo -= $cuota;
             $quota->capital = $saldo;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;
+            $saldo -= $cuota;
             $quota->save();
         }
     }
 
     protected function interesSobrec($amount, $interest, $quotas, $paymentmethod_id, $delivery, $deliveryexp, $loan) {
         $intereses = $amount * ($interest / 100);
-        $saldomes = $amount + $intereses;
+        $balance = $amount + $intereses;
         for ($i = 1; $i <= $quotas; $i++) {
-            $balance = $saldomes - $this->calcquota2($amount, $interest, $quotas);
-            $saldomes = $saldomes - $this->calcquota2($amount, $interest, $quotas);
             $quota = new Quota();
             $date = $this->calcfecha($paymentmethod_id, $delivery);
             $deliveryex = $this->calcfecha($paymentmethod_id, $deliveryexp);
@@ -230,6 +227,7 @@ class LoanController extends Controller {
             $quota->capital = $balance;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;
+            $balance -= $this->calcquota2($amount, $interest, $quotas);
             $quota->save();
         }
     }

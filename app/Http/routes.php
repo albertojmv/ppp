@@ -83,6 +83,7 @@ Route::group(['middleware' => ['web', 'auth', 'manager'], 'namespace' => 'Manage
     Route::get('contact/{id}', 'ContactController@showContact');
     Route::resource('applications', 'LoanapplicationController');
     Route::get('application/{id}', 'LoanapplicationController@viewapp');
+    Route::resource('calc', 'CalcController');
 });
 Route::group(['middleware' => ['web', 'auth', 'collector'], 'namespace' => 'Collector', 'prefix' => 'collector'], function () {
     Route::get('/', 'DashboardController@index');
