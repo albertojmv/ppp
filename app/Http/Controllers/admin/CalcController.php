@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
+use App\Http\Requests\CalcRequest;
 use App\Paymentmethod;
 use App\Calculationtype;
 use Carbon\Carbon;
@@ -22,11 +22,18 @@ class CalcController extends Controller {
         //
     }
 
-    public function store(Request $request) {
+    public function store(CalcRequest $request) {
         $delivery = Carbon::parse($request['delivery']);
         $array = $this->saveQuotas($request['calculationtype_id'], $request['amount'], $request['interest'], $request['quotas'], $request['paymentmethod_id'], $delivery);
-        
-        return view('admin.calc.show')
+        $calctype = Calculationtype::find($request['calculationtype_id']);
+        $calculationtype_id = $calctype->name;
+        $amount = $request['amount'];
+        $interest = $request['interest'];
+        $quotas = $request['quotas'];
+        $paymentMethod = Paymentmethod::find($request['paymentmethod_id']);
+        $paymentmethod_id = $paymentMethod->name;
+        $date = $delivery->format('d-m-Y');
+        return view('admin.calc.show', compact('calculationtype_id','amount','interest','quotas','paymentmethod_id','date'))
                         ->with('array', $array);
     }
 
