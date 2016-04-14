@@ -67,7 +67,7 @@
                             Fecha de inicio</label>
                         <div class="input-icon right">
                             <i class="fa fa-calendar"></i>
-                            <input id="inputDate" type="text" name="delivery" placeholder="Fecha de Entrega" class="form-control" data-mask="99-99-9999" value="{{ old('delivery') }}"/>
+                            <input id="inputDate" type="text" name="delivery" placeholder="Fecha de inicio" class="form-control" data-mask="99-99-9999" value="{{ old('delivery') }}"/>
                         </div>
                     </div>
                 </div>
