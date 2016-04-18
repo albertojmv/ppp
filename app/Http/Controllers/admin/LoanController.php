@@ -72,6 +72,11 @@ class LoanController extends Controller {
     }
 
     public function edit($id) {
+        $cuota = Quota::where('loan_id', '=', $id)->first();
+        $pagos = Payment::where('quota_id', '=', $cuota->id)->first();
+        if (count($pagos) != 0) {
+            return Redirect::route('admin.loans.index')->with('message', 'No se puede editar este préstamo porque tiene pagos realizados.');
+        }
         $loan = Loan::find($id);
         $paymentmethod_list = Paymentmethod::lists("name", "id");
         $calculationtype_list = Calculationtype::lists("name", "id");
@@ -116,6 +121,7 @@ class LoanController extends Controller {
         $payments = $interes + $abono;
         return $payments;
     }
+
     public function calcquota2($amount, $interest, $quotas) {
         $total = $amount + ($amount * $interest / 100);
         $payments = $total / $quotas;
@@ -205,7 +211,7 @@ class LoanController extends Controller {
             $quota->surcharge = 0;
             $quota->interest = $saldo * ($interest / 100);
             $quota->amount = $saldo * ($interest / 100) + $cuota;
-            
+
             $quota->capital = $saldo;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;
@@ -226,7 +232,7 @@ class LoanController extends Controller {
             $quota->dateexpiration = $deliveryex;
             $quota->amount = $this->calcquota2($amount, $interest, $quotas);
             $quota->surcharge = 0;
-            $quota->interest = $this->calcinte($amount, $interest, $quotas)/$quotas;
+            $quota->interest = $this->calcinte($amount, $interest, $quotas) / $quotas;
             $quota->capital = $balance;
             $quota->loan_id = $loan;
             $quota->quotastatu_id = 1;

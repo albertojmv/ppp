@@ -72,6 +72,11 @@ class LoanController extends Controller {
     }
 
     public function edit($id) {
+        $cuota = Quota::where('loan_id', '=', $id)->first();
+        $pagos = Payment::where('quota_id', '=', $cuota->id)->first();
+        if (count($pagos) != 0) {
+            return Redirect::route('manager.loans.index')->with('message', 'No se puede editar este préstamo porque tiene pagos realizados.');
+        }
         $loan = Loan::find($id);
         $paymentmethod_list = Paymentmethod::lists("name", "id");
         $calculationtype_list = Calculationtype::lists("name", "id");
