@@ -48,7 +48,10 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('/', 'Auth\AuthController@showLoginForm');
     Route::auth();
 
-    Route::resource('/', 'WebController');
+    //Route::resource('/', 'WebController');
+    Route::get('/', function ()    {
+        return redirect('kpresta');
+    });
     Route::resource('applications', 'LoanapplicationController');
     Route::resource('contacts', 'ContactController');
     Route::get('messages', 'WebController@message');

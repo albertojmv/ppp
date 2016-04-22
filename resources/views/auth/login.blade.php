@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Iniciar sesión</div>
                 <div class="panel-body">
+                    <div class="alert alert-info"><strong>Aviso!</strong><br> Nombre de usuario:<strong>demo</strong> <br>Contraseña: <strong>demo</strong> </div>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
