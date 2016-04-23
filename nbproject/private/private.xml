@@ -7,7 +7,10 @@
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/web/index.blade.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/app/Http/routes.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/public/kpresta/index.html</file>
+            <file>file:/C:/xampp/htdocs/prestamos/resources/views/admin/settings/index.blade.php</file>
             <file>file:/C:/xampp/htdocs/prestamos/resources/views/web/kpresta.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/resources/views/login/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/prestamos/public/kpresta/contacto.php</file>
         </group>
     </open-files>
 </project-private>
