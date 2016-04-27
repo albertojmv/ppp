@@ -12,19 +12,19 @@
         <meta name="author" content="Ing. Alberto Martínez">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/kpresta/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="kpresta/css/bootstrap.min.css" type="text/css">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="/kpresta/js/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="/kpresta/js/owl-carousel/owl.theme.css">
-        <link rel="stylesheet" href="/kpresta/js/owl-carousel/owl.transitions.css">
-        <link rel="stylesheet" href="/kpresta/js/rs-plugin/css/settings.css">
-        <link rel="stylesheet" href="/kpresta/js/flexslider/flexslider.css">
-        <link rel="stylesheet" href="/kpresta/js/isotope/isotope.css">
-        <link rel="stylesheet" href="/kpresta/css/jquery-ui.css">
-        <link rel="stylesheet" href="/kpresta/js/magnific-popup/magnific-popup.css">
-        <link rel="stylesheet" href="/kpresta/css/style.css">
-        <link rel="shortcut icon" href="/kpresta/images/favicon.ico">
+        <link rel="stylesheet" href="kpresta/js/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="kpresta/js/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="kpresta/js/owl-carousel/owl.transitions.css">
+        <link rel="stylesheet" href="kpresta/js/rs-plugin/css/settings.css">
+        <link rel="stylesheet" href="kpresta/js/flexslider/flexslider.css">
+        <link rel="stylesheet" href="kpresta/js/isotope/isotope.css">
+        <link rel="stylesheet" href="kpresta/css/jquery-ui.css">
+        <link rel="stylesheet" href="kpresta/js/magnific-popup/magnific-popup.css">
+        <link rel="stylesheet" href="kpresta/css/style.css">
+        <link rel="shortcut icon" href="kpresta/images/basic/favicon.ico">
 
         <!-- Google Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -33,11 +33,11 @@
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
 
         <!-- Icon Fonts -->
-        <link rel="stylesheet" href="/kpresta/css/icomoon/style.css" type="text/css">
-        <link rel="stylesheet" href="/kpresta/font-awesome/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="kpresta/css/icomoon/style.css" type="text/css">
+        <link rel="stylesheet" href="kpresta/font-awesome/css/font-awesome.min.css" type="text/css">
 
         <!-- SKIN -->
-        <link rel="stylesheet" href="/kpresta/css/color-scheme/soft-cyan.css" type="text/css">
+        <link rel="stylesheet" href="kpresta/css/color-scheme/soft-cyan.css" type="text/css">
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,7 +64,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="/" class="navbar-brand"><img src="/kpresta/images/logo.png" width="40" alt="kpresta"/></a>
+                            <a href="/" class="navbar-brand"><img src="kpresta/images/basic/logo.png" width="40" alt="kpresta"/></a>
                         </div>
 
                         <!-- CART / SEARCH -->
@@ -90,9 +90,9 @@
                     <div class="tp-banner" >
                         <ul>
                             <!-- SLIDE 1  -->
-                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="images/sliders/slider1_thumb.jpg" data-delay="13000"  data-saveperformance="off"  data-title="Our Workplace">
+                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="kpresta/images/sliders/slider1_thumb.jpg" data-delay="13000"  data-saveperformance="off"  data-title="Our Workplace">
                                 <!-- MAIN IMAGE --> 
-                                <img src="/kpresta/images/20.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center" > 
+                                <img src="kpresta/images/slider/20.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center" > 
                                 <!-- LAYERS -->
                                 <div class="tp-caption offerbadge two sft"
                                      data-x="1045"
@@ -285,9 +285,9 @@
                                    ">Prueba el Sistema</a>
                             </li>
                             <!-- SLIDE 2  -->
-                            <li data-transition="slideleft" data-slotamount="1" data-masterspeed="1500" data-thumb="images/sliders/slider1_thumb.jpg" data-delay="13000"  data-saveperformance="off"  data-title="Our Workplace">
+                            <li data-transition="slideleft" data-slotamount="1" data-masterspeed="1500" data-thumb="kpresta/images/sliders/slider1_thumb.jpg" data-delay="13000"  data-saveperformance="off"  data-title="Our Workplace">
                                 <!-- MAIN IMAGE --> 
-                                <img src="/kpresta/images/21.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center" > 
+                                <img src="kpresta/images/slider/21.jpg"  alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center" > 
                                 <div class="tp-caption lfl"
                                      data-x="-50"
                                      data-y="140"
@@ -296,7 +296,7 @@
                                      data-easing="Back.easeOut"
                                      data-endspeed="300"
                                      data-captionhidden="on"
-                                     style="z-index: 5"><img src="/kpresta/images/1.png" alt=""> </div>
+                                     style="z-index: 5"><img src="kpresta/images/onepage/1/1.png" alt="kpresta"> </div>
                                 <div class="tp-caption offerbadge two sft"
                                      data-x="400"
                                      data-hoffset="0"
@@ -669,7 +669,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div>
-                                        <img src="/kpresta/images/jodamapi.png" class="img-responsive" alt="jodamapi">
+                                        <img src="kpresta/images/other/jodamapi.png" class="img-responsive" alt="jodamapi">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -687,25 +687,25 @@
                 <div class="clients container">
                     <div id="carousel_five" class="owl-carousel">
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/1.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/1.png" class="img-responsive" alt="jodamapi"/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/2.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/2.png" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/3.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/3.png" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/4.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/4.png" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/5.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/5.png" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/6.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/6.png" class="img-responsive" alt=""/></a>
                         </div>
                         <div class="item client-logo">
-                            <a href="#"><img src="images/clients/7.png" class="img-responsive" alt=""/></a>
+                            <a href="#"><img src="kpresta/images/clients/7.png" class="img-responsive" alt=""/></a>
                         </div>
                     </div>
                 </div>
@@ -717,27 +717,31 @@
                     <h4 class="uppercase no-margin">Contáctenos</h4>
                     <div class="space20"></div>
                     <p>Nuestros asesores están disponibles todos los días para atender todas tus preguntas y ayudarte.</p>
-                    {!!Form::open(['route'=>'contacts.store', 'method'=>'POST', 'id'=>'validate-me-plz', 'class'=>'b-form b-contact-form home-contact-form'])!!}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-wrap">
-                                <input class="field-name input-lg i-field" name="nombre" placeholder="Nombre" type="text" required="required" data-msg-required="Este campo es requerido.">
-                                <i class="fa fa-user"></i>
+                    {!!Form::open(['route'=>'contacts.store', 'method'=>'POST', 'id'=>'validate-me-plz'])!!}                  
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <div class="input-wrap">
+                                    
+                                    <input class="form-control" name="nombre" placeholder="Nombre" type="text" required="required" data-msg-required="Este campo es requerido.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-wrap">
+                                    
+                                    <input class="form-control" name="correo" placeholder="Email" type="text" required="required" data-rule-email="true" data-msg-email="Por favor, introduce una dirección de correo electrónico válida." data-msg-required="Este campo es requerido.">
+                                    
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="input-wrap">
-                                <input class="field-email input-lg i-field" name="correo" placeholder="Email" type="text" required="required" data-rule-email="true" data-msg-email="Por favor, introduce una dirección de correo electrónico válida." data-msg-required="Este campo es requerido.">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="textarea-wrap">
-                        <textarea class="field-comments input-lg i-field" name="message" placeholder="Mensaje" required="required" data-msg-required="Este campo es requerido."></textarea>
-                        <i class="fa fa-pencil"></i>
-                    </div>
-                    <input class="button" value="Enviar" type="submit">
+                        <div class="textarea-wrap">
+                            
+                            <textarea class="form-control" name="message" placeholder="Mensaje" required="required" data-msg-required="Este campo es requerido."></textarea>
+                            
+                        </div>
+                        <input class="button" value="Enviar" type="submit">        
                     {!!Form::close()!!}
                 </div>
                 <div class="col-md-6 no-padding">
@@ -765,7 +769,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <h4 class="space30">Sobre nosotros</h4>
-                            <img src="images/basic/logo-ico.png" class="img-responsive space20" width="70" alt=""/>
+                            <img src="kpresta/images/basic/logo-ico.png" class="img-responsive space20" width="70" alt=""/>
                             <p>Kpresta fue desarrollado por un equipo de programadores encabezado por el ingeniero Alberto Martínez en Santiago de los caballeros, Republica dominicana.</p>
 
                         </div>
@@ -797,8 +801,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="f-social pull-right">
-                                <a class="fa fa-twitter" href="#"></a>
-                                <a class="fa fa-facebook" href="#"></a>
+                                <a class="fa fa-twitter" href="https://twitter.com/kprestasoftware"></a>
+                                <a class="fa fa-facebook" href="https://facebook.com/kprestasoftware"></a>
                                 <a class="fa fa-linkedin" href="#"></a>
                                 <a class="fa fa-dribbble" href="#"></a>
                                 <a class="fa fa-google-plus" href="#"></a>
@@ -820,37 +824,53 @@
         ============================================= -->
 
         <!-- jQuery -->
-        <script src="/kpresta/js/jquery.js"></script>
+        <script src="kpresta/js/jquery.js"></script>
 
         <!-- Plugins -->
-        <script src="/kpresta/js/bootstrap.min.js"></script>
-        <script src="/kpresta/js/menu.js"></script>
-        <script src="/kpresta/js/owl-carousel/owl.carousel.min.js"></script>
-        <script src="/kpresta/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>   
-        <script src="/kpresta/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-        <script src="/kpresta/js/jquery.easing.min.js"></script>
-        <script src="/kpresta/js/isotope/isotope.pkgd.js"></script>
-        <script src="/kpresta/js/jflickrfeed.min.js"></script>
-        <script src="/kpresta/js/tweecool.js"></script>
-        <script src="/kpresta/js/flexslider/jquery.flexslider.js"></script>
-        <script src="/kpresta/js/easypie/jquery.easypiechart.min.js"></script>
-        <script src="/kpresta/js/jquery-ui.js"></script>
-        <script src="/kpresta/js/jquery.appear.js"></script>
-        <script src="/kpresta/js/jquery.inview.js"></script>
-        <script src="/kpresta/js/jquery.countdown.min.js"></script>
-        <script src="/kpresta/js/jquery.sticky.js"></script>
-        <script src="/kpresta/js/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="/kpresta/js/jquery.easing/jquery.easing.js"></script>
+        <script src="kpresta/js/bootstrap.min.js"></script>
+        <script src="kpresta/js/menu.js"></script>
+        <script src="kpresta/js/owl-carousel/owl.carousel.min.js"></script>
+        <script src="kpresta/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>   
+        <script src="kpresta/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="kpresta/js/jquery.easing.min.js"></script>
+        <script src="kpresta/js/isotope/isotope.pkgd.js"></script>
+        <script src="kpresta/js/jflickrfeed.min.js"></script>
+        <script src="kpresta/js/tweecool.js"></script>
+        <script src="kpresta/js/flexslider/jquery.flexslider.js"></script>
+        <script src="kpresta/js/easypie/jquery.easypiechart.min.js"></script>
+        <script src="kpresta/js/jquery-ui.js"></script>
+        <script src="kpresta/js/jquery.appear.js"></script>
+        <script src="kpresta/js/jquery.inview.js"></script>
+        <script src="kpresta/js/jquery.countdown.min.js"></script>
+        <script src="kpresta/js/jquery.sticky.js"></script>
+        <script src="kpresta/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="kpresta/js/jquery.easing/jquery.easing.js"></script>
 
-        <script src="js/main.js"></script>
+        <script src="kpresta/js/main.js"></script>
 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script src="/kpresta/js/gmaps/greyscale.js"></script>
+        <script src="js/gmaps/greyscale.js"></script>
         <script type="text/javascript" src="/script/jquery.validate.min.js"></script>
         <script type="text/javascript">
             $('#validate-me-plz').validate();
         </script>
-        
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-77012702-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </body>
 </html>
 

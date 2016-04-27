@@ -41,9 +41,12 @@ class ContactController extends Controller {
         $contact->message = $request['message'];
         $contact->save();
 
-        mail("info@jodamapi.com", "Contacto desde la web", $request['message'], $request['correo']);
+        mail("albertojmv@gmail.com", "Contacto desde la web", $request['message'], $request['correo']);
 
-        return view('web.messagec');
+        echo "<script type='text/javascript'>
+	alert('Gracias por contactar con nosotros.. Pronto nos pondremos en contacto con usted');
+	window.location='../';
+        </script>";
     }
 
     /**

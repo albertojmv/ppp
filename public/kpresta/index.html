@@ -717,30 +717,30 @@
                     <h4 class="uppercase no-margin">Contáctenos</h4>
                     <div class="space20"></div>
                     <p>Nuestros asesores están disponibles todos los días para atender todas tus preguntas y ayudarte.</p>
-                    
-                    <form class="b-form b-contact-form home-contact-form" action="http://prestamos.localhost:8080/contacts/store" id="validate-me-plz" method="POST">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-wrap">
-                                <input class="field-name input-lg i-field" name="nombre" placeholder="Nombre" type="text" required="required" data-msg-required="Este campo es requerido.">
-                                <i class="fa fa-user"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-wrap">
-                                <input class="field-email input-lg i-field" name="correo" placeholder="Email" type="text" required="required" data-rule-email="true" data-msg-email="Por favor, introduce una dirección de correo electrónico válida." data-msg-required="Este campo es requerido.">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="textarea-wrap">
-                        <textarea class="field-comments input-lg i-field" name="message" placeholder="Mensaje" required="required" data-msg-required="Este campo es requerido."></textarea>
-                        <i class="fa fa-pencil"></i>
-                    </div>
-                    <input class="button" value="Enviar" type="submit">
+                    <form class="b-form b-contact-form home-contact-form" action="contact.php" id="validate-me-plz" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-wrap">
+                                    <input class="field-name input-lg i-field" name="name" placeholder="Nombre" type="text" required="required" data-msg-required="Este campo es requerido.">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-wrap">
+                                    <input class="field-email input-lg i-field" name="email" placeholder="Email" type="text" required="required" data-rule-email="true" data-msg-email="Por favor, introduce una dirección de correo electrónico válida." data-msg-required="Este campo es requerido.">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="textarea-wrap">
+                            <textarea class="field-message input-lg i-field" name="message" placeholder="Mensaje" required="required" data-msg-required="Este campo es requerido."></textarea>
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <input class="button" value="Enviar" type="submit">
                     </form>
-                   
+
                 </div>
                 <div class="col-md-6 no-padding">
                     <h1>Comunícate con nosotros</h1>
@@ -852,7 +852,23 @@
         <script type="text/javascript">
             $('#validate-me-plz').validate();
         </script>
-        
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-77012702-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </body>
 </html>
 
