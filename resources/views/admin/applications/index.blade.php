@@ -23,6 +23,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($applications) == 0)
+                    <th><strong>No existen resultados</strong></th>
+                    @else
                     <th>#</th>
                     <th>Nombre.:</th>
                      <th>Cedula.:</th>
@@ -47,6 +50,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$applications->links()}}
             

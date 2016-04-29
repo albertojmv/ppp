@@ -17,13 +17,16 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($references) == 0)
+                    <th><strong>No existen referencias</strong></th>
+                    @else
                     <th>#</th>
                     <th>Teléfono.:</th>
                     <th>Nombre.:</th>
                     <th>Dirección.:</th>
                     <th>Provincia.:</th>
-                  
-                   
+
+
                     <th>Editar.:</th>
                     <th>Eliminar .:</th>
                 </tr>
@@ -37,14 +40,14 @@
                     <td>{{$reference->address}}</td>
                     <td>{{$reference->province->name}}</td>
 
-                   
-                  
+
+
                     <td>
                         <a href="{{URL::to("manager/references/$reference->id/edit")}}" class="btn btn-success"><img src="/images/editar.png"></a>
                     </td>
                     <td>
                         {!!Form::open(['route'=>['manager.references.destroy',$reference->id ], 'method'=>'DELETE'])!!}
-                       
+
                         <input type="image" name="imageField" src="/images/borrar.png" class="btn btn-danger" onclick="return confirm('¿Seguro quieres eliminar esta referencia?')" />
                         {!!Form::close()!!}
 
@@ -52,6 +55,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$references->links()}}
     </div>

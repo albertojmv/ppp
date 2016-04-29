@@ -17,6 +17,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($warranty_detail) == 0)
+                    <th><strong>No existen garantías</strong></th>
+                    @else
                     <th>#</th>
                     <th>Artículo.:</th>
                     <th>Precio.:</th>
@@ -54,6 +57,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$warranty_detail->links()}}
     </div>

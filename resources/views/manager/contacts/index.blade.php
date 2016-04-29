@@ -22,6 +22,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($contacts) == 0)
+                    <th><strong>No existen resultados</strong></th>
+                    @else
                     <th>#</th>
                     <th>Nombre.:</th>
                     <th>Correo.:</th>
@@ -42,6 +45,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$contacts->links()}}
             

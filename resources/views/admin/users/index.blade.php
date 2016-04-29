@@ -32,6 +32,9 @@
             <table class="table">
                 <thead>
                     <tr>
+                        @if(count($users) == 0)
+                    <th><strong>No existen resultados</strong></th>
+                    @else
                         <th>
                             #
                         </th>
@@ -83,7 +86,7 @@
                             {{$user->role->name}}
 
                         </td>
-                       
+
                         @if($user->state->id == 1)
                         <td><span class="label label-sm label-success">{{$user->state->name}}</span></td>
                         @else
@@ -103,7 +106,7 @@
 
 
                 </tbody>
-
+                @endif
             </table>
             {{$users->links()}}
 

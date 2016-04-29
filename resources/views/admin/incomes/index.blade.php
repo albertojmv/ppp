@@ -15,6 +15,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($incomes) == 0)
+                    <th><strong>No existe información laboral o de ingresos.</strong></th>
+                    @else
                     <th>#</th>
                     <th>Nombre de empresa.:</th>
                     <th>Cargo.:</th>
@@ -50,6 +53,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$incomes->links()}}
     </div>

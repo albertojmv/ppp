@@ -25,6 +25,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($payments) == 0)
+                    <th><strong>No existen resultados</strong></th>
+                    @else
                     <th>#</th>
                     <th>Monto.:</th>
 
@@ -55,6 +58,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$payments->links()}}
     </div>

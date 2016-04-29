@@ -17,6 +17,9 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
+                    @if(count($references) == 0)
+                    <th><strong>No existen referencias</strong></th>
+                    @else
                     <th>#</th>
                     <th>Teléfono.:</th>
                     <th>Nombre.:</th>
@@ -52,6 +55,7 @@
                 </tr>
                 @endforeach
             </tbody>
+            @endif
         </table>
         {{$references->links()}}
     </div>

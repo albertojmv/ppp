@@ -77,7 +77,7 @@ use AuthenticatesAndRegistersUsers,
 
     public function login(Request $request) {
         $this->validateLogin($request);
-        $this->correrMora();
+        //$this->correrMora();
         if (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 1, 'state_id' => 1))) {
             return redirect('admin');
         } elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 2, 'state_id' => 1))) {
@@ -85,7 +85,7 @@ use AuthenticatesAndRegistersUsers,
         }elseif (Auth::attempt(array('username' => $request->input('username'), 'password' => $request->input('password'), 'role_id' => 3, 'state_id' => 1))) {
             return redirect('collector');
         }
-        return redirect('login')->withErrors('error');
+        return redirect('login')->withErrors('Usuario y/o contraseña incorrectos.');
     }
 
     public function correrMora() {

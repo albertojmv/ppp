@@ -13,40 +13,44 @@
     <div class="panel-body pan">
         {!!Form::open(['route'=>'admin.contacts.index', 'method'=>'GET','class'=>'navbar-form navbar-left pull-right'])!!}
         <div class="form-group">
-        <input type="text" name="search" class="form-control" placeholder="Buscar">
+            <input type="text" name="search" class="form-control" placeholder="Buscar">
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
         {!!Form::close()!!}
         <div class="form-body pal">
-          
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre.:</th>
-                    <th>Correo.:</th>
-                    <th>Mensajes.:</th>
-                    <th>Fecha.:</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($contacts as $contact)
-                <tr>
-                    <td>{{$contact->id}}</td>
-                    <td>{{$contact->name}}</td>
-                    <td>{{$contact->email}}</td>
-                    <td>{{$contact->message}}</td>
-                    <td>{{$contact->created_at->format('d-m-Y h:i:s A')}}</td>
-                    
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{$contacts->links()}}
-            
-          
-            
+
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        @if(count($contacts) == 0)
+                        <th><strong>No existen resultados</strong></th>
+                        @else
+                        <th>#</th>
+                        <th>Nombre.:</th>
+                        <th>Correo.:</th>
+                        <th>Mensajes.:</th>
+                        <th>Fecha.:</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($contacts as $contact)
+                    <tr>
+                        <td>{{$contact->id}}</td>
+                        <td>{{$contact->name}}</td>
+                        <td>{{$contact->email}}</td>
+                        <td>{{$contact->message}}</td>
+                        <td>{{$contact->created_at->format('d-m-Y h:i:s A')}}</td>
+
+                    </tr>
+                    @endforeach
+                </tbody>
+                @endif
+            </table>
+            {{$contacts->links()}}
+
+
+
 
         </div>
     </div>
