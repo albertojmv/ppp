@@ -51,8 +51,8 @@ class SavepaymentController extends Controller {
         $total = $request['total'];
 
         if ($amount > $total) {
-
-            return Redirect::route('admin.payments.create')
+            $quota = Quota::findOrFail($request['quota_id']);
+            return redirect('admin/payments/create?id='.$quota->loan_id) //Redirect::route('admin.payments.create')
                             ->with('message', 'El pago es mayor al monto pendiente de la cuota.');
         }
 
