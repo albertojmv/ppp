@@ -35,6 +35,16 @@ class ContactController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+            'g-recaptcha-response' => 'required|recaptcha'
+                ], $messages = [
+            'name.required' => 'Este campo no puede estar vacío.',
+            'email.required' => 'Este campo no puede estar vacío.',
+        ]);
+        
         $contact = new Contact();
         $contact->name = $request['nombre'];
         $contact->email = $request['correo'];

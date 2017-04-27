@@ -741,8 +741,10 @@
                             <textarea class="form-control" name="message" placeholder="Mensaje" required="required" data-msg-required="Este campo es requerido."></textarea>
                             
                         </div>
+                    <center> {!! Recaptcha::render() !!} </center> 
                         <input class="button" value="Enviar" type="submit">        
                     {!!Form::close()!!}
+                    
                 </div>
                 <div class="col-md-6 no-padding">
                     <h1>Comunícate con nosotros</h1>
